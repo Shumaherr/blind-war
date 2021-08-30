@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Aleksandr\.Rider2019.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Aleksandr\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_Blind war.1203931036.00" t="ExcludeRecursive" />
+    <e p="E:\Work\GameDev\GameJams\BatyaJam2021\Blind war" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Scripts" t="Include">
+          <e p="BaseInteractable.cs" t="Include" />
+          <e p="BaseUnit.cs" t="Include" />
+          <e p="BattleSystem.cs" t="Include" />
+          <e p="ControllerManager.cs" t="Include" />
+          <e p="GameManager.cs" t="Include" />
+          <e p="GridInteractor.cs" t="Include" />
+          <e p="Singletone.cs" t="Include" />
+          <e p="TurnManager.cs" t="Include" />
+          <e p="UnitInteractable.cs" t="Include" />
+          <e p="UnitsSO" t="Include">
+            <e p="HorsemanSO.cs" t="Include" />
+            <e p="SpearmanSO.cs" t="Include" />
+            <e p="SwordmanSO.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="Blind war.sln" t="IncludeFlat" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>
