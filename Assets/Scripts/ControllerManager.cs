@@ -36,15 +36,22 @@ public class ControllerManager : Singleton<ControllerManager>
 
     private void MoveUnitToTile(Vector3Int tilePos)
     {
+        if(!_selectedUnit.CanMove())
+            return;
         Transform var1 = _selectedUnit.transform;
-        Vector3 var3 = grid.GetCellCenterWorld(tilePos) - new Vector3(0,0.4f,0);
+        Vector3 var3 = grid.GetCellCenterWorld(tilePos);
         Vector3Int unitCell = grid.WorldToCell(_selectedUnit.transform.position);
         Debug.Log("Move for " + Mathf.Round(Vector3.Distance(tilePos,unitCell)) + " cells");
         StartCoroutine(MoveFromTo(var1, var1.position, var3, 3));
         //StartCoroutine(waitForMove());
         Debug.Log("End");
         _selectedUnit.ChangeMoves(1);
-        //ClearSelected();
+        ClearSelected();
+    }
+
+    private void ClearSelected()
+    {
+        _selectedUnit = null;
     }
 
     private IEnumerator MoveFromTo(Transform objectToMove, Vector3 pos1, Vector3 pos2, float speed)
@@ -59,5 +66,10 @@ public class ControllerManager : Singleton<ControllerManager>
         }
 
         objectToMove.position = pos2;
+    }
+
+    public Vector3Int SelectedUnitCell()
+    {
+        return grid.LocalToCell(_selectedUnit.transform.position);
     }
 }
