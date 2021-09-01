@@ -13,7 +13,12 @@ public class ControllerManager : Singleton<ControllerManager>
     public UnitInteractable SelectedUnit
     {
         get => _selectedUnit;
-        set => _selectedUnit = value;
+        set
+        {
+            if(value == null)
+                _gridInteractor.UnhighlightCells();
+            _selectedUnit = value;
+        }
     }
 
     private void Start()
@@ -38,12 +43,13 @@ public class ControllerManager : Singleton<ControllerManager>
     {
         if(!_selectedUnit.CanMove())
             return;
+        GameManager.Instance.TakenCells.Remove(grid.LocalToCell(_selectedUnit.transform.position));
         Transform var1 = _selectedUnit.transform;
         Vector3 var3 = grid.GetCellCenterWorld(tilePos);
         Vector3Int unitCell = grid.WorldToCell(_selectedUnit.transform.position);
         Debug.Log("Move for " + Mathf.Round(Vector3.Distance(tilePos,unitCell)) + " cells");
         StartCoroutine(MoveFromTo(var1, var1.position, var3, 3));
-        //StartCoroutine(waitForMove());
+        GameManager.Instance.TakenCells.Add(grid.LocalToCell(tilePos));
         Debug.Log("End");
         _selectedUnit.ChangeMoves(1);
         ClearSelected();
@@ -51,7 +57,7 @@ public class ControllerManager : Singleton<ControllerManager>
 
     private void ClearSelected()
     {
-        _selectedUnit = null;
+        SelectedUnit = null;
     }
 
     private IEnumerator MoveFromTo(Transform objectToMove, Vector3 pos1, Vector3 pos2, float speed)

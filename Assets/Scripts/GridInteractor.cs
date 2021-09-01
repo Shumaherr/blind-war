@@ -8,15 +8,19 @@ using UnityEngine.Tilemaps;
 public class GridInteractor : BaseInteractable
 {
     [SerializeField] private Camera mainCamera;
+
+    private List<Vector3Int> _highlightedTiles;
     public delegate void OnTileSelectedDelegate(Vector3Int tilePos);
+    public event OnTileSelectedDelegate OnTileSelected;
     
     private Tilemap _grid;
-
-    public event OnTileSelectedDelegate OnTileSelected;
+    
     // Start is called before the first frame update
     void Start()
     {
+        _highlightedTiles = new List<Vector3Int>();
         _grid = GetComponent<Tilemap>();
+        
     }
 
     // Update is called once per frame
@@ -28,7 +32,8 @@ public class GridInteractor : BaseInteractable
             mousePos.z = 4;
             Vector2 clickWorldPos = mainCamera.ScreenToWorldPoint(mousePos);
             Vector3Int clickCellPos = _grid.WorldToCell(clickWorldPos);
-            if(!_grid.HasTile(clickCellPos) || !IsNeighbor(ControllerManager.Instance.SelectedUnitCell(), clickCellPos))
+            if(!_grid.HasTile(clickCellPos) || !IsNeighbor(ControllerManager.Instance.SelectedUnitCell(), clickCellPos) ||
+               GameManager.Instance.TakenCells.Contains(clickCellPos))
                 return;
             Debug.Log(clickCellPos);
             if (OnTileSelected != null)
@@ -61,6 +66,11 @@ public class GridInteractor : BaseInteractable
     static Vector3Int[] directions_when_y_is_odd = 
         { LEFT, RIGHT, DOWN, DOWNRIGHT, UP, UPRIGHT };
 
+    public GridInteractor(List<Vector3Int> highlightedTiles)
+    {
+        _highlightedTiles = highlightedTiles;
+    }
+
     public IEnumerable<Vector3Int> Neighbors(Vector3Int node) {
         Vector3Int[] directions = (node.y % 2) == 0? 
             directions_when_y_is_even: 
@@ -75,4 +85,27 @@ public class GridInteractor : BaseInteractable
     {
         return Neighbors(cell1).Contains(cell2);
     }
+
+    public void HighLightCells(Vector3Int cellToHighlight)
+    {
+        if(_highlightedTiles.Count != 0)
+            UnhighlightCells();
+        foreach (var cell in Neighbors(ControllerManager.Instance.SelectedUnitCell()))
+        {
+            if(GameManager.Instance.TakenCells.Contains(cell))
+                continue;
+            _grid.SetTileFlags(cell, TileFlags.None);
+            _grid.SetColor(cell, Color.grey);
+            _highlightedTiles.Add(cell);
+        }
+    }
+
+    public void UnhighlightCells()
+    {
+        foreach (var tile in _highlightedTiles)
+        {
+            _grid.SetColor(tile, Color.white);
+        }
+    }
 }
+

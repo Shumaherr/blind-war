@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 963194227}
-  grid: {fileID: 1977499417}
+  grid: {fileID: 767431589}
 --- !u!4 &7175869
 Transform:
   m_ObjectHideFlags: 0
@@ -1250,6 +1250,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Horseman
       objectReference: {fileID: 0}
+    - target: {fileID: 1362021866805217583, guid: cd7116e146ac652469a39dbc8680a3cc, type: 3}
+      propertyPath: m_TagString
+      value: PlayerUnit
+      objectReference: {fileID: 0}
     - target: {fileID: 1362021866805217746, guid: cd7116e146ac652469a39dbc8680a3cc, type: 3}
       propertyPath: m_Offset.y
       value: 0.20491529
@@ -1260,6 +1264,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd7116e146ac652469a39dbc8680a3cc, type: 3}
+--- !u!1001 &4608348926367893623
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1358128826429785503, guid: 2e90c602b28f27b4d808e1fb11ccba22, type: 3}
+      propertyPath: m_Name
+      value: EnemyHorseman
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389496761382188883, guid: 2e90c602b28f27b4d808e1fb11ccba22, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389496761382188883, guid: 2e90c602b28f27b4d808e1fb11ccba22, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389496761382188883, guid: 2e90c602b28f27b4d808e1fb11ccba22, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.27973682
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389496761382188883, guid: 2e90c602b28f27b4d808e1fb11ccba22, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389496761382188883, guid: 2e90c602b28f27b4d808e1fb11ccba22, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389496761382188883, guid: 2e90c602b28f27b4d808e1fb11ccba22, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389496761382188883, guid: 2e90c602b28f27b4d808e1fb11ccba22, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389496761382188883, guid: 2e90c602b28f27b4d808e1fb11ccba22, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389496761382188883, guid: 2e90c602b28f27b4d808e1fb11ccba22, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389496761382188883, guid: 2e90c602b28f27b4d808e1fb11ccba22, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389496761382188883, guid: 2e90c602b28f27b4d808e1fb11ccba22, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2e90c602b28f27b4d808e1fb11ccba22, type: 3}
 --- !u!1001 &5801492845276228313
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1270,6 +1331,10 @@ PrefabInstance:
     - target: {fileID: 5801492845011294506, guid: cfb475cc7661e2945b6edca9c8bc4604, type: 3}
       propertyPath: m_Name
       value: Swordman
+      objectReference: {fileID: 0}
+    - target: {fileID: 5801492845011294506, guid: cfb475cc7661e2945b6edca9c8bc4604, type: 3}
+      propertyPath: m_TagString
+      value: PlayerUnit
       objectReference: {fileID: 0}
     - target: {fileID: 5801492845011294511, guid: cfb475cc7661e2945b6edca9c8bc4604, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1371,6 +1436,10 @@ PrefabInstance:
     - target: {fileID: 6442041906260730134, guid: 84b44d617d86b864faadd64e3ae16f5f, type: 3}
       propertyPath: m_Name
       value: Spearman
+      objectReference: {fileID: 0}
+    - target: {fileID: 6442041906260730134, guid: 84b44d617d86b864faadd64e3ae16f5f, type: 3}
+      propertyPath: m_TagString
+      value: PlayerUnit
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84b44d617d86b864faadd64e3ae16f5f, type: 3}

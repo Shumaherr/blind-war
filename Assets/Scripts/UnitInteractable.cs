@@ -4,7 +4,9 @@ using UnityEngine;
 public class UnitInteractable : BaseInteractable
 {
     [SerializeField] private BaseUnit unit;
-
+    public delegate void OnUnitSelectedDelegate(UnitInteractable unit);
+    public event OnUnitSelectedDelegate OnUnitSelected;
+    
     private int _moves;
 
     public override void Interact()
@@ -52,6 +54,8 @@ public class UnitInteractable : BaseInteractable
         if (!TurnManager.Instance.isPlayerTurn())
             return;
         ControllerManager.Instance.SelectedUnit = this;
+        if (OnUnitSelected != null) 
+            OnUnitSelected.Invoke(this);
         Debug.Log("Unit clicked" + unit.UnitType);
     }
 }
