@@ -9,6 +9,7 @@ public class ControllerManager : Singleton<ControllerManager>
     [SerializeField] private Grid grid;
     private UnitInteractable _selectedUnit;
     private GridInteractor _gridInteractor;
+private BattleSystem _battleSystem;
 
     public UnitInteractable SelectedUnit
     {
@@ -23,6 +24,7 @@ public class ControllerManager : Singleton<ControllerManager>
 
     private void Start()
     {
+		_battleSystem = new BattleSystem();
         _gridInteractor = grid.GetComponentInChildren<GridInteractor>();
         _gridInteractor.OnTileSelected += TileSelected;
         //Subscribe to event click on tile
@@ -35,6 +37,8 @@ public class ControllerManager : Singleton<ControllerManager>
             return;
         if (_selectedUnit)
         {
+            if(GameManager.Instance.EnemyCells.Contains(tilePos))
+				StartBattle(
             MoveUnitToTile(tilePos);
         }
     }
@@ -54,6 +58,11 @@ public class ControllerManager : Singleton<ControllerManager>
         _selectedUnit.ChangeMoves(1);
         ClearSelected();
     }
+
+	private void StartBattle(EnemyUnit enemyUnit)
+{
+	
+}
 
     private void ClearSelected()
     {

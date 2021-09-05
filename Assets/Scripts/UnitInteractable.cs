@@ -1,18 +1,14 @@
 using System;
 using UnityEngine;
 
-public class UnitInteractable : BaseInteractable
+public class UnitInteractable : Unit
 {
     [SerializeField] private BaseUnit unit;
     public delegate void OnUnitSelectedDelegate(UnitInteractable unit);
     public event OnUnitSelectedDelegate OnUnitSelected;
     
     private int _moves;
-
-    public override void Interact()
-    {
-    }
-
+    
     private void Start()
     {
         TurnManager.Instance.OnTurnChanged += ChangeTurn;
@@ -44,7 +40,7 @@ public class UnitInteractable : BaseInteractable
         return _moves > 0;
     }
 
-    private void InitMoves()
+    public override void InitMoves()
     {
         _moves = unit.Moves;
     }
