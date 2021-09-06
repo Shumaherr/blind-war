@@ -9,14 +9,14 @@ public class ControllerManager : Singleton<ControllerManager>
     [SerializeField] private Grid grid;
     private UnitInteractable _selectedUnit;
     private GridInteractor _gridInteractor;
-private BattleSystem _battleSystem;
+    private BattleSystem _battleSystem;
 
     public UnitInteractable SelectedUnit
     {
         get => _selectedUnit;
         set
         {
-            if(value == null)
+            if (value == null)
                 _gridInteractor.UnhighlightCells();
             _selectedUnit = value;
         }
@@ -24,7 +24,7 @@ private BattleSystem _battleSystem;
 
     private void Start()
     {
-		_battleSystem = new BattleSystem();
+        _battleSystem = new BattleSystem();
         _gridInteractor = grid.GetComponentInChildren<GridInteractor>();
         _gridInteractor.OnTileSelected += TileSelected;
         //Subscribe to event click on tile
@@ -37,21 +37,23 @@ private BattleSystem _battleSystem;
             return;
         if (_selectedUnit)
         {
-            if(GameManager.Instance.EnemyCells.Contains(tilePos))
-				StartBattle(
+            if (GameManager.Instance.HasEnemyUnit(tilePos))
+                if (!StartBattle(GameManager.Instance.GetEnemyUnitInCell(tilePos)))
+                    return;
             MoveUnitToTile(tilePos);
         }
     }
 
     private void MoveUnitToTile(Vector3Int tilePos)
     {
-        if(!_selectedUnit.CanMove())
+        if (!_selectedUnit.CanMove())
             return;
-        GameManager.Instance.TakenCells.Remove(grid.LocalToCell(_selectedUnit.transform.position));
+        var position = _selectedUnit.transform.position;
+        GameManager.Instance.TakenCells.Remove(grid.LocalToCell(position));
         Transform var1 = _selectedUnit.transform;
         Vector3 var3 = grid.GetCellCenterWorld(tilePos);
-        Vector3Int unitCell = grid.WorldToCell(_selectedUnit.transform.position);
-        Debug.Log("Move for " + Mathf.Round(Vector3.Distance(tilePos,unitCell)) + " cells");
+        Vector3Int unitCell = grid.WorldToCell(position);
+        Debug.Log("Move for " + Mathf.Round(Vector3.Distance(tilePos, unitCell)) + " cells");
         StartCoroutine(MoveFromTo(var1, var1.position, var3, 3));
         GameManager.Instance.TakenCells.Add(grid.LocalToCell(tilePos));
         Debug.Log("End");
@@ -59,10 +61,19 @@ private BattleSystem _battleSystem;
         ClearSelected();
     }
 
-	private void StartBattle(EnemyUnit enemyUnit)
-{
-	
-}
+    private bool StartBattle(EnemyUnit enemyUnit)
+    {
+        if (_battleSystem.Fight(_selectedUnit.BaseUnit, enemyUnit.BaseUnit))
+        {
+            GameManager.Instance.KillUnit(enemyUnit);
+            return true;
+        }
+        else
+        {
+            GameManager.Instance.KillUnit(_selectedUnit);
+            return false;
+        }
+    }
 
     private void ClearSelected()
     {

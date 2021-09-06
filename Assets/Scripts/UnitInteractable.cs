@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class UnitInteractable : Unit
 {
-    [SerializeField] private BaseUnit unit;
     public delegate void OnUnitSelectedDelegate(UnitInteractable unit);
     public event OnUnitSelectedDelegate OnUnitSelected;
     
@@ -12,7 +11,7 @@ public class UnitInteractable : Unit
     private void Start()
     {
         TurnManager.Instance.OnTurnChanged += ChangeTurn;
-        Debug.Log("Unit: " + unit.UnitType);
+        Debug.Log("Unit: " + baseUnit.UnitType);
         InitMoves();
     }
 
@@ -42,7 +41,7 @@ public class UnitInteractable : Unit
 
     public override void InitMoves()
     {
-        _moves = unit.Moves;
+        _moves = baseUnit.Moves;
     }
 
     private void OnMouseDown()
@@ -52,6 +51,6 @@ public class UnitInteractable : Unit
         ControllerManager.Instance.SelectedUnit = this;
         if (OnUnitSelected != null) 
             OnUnitSelected.Invoke(this);
-        Debug.Log("Unit clicked" + unit.UnitType);
+        Debug.Log("Unit clicked" + baseUnit.UnitType);
     }
 }

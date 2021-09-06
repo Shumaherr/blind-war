@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class EnemyUnit : Unit
 {
-    [SerializeField] private BaseUnit unit;
-    
-	public override void InitMoves()
-{
- 
-}
+    public override void InitMoves()
+    {
+    }
 }

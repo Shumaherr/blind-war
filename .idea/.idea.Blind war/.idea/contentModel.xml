@@ -11,9 +11,11 @@
             <e p="BaseInteractable.cs" t="Include" />
             <e p="BaseUnit.cs" t="Include" />
             <e p="Singletone.cs" t="Include" />
+            <e p="Unit.cs" t="Include" />
           </e>
           <e p="BattleSystem.cs" t="Include" />
           <e p="ControllerManager.cs" t="Include" />
+          <e p="EnemyUnit.cs" t="Include" />
           <e p="GameManager.cs" t="Include" />
           <e p="GridInteractor.cs" t="Include" />
           <e p="TurnManager.cs" t="Include" />

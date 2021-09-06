@@ -1,11 +1,9 @@
-using UnityEngine;
-
-public class BattleSystem : MonoBehaviour
+public class BattleSystem
 {
   
     public bool Fight(BaseUnit firstFighter, BaseUnit secondFighter)
     {
-        return firstFighter.KillUnit == secondFighter.UnitType ? firstFighter : secondFighter;
+        return firstFighter.KillUnit == secondFighter.UnitType;
     }
 
     
