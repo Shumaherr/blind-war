@@ -63,7 +63,13 @@ public class ControllerManager : Singleton<ControllerManager>
 
     private bool StartBattle(EnemyUnit enemyUnit)
     {
-        if (_battleSystem.Fight(_selectedUnit.BaseUnit, enemyUnit.BaseUnit))
+        BaseUnit winner = _battleSystem.Fight(_selectedUnit.BaseUnit, enemyUnit.BaseUnit);
+        if (winner == null)
+        {
+            GameManager.Instance.KillUnit(enemyUnit);
+            GameManager.Instance.KillUnit(_selectedUnit);
+        }
+        if (_selectedUnit.BaseUnit == winner)
         {
             GameManager.Instance.KillUnit(enemyUnit);
             return true;

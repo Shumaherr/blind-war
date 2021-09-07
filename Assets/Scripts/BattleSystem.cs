@@ -1,9 +1,11 @@
 public class BattleSystem
 {
   
-    public bool Fight(BaseUnit firstFighter, BaseUnit secondFighter)
+    public BaseUnit Fight(BaseUnit firstFighter, BaseUnit secondFighter)
     {
-        return firstFighter.KillUnit == secondFighter.UnitType;
+        if (firstFighter.UnitType == secondFighter.UnitType)
+            return null;
+        return firstFighter.KillUnit == secondFighter.UnitType ? firstFighter : secondFighter;
     }
 
     
