@@ -56,11 +56,14 @@ public class GameManager : Singleton<GameManager>
 
         foreach (GameObject city in GameObject.FindGameObjectsWithTag("PlayerCity"))
         {
-            _allCities.Add(grid.WorldToCell(city.gameObject.transform.position), city.GetComponent<CityController>());
+            var position = city.gameObject.transform.position;
+            _allCities.Add(grid.WorldToCell(position), city.GetComponent<CityController>());
+            _takenCells.Add(grid.WorldToCell(position));
         }
         foreach (GameObject city in GameObject.FindGameObjectsWithTag("AICity"))
         {
-            _allCities.Add(grid.WorldToCell(city.gameObject.transform.position), city.GetComponent<CityController>());
+            var position = city.gameObject.transform.position;
+            _allCities.Add(grid.WorldToCell(position), city.GetComponent<CityController>());
         }
     }
 
@@ -108,5 +111,15 @@ public class GameManager : Singleton<GameManager>
         _takenCells.Remove(grid.WorldToCell(unitToKill.transform.position));
         
         Destroy(unitToKill.gameObject);
+    }
+
+    public void AddCityToList(Vector3 pos)
+    {
+        _takenCells.Add(grid.WorldToCell(pos));
+    }
+
+    public void RemoveCityToList(Vector3 pos)
+    {
+        _takenCells.Remove(grid.WorldToCell(pos));
     }
 }

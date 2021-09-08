@@ -33,10 +33,11 @@ public class ControllerManager : Singleton<ControllerManager>
     private void TileSelected(Vector3Int tilePos)
     {
         Debug.Log("Tile" + tilePos + " clicked");
-        if (!TurnManager.Instance.isPlayerTurn())
-            return;
         if (_selectedUnit)
         {
+            if (!TurnManager.Instance.isPlayerTurn() || !_selectedUnit.CanMove())
+                return;
+            _selectedUnit.ChangeMoves(1);
             if (GameManager.Instance.HasEnemyUnit(tilePos))
                 if (!StartBattle(GameManager.Instance.GetEnemyUnitInCell(tilePos)))
                     return;
@@ -52,18 +53,15 @@ public class ControllerManager : Singleton<ControllerManager>
 
     private void MoveUnitToTile(Vector3Int tilePos)
     {
-        if (!_selectedUnit.CanMove())
-            return;
         var position = _selectedUnit.transform.position;
         GameManager.Instance.TakenCells.Remove(grid.LocalToCell(position));
-        Transform var1 = _selectedUnit.transform;
-        Vector3 var3 = grid.GetCellCenterWorld(tilePos);
+        Transform selectedUnitTransform = _selectedUnit.transform;
+        Vector3 cellCenterWorld = grid.GetCellCenterWorld(tilePos);
         Vector3Int unitCell = grid.WorldToCell(position);
         Debug.Log("Move for " + Mathf.Round(Vector3.Distance(tilePos, unitCell)) + " cells");
-        StartCoroutine(MoveFromTo(var1, var1.position, var3, 3));
+        StartCoroutine(MoveFromTo(selectedUnitTransform, position, cellCenterWorld, 3));
         GameManager.Instance.TakenCells.Add(grid.LocalToCell(tilePos));
         Debug.Log("End");
-        _selectedUnit.ChangeMoves(1);
         ClearSelected();
     }
 
@@ -88,7 +86,7 @@ public class ControllerManager : Singleton<ControllerManager>
         }
     }
 
-    private void ClearSelected()
+    public void ClearSelected()
     {
         SelectedUnit = null;
     }

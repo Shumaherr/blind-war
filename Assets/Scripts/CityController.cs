@@ -48,6 +48,12 @@ public class CityController : MonoBehaviour
         Owner = Owner == CityOwner.Player ? CityOwner.AI : CityOwner.Player;
         ChangeSprite();
         _health = maxHealth;
+        if(Owner == CityOwner.Player)
+            GameManager.Instance.AddCityToList(this.transform.position);
+        else
+        {
+            GameManager.Instance.RemoveCityToList(this.transform.position);
+        }
     }
 
     // Start is called before the first frame update

@@ -7,4 +7,9 @@ public class EnemyUnit : Unit
     public override void InitMoves()
     {
     }
+
+    public void DoMove()
+    {
+        
+    }
 }

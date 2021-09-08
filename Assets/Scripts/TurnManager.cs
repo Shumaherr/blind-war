@@ -26,6 +26,7 @@ public class TurnManager : Singleton<TurnManager>
 
     public void ChangeTurn()
     {
+        ControllerManager.Instance.ClearSelected();
         _turn = _turn is TurnStates.PlayerTurn ? TurnStates.AITurn : TurnStates.PlayerTurn;
         if (OnTurnChanged != null)
             OnTurnChanged(_turn);

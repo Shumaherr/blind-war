@@ -1,31 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="359edaa5-222c-41c8-8062-0c5d0084d1e6" name="Default Changelist" comment="Battle (draw)">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/CityController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/NEXT_TURN.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/NEXT_TURN/hover.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/NEXT_TURN/hover.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/NEXT_TURN/neutral.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/NEXT_TURN/neutral.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/NEXT_TURN/pressed.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/NEXT_TURN/pressed.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/battleexample.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/battleexample.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/restart.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/restart/hover.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/restart/hover.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/restart/neutral.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/restart/neutral.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/restart/presssed.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/restart/presssed.png.meta" afterDir="false" />
+    <list default="true" id="359edaa5-222c-41c8-8062-0c5d0084d1e6" name="Default Changelist" comment="Cities: siege, change owner">
+      <change afterPath="$PROJECT_DIR$/Assets/Fonts.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Fonts/Arvo-Regular SDF.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Fonts/Arvo-Regular SDF.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Fonts/Arvo-Regular.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Fonts/Arvo-Regular.ttf.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UIManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UIManager.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Documentation.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Documentation/TextMesh Pro User Guide 2016.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Documentation/TextMesh Pro User Guide 2016.pdf.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/LiberationSans - OFL.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/LiberationSans - OFL.txt.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/LiberationSans.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/LiberationSans.ttf.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Drop Shadow.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Drop Shadow.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Outline.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Outline.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/LineBreaking Following Characters.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/LineBreaking Following Characters.txt.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/LineBreaking Leading Characters.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/LineBreaking Leading Characters.txt.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Sprite Assets.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Sprite Assets/EmojiOne.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Sprite Assets/EmojiOne.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Style Sheets.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Style Sheets/Default Style Sheet.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Style Sheets/Default Style Sheet.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/TMP Settings.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/TMP Settings.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Bitmap-Custom-Atlas.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Bitmap-Custom-Atlas.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Bitmap-Mobile.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Bitmap-Mobile.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Bitmap.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Bitmap.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF Overlay.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF Overlay.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF SSD.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF SSD.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Masking.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Masking.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile SSD.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile SSD.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Surface-Mobile.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Surface-Mobile.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Surface.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Surface.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Sprite.shader" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Sprite.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro.cginc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro.cginc.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Mobile.cginc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Mobile.cginc.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Properties.cginc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Properties.cginc.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Surface.cginc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Surface.cginc.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Sprites.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Sprites/EmojiOne Attribution.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Sprites/EmojiOne Attribution.txt.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Sprites/EmojiOne.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Sprites/EmojiOne.json.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Sprites/EmojiOne.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Sprites/EmojiOne.png.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Blind war/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Blind war/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Blind war/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Blind war/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CityController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CityController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ControllerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ControllerManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EnemyUnit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EnemyUnit.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/q1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/q1.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TurnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TurnManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/restart/hover.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/restart/hover.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/restart/neutral.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/restart/neutral.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/restart/presssed.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/restart/presssed.png.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,8 +115,10 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AF218701-FE32-4032-B521-DDD91F13662B/43/42906cc7/UnitySynchronizationContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.common@4.0.3/Editor/TextureGenerator/TextureGeneratorHelper.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UnitInteractable.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.tilemap@1.0.0/Editor/GridPaintPaletteClipboard.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/93A8FC8B-060F-43F2-9F29-52A90C55FDD1/18/474b2056/Tile.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BattleSystem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UIManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/695D1CC9-3CCA-4506-9C52-8C15C9FDD749/75/b52d95d8/List`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/04258D1C-DC10-4424-8C2A-17A6A31A3CF7/87/617ff017/UnitySynchronizationContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BaseClasses/BaseUnit.cs" root0="FORCE_HIGHLIGHTING" />
@@ -60,16 +129,17 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/TurnManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BaseClasses/BaseUnit.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GridInteractor.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BaseClasses/Unit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UnitInteractable.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/EnemyUnit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleSystem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/CityController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ControllerManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GridInteractor.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/CityController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/EnemyUnit.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UIManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/TurnManager.cs" />
       </list>
     </option>
   </component>
@@ -117,7 +187,7 @@
       <workItem from="1630107703586" duration="11888000" />
       <workItem from="1630280803377" duration="21370000" />
       <workItem from="1630881086052" duration="3601000" />
-      <workItem from="1630886306101" duration="16157000" />
+      <workItem from="1630886306101" duration="21572000" />
     </task>
     <task id="LOCAL-00001" summary="Movement, prefabs">
       <created>1630454201521</created>
@@ -147,7 +217,14 @@
       <option name="project" value="LOCAL" />
       <updated>1631024478684</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Cities: siege, change owner">
+      <created>1631107058057</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1631107058057</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -173,73 +250,74 @@
     <MESSAGE value="Movement, prefabs" />
     <MESSAGE value="Battles TODO who wins, if units have same type" />
     <MESSAGE value="Battle (draw)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Battle (draw)" />
+    <MESSAGE value="Cities: siege, change owner" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cities: siege, change owner" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1637" height="340" key="GridCell.Tab.0.bottom" timestamp="1631105777862">
+    <state width="1637" height="340" key="GridCell.Tab.0.bottom" timestamp="1631143732087">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
-    <state width="1637" height="340" key="GridCell.Tab.0.bottom/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631105777862" />
-    <state width="1637" height="340" key="GridCell.Tab.0.center" timestamp="1631105777862">
+    <state width="1637" height="340" key="GridCell.Tab.0.bottom/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631143732087" />
+    <state width="1637" height="340" key="GridCell.Tab.0.center" timestamp="1631143732087">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
-    <state width="1637" height="340" key="GridCell.Tab.0.center/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631105777862" />
-    <state width="1637" height="340" key="GridCell.Tab.0.left" timestamp="1631105777862">
+    <state width="1637" height="340" key="GridCell.Tab.0.center/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631143732087" />
+    <state width="1637" height="340" key="GridCell.Tab.0.left" timestamp="1631143732087">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
-    <state width="1637" height="340" key="GridCell.Tab.0.left/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631105777862" />
-    <state width="1637" height="340" key="GridCell.Tab.0.right" timestamp="1631105777862">
+    <state width="1637" height="340" key="GridCell.Tab.0.left/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631143732087" />
+    <state width="1637" height="340" key="GridCell.Tab.0.right" timestamp="1631143732087">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
-    <state width="1637" height="340" key="GridCell.Tab.0.right/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631105777862" />
-    <state width="1637" height="340" key="GridCell.Tab.1.bottom" timestamp="1631105785048">
+    <state width="1637" height="340" key="GridCell.Tab.0.right/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631143732087" />
+    <state width="1637" height="340" key="GridCell.Tab.1.bottom" timestamp="1631143740254">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
-    <state width="1637" height="340" key="GridCell.Tab.1.bottom/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631105785048" />
-    <state width="1637" height="340" key="GridCell.Tab.1.center" timestamp="1631105785048">
+    <state width="1637" height="340" key="GridCell.Tab.1.bottom/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631143740254" />
+    <state width="1637" height="340" key="GridCell.Tab.1.center" timestamp="1631143740254">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
-    <state width="1637" height="340" key="GridCell.Tab.1.center/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631105785048" />
-    <state width="1637" height="340" key="GridCell.Tab.1.left" timestamp="1631105785048">
+    <state width="1637" height="340" key="GridCell.Tab.1.center/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631143740254" />
+    <state width="1637" height="340" key="GridCell.Tab.1.left" timestamp="1631143740254">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
-    <state width="1637" height="340" key="GridCell.Tab.1.left/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631105785048" />
-    <state width="1637" height="340" key="GridCell.Tab.1.right" timestamp="1631105785048">
+    <state width="1637" height="340" key="GridCell.Tab.1.left/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631143740254" />
+    <state width="1637" height="340" key="GridCell.Tab.1.right" timestamp="1631143740254">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
-    <state width="1637" height="340" key="GridCell.Tab.1.right/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631105785048" />
-    <state width="1637" height="340" key="GridCell.Tab.2.bottom" timestamp="1631105777804">
+    <state width="1637" height="340" key="GridCell.Tab.1.right/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631143740254" />
+    <state width="1637" height="340" key="GridCell.Tab.2.bottom" timestamp="1631143732015">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
-    <state width="1637" height="340" key="GridCell.Tab.2.bottom/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631105777804" />
-    <state width="1637" height="340" key="GridCell.Tab.2.center" timestamp="1631105777804">
+    <state width="1637" height="340" key="GridCell.Tab.2.bottom/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631143732015" />
+    <state width="1637" height="340" key="GridCell.Tab.2.center" timestamp="1631143732015">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
-    <state width="1637" height="340" key="GridCell.Tab.2.center/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631105777804" />
-    <state width="1637" height="340" key="GridCell.Tab.2.left" timestamp="1631105777804">
+    <state width="1637" height="340" key="GridCell.Tab.2.center/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631143732015" />
+    <state width="1637" height="340" key="GridCell.Tab.2.left" timestamp="1631143732015">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
-    <state width="1637" height="340" key="GridCell.Tab.2.left/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631105777804" />
-    <state width="1637" height="340" key="GridCell.Tab.2.right" timestamp="1631105777804">
+    <state width="1637" height="340" key="GridCell.Tab.2.left/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631143732015" />
+    <state width="1637" height="340" key="GridCell.Tab.2.right" timestamp="1631143732015">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
-    <state width="1637" height="340" key="GridCell.Tab.2.right/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631105777804" />
-    <state width="1637" height="340" key="GridCell.Tab.3.bottom" timestamp="1631105777805">
+    <state width="1637" height="340" key="GridCell.Tab.2.right/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631143732015" />
+    <state width="1637" height="340" key="GridCell.Tab.3.bottom" timestamp="1631143732015">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
-    <state width="1637" height="340" key="GridCell.Tab.3.bottom/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631105777805" />
-    <state width="1637" height="340" key="GridCell.Tab.3.center" timestamp="1631105777805">
+    <state width="1637" height="340" key="GridCell.Tab.3.bottom/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631143732015" />
+    <state width="1637" height="340" key="GridCell.Tab.3.center" timestamp="1631143732015">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
-    <state width="1637" height="340" key="GridCell.Tab.3.center/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631105777805" />
-    <state width="1637" height="340" key="GridCell.Tab.3.left" timestamp="1631105777805">
+    <state width="1637" height="340" key="GridCell.Tab.3.center/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631143732015" />
+    <state width="1637" height="340" key="GridCell.Tab.3.left" timestamp="1631143732015">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
-    <state width="1637" height="340" key="GridCell.Tab.3.left/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631105777805" />
-    <state width="1637" height="340" key="GridCell.Tab.3.right" timestamp="1631105777805">
+    <state width="1637" height="340" key="GridCell.Tab.3.left/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631143732015" />
+    <state width="1637" height="340" key="GridCell.Tab.3.right" timestamp="1631143732015">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
-    <state width="1637" height="340" key="GridCell.Tab.3.right/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631105777805" />
+    <state width="1637" height="340" key="GridCell.Tab.3.right/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631143732015" />
     <state x="-1036" y="223" key="RiderGenerateDialog" timestamp="1631058545137">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
@@ -248,10 +326,10 @@
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
     <state x="-1056" y="253" key="VCS.ChangeListViewerDialog/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631024247543" />
-    <state x="-1248" y="281" key="Vcs.Push.Dialog.v2" timestamp="1631024479823">
+    <state x="-1248" y="281" key="Vcs.Push.Dialog.v2" timestamp="1631107060210">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
-    <state x="-1248" y="281" key="Vcs.Push.Dialog.v2/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631024479823" />
+    <state x="-1248" y="281" key="Vcs.Push.Dialog.v2/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631107060210" />
     <state width="848" height="518" key="XDebugger.FullValuePopup" timestamp="1630191677528">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
@@ -283,13 +361,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/ControllerManager.cs</url>
-          <line>78</line>
+          <line>76</line>
           <properties documentPath="$PROJECT_DIR$/Assets/Scripts/ControllerManager.cs" initialLine="64">
             <startOffsets>
-              <option value="2592" />
+              <option value="2625" />
             </startOffsets>
             <endOffsets>
-              <option value="2593" />
+              <option value="2626" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="10" />
@@ -319,6 +397,19 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/UIManager.cs</url>
+          <line>16</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/UIManager.cs" initialLine="16">
+            <startOffsets>
+              <option value="398" />
+            </startOffsets>
+            <endOffsets>
+              <option value="478" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
