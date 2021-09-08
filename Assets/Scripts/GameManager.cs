@@ -19,7 +19,10 @@ public class GameManager : Singleton<GameManager>
     private Dictionary<Vector3Int, EnemyUnit> _enemyUnits;
 
     private List<Vector3Int> _takenCells;
-    
+
+    private List<CityController> _playerCities;
+    private List<CityController> _AICities;
+    private Dictionary<Vector3Int, CityController> _allCities;
     public List<Vector3Int> TakenCells
     {
         get => _takenCells;
@@ -34,6 +37,7 @@ public class GameManager : Singleton<GameManager>
         _playerUnits = new List<UnitInteractable>();
         _enemyUnits = new Dictionary<Vector3Int, EnemyUnit>();
         _takenCells = new List<Vector3Int>();
+        _allCities = new Dictionary<Vector3Int, CityController>();
         foreach (GameObject o in GameObject.FindGameObjectsWithTag("PlayerUnit"))
         {
             _playerUnits.Add(o.GetComponent<UnitInteractable>());
@@ -49,10 +53,24 @@ public class GameManager : Singleton<GameManager>
         {
             unit.OnUnitSelected += UnitOnOnUnitSelected;
         }
+
+        foreach (GameObject city in GameObject.FindGameObjectsWithTag("PlayerCity"))
+        {
+            _allCities.Add(grid.WorldToCell(city.gameObject.transform.position), city.GetComponent<CityController>());
+        }
+        foreach (GameObject city in GameObject.FindGameObjectsWithTag("AICity"))
+        {
+            _allCities.Add(grid.WorldToCell(city.gameObject.transform.position), city.GetComponent<CityController>());
+        }
     }
 
     private void UnitOnOnUnitSelected(UnitInteractable unit)
     {
+        if (!unit.CanMove())
+        {
+            _gridInteractor.UnhighlightCells();
+            return;
+        }
         _gridInteractor.HighLightCells(grid.LocalToCell(unit.gameObject.transform.position));
     }
 
@@ -64,6 +82,16 @@ public class GameManager : Singleton<GameManager>
     public bool HasEnemyUnit(Vector3Int cell)
     {
         return _enemyUnits.ContainsKey(cell);
+    }
+
+    public bool HasEnemyCity(Vector3Int cell)
+    {
+        return _allCities.ContainsKey(cell) && _allCities[cell].Owner == CityOwner.AI;
+    }
+
+    public CityController GetCityInCell(Vector3Int cell)
+    {
+        return _allCities[cell];
     }
 
     public void KillUnit(Unit unitToKill)

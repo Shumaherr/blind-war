@@ -40,6 +40,12 @@ public class ControllerManager : Singleton<ControllerManager>
             if (GameManager.Instance.HasEnemyUnit(tilePos))
                 if (!StartBattle(GameManager.Instance.GetEnemyUnitInCell(tilePos)))
                     return;
+            if (GameManager.Instance.HasEnemyCity(tilePos))
+            {
+                GameManager.Instance.GetCityInCell(tilePos).TakeDamage(_selectedUnit.BaseUnit.Damage);
+                return;
+            }
+
             MoveUnitToTile(tilePos);
         }
     }
@@ -69,6 +75,7 @@ public class ControllerManager : Singleton<ControllerManager>
             GameManager.Instance.KillUnit(enemyUnit);
             GameManager.Instance.KillUnit(_selectedUnit);
         }
+
         if (_selectedUnit.BaseUnit == winner)
         {
             GameManager.Instance.KillUnit(enemyUnit);
