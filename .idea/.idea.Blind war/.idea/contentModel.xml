@@ -10,6 +10,8 @@
           <e p="BaseClasses" t="Include">
             <e p="BaseInteractable.cs" t="Include" />
             <e p="BaseUnit.cs" t="Include" />
+            <e p="Pathfinding.cs" t="Include" />
+            <e p="PathTile.cs" t="Include" />
             <e p="Singletone.cs" t="Include" />
             <e p="Unit.cs" t="Include" />
           </e>
