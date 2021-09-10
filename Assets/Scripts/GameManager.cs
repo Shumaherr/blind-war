@@ -14,7 +14,7 @@ public class GameManager : Singleton<GameManager>
 
     [SerializeField] private Tilemap grid;
     private GridInteractor _gridInteractor;
-    private List<UnitInteractable> _playerUnits;
+    private Dictionary<Vector3Int, UnitInteractable> _playerUnits;
 
     private Dictionary<Vector3Int, EnemyUnit> _enemyUnits;
 
@@ -34,13 +34,13 @@ public class GameManager : Singleton<GameManager>
 
     void Start()
     {
-        _playerUnits = new List<UnitInteractable>();
+        _playerUnits = new Dictionary<Vector3Int, UnitInteractable>();
         _enemyUnits = new Dictionary<Vector3Int, EnemyUnit>();
         _takenCells = new List<Vector3Int>();
         _allCities = new Dictionary<Vector3Int, CityController>();
         foreach (GameObject o in GameObject.FindGameObjectsWithTag("PlayerUnit"))
         {
-            _playerUnits.Add(o.GetComponent<UnitInteractable>());
+            _playerUnits.Add(grid.LocalToCell(o.transform.position), o.GetComponent<UnitInteractable>());
             _takenCells.Add(grid.LocalToCell(o.transform.position));
         }
         
@@ -51,7 +51,7 @@ public class GameManager : Singleton<GameManager>
         _gridInteractor = grid.GetComponent<GridInteractor>();
         foreach (var unit in _playerUnits)
         {
-            unit.OnUnitSelected += UnitOnOnUnitSelected;
+            unit.Value.OnUnitSelected += UnitOnOnUnitSelected;
         }
 
         foreach (GameObject city in GameObject.FindGameObjectsWithTag("PlayerCity"))
@@ -64,6 +64,20 @@ public class GameManager : Singleton<GameManager>
         {
             var position = city.gameObject.transform.position;
             _allCities.Add(grid.WorldToCell(position), city.GetComponent<CityController>());
+        }
+        
+        TurnManager.Instance.OnTurnChanged += OnTurnChanged;
+    }
+
+    private void OnTurnChanged(TurnStates newturn)
+    {
+        if (newturn == TurnStates.AITurn)
+        {
+            foreach (var unit in _enemyUnits)
+            {
+                unit.Value.DoTurn();
+                
+            }
         }
     }
 
@@ -86,6 +100,11 @@ public class GameManager : Singleton<GameManager>
     {
         return _enemyUnits.ContainsKey(cell);
     }
+    
+    public bool HasPlayerUnit(Vector3Int cell)
+    {
+        return _playerUnits.ContainsKey(cell);
+    }
 
     public bool HasEnemyCity(Vector3Int cell)
     {
@@ -105,7 +124,7 @@ public class GameManager : Singleton<GameManager>
         }
         else
         {
-            _playerUnits.Remove(unitToKill as UnitInteractable);
+            _playerUnits.Remove(_enemyUnits.First((kvp => kvp.Value == unitToKill)).Key);
         }
 
         _takenCells.Remove(grid.WorldToCell(unitToKill.transform.position));
@@ -121,5 +140,20 @@ public class GameManager : Singleton<GameManager>
     public void RemoveCityToList(Vector3 pos)
     {
         _takenCells.Remove(grid.WorldToCell(pos));
+    }
+
+    public bool HasUnit(Vector3Int cell)
+    {
+        return HasEnemyUnit(cell) || HasPlayerUnit(cell);
+    }
+
+    public bool IsCellTaken(Vector3Int cell)
+    {
+        return TakenCells.Contains(cell);
+    }
+
+    public bool HasCity(Vector3Int cell)
+    {
+        return _allCities.ContainsKey(cell);
     }
 }

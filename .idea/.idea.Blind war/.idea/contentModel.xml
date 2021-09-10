@@ -29,6 +29,7 @@
             <e p="SpearmanSO.cs" t="Include" />
             <e p="SwordmanSO.cs" t="Include" />
           </e>
+          <e p="Utils.cs" t="Include" />
         </e>
         <e p="TextMesh Pro" t="Include">
           <e p="Fonts" t="Include">

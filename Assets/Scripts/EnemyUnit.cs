@@ -12,4 +12,9 @@ public class EnemyUnit : Unit
     {
         
     }
+
+    public void DoTurn()
+    {
+        
+    }
 }

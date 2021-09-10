@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 
 public class ControllerManager : Singleton<ControllerManager>
 {
-    [SerializeField] private Grid grid;
+    [SerializeField] private Tilemap walkableTilemap;
     private UnitInteractable _selectedUnit;
     private GridInteractor _gridInteractor;
     private BattleSystem _battleSystem;
@@ -25,7 +25,7 @@ public class ControllerManager : Singleton<ControllerManager>
     private void Start()
     {
         _battleSystem = new BattleSystem();
-        _gridInteractor = grid.GetComponentInChildren<GridInteractor>();
+        _gridInteractor = walkableTilemap.GetComponent<GridInteractor>();
         _gridInteractor.OnTileSelected += TileSelected;
         //Subscribe to event click on tile
     }
@@ -35,6 +35,14 @@ public class ControllerManager : Singleton<ControllerManager>
         Debug.Log("Tile" + tilePos + " clicked");
         if (_selectedUnit)
         {
+            //For tests
+            /*Pathfinding pathfinding = new Pathfinding();
+            foreach (var vector3Int in pathfinding.FindPath(walkableTilemap, SelectedUnitCell(), tilePos))
+            {
+                walkableTilemap.SetTileFlags(vector3Int, TileFlags.None);
+                walkableTilemap.SetColor(vector3Int, Color.magenta);
+            }*/
+
             if (!TurnManager.Instance.isPlayerTurn() || !_selectedUnit.CanMove())
                 return;
             _selectedUnit.ChangeMoves(1);
@@ -54,13 +62,13 @@ public class ControllerManager : Singleton<ControllerManager>
     private void MoveUnitToTile(Vector3Int tilePos)
     {
         var position = _selectedUnit.transform.position;
-        GameManager.Instance.TakenCells.Remove(grid.LocalToCell(position));
+        GameManager.Instance.TakenCells.Remove(walkableTilemap.LocalToCell(position));
         Transform selectedUnitTransform = _selectedUnit.transform;
-        Vector3 cellCenterWorld = grid.GetCellCenterWorld(tilePos);
-        Vector3Int unitCell = grid.WorldToCell(position);
+        Vector3 cellCenterWorld = walkableTilemap.GetCellCenterWorld(tilePos);
+        Vector3Int unitCell = walkableTilemap.WorldToCell(position);
         Debug.Log("Move for " + Mathf.Round(Vector3.Distance(tilePos, unitCell)) + " cells");
         StartCoroutine(MoveFromTo(selectedUnitTransform, position, cellCenterWorld, 3));
-        GameManager.Instance.TakenCells.Add(grid.LocalToCell(tilePos));
+        GameManager.Instance.TakenCells.Add(walkableTilemap.LocalToCell(tilePos));
         Debug.Log("End");
         ClearSelected();
     }
@@ -107,6 +115,6 @@ public class ControllerManager : Singleton<ControllerManager>
 
     public Vector3Int SelectedUnitCell()
     {
-        return grid.LocalToCell(_selectedUnit.transform.position);
+        return walkableTilemap.LocalToCell(_selectedUnit.transform.position);
     }
 }
