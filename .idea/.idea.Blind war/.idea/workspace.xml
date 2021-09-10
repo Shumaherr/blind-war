@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="359edaa5-222c-41c8-8062-0c5d0084d1e6" name="Default Changelist" comment="a star">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Utils.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Utils.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Blind war/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Blind war/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Blind war/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Blind war/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BaseClasses/PathTile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BaseClasses/PathTile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ControllerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ControllerManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EnemyUnit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EnemyUnit.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GridInteractor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GridInteractor.cs" afterDir="false" />
+    <list default="true" id="359edaa5-222c-41c8-8062-0c5d0084d1e6" name="Default Changelist" comment="Pathfinding">
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Arvo-Regular SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Arvo-Regular SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +22,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utils.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/93A8FC8B-060F-43F2-9F29-52A90C55FDD1/18/474b2056/Tile.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BattleSystem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Fonts/Arvo-Regular SDF.asset" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/695D1CC9-3CCA-4506-9C52-8C15C9FDD749/75/b52d95d8/List`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/04258D1C-DC10-4424-8C2A-17A6A31A3CF7/87/617ff017/UnitySynchronizationContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/TurnManager.cs" root0="FORCE_HIGHLIGHTING" />
@@ -111,7 +105,7 @@
       <workItem from="1630107703586" duration="11888000" />
       <workItem from="1630280803377" duration="21370000" />
       <workItem from="1630881086052" duration="3601000" />
-      <workItem from="1630886306101" duration="33829000" />
+      <workItem from="1630886306101" duration="34453000" />
     </task>
     <task id="LOCAL-00001" summary="Movement, prefabs">
       <created>1630454201521</created>
@@ -162,7 +156,14 @@
       <option name="project" value="LOCAL" />
       <updated>1631186753295</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Pathfinding">
+      <created>1631288015056</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1631288015056</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -191,7 +192,8 @@
     <MESSAGE value="Cities: siege, change owner" />
     <MESSAGE value="UI: turn label" />
     <MESSAGE value="a star" />
-    <option name="LAST_COMMIT_MESSAGE" value="a star" />
+    <MESSAGE value="Pathfinding" />
+    <option name="LAST_COMMIT_MESSAGE" value="Pathfinding" />
   </component>
   <component name="WindowStateProjectService">
     <state width="1637" height="340" key="GridCell.Tab.0.bottom" timestamp="1631276614828">
@@ -282,10 +284,10 @@
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
     <state x="-1056" y="253" key="VCS.ChangeListViewerDialog/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631024247543" />
-    <state x="494" y="279" key="Vcs.Push.Dialog.v2" timestamp="1631186754625">
-      <screen x="0" y="30" width="1920" height="1050" />
+    <state x="-1248" y="281" key="Vcs.Push.Dialog.v2" timestamp="1631288018346">
+      <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
-    <state x="-1248" y="281" key="Vcs.Push.Dialog.v2/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631144192269" />
+    <state x="-1248" y="281" key="Vcs.Push.Dialog.v2/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631288018346" />
     <state x="494" y="279" key="Vcs.Push.Dialog.v2/0.30.1920.1050/-1680.39.1680.1020@0.30.1920.1050" timestamp="1631186754625" />
     <state width="848" height="518" key="XDebugger.FullValuePopup" timestamp="1630191677528">
       <screen x="-1680" y="39" width="1680" height="1020" />
