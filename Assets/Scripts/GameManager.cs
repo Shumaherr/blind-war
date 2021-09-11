@@ -23,6 +23,9 @@ public class GameManager : Singleton<GameManager>
     private List<CityController> _playerCities;
     private List<CityController> _AICities;
     private Dictionary<Vector3Int, CityController> _allCities;
+    
+    private Pathfinding _pathfinding;
+    
     public List<Vector3Int> TakenCells
     {
         get => _takenCells;
@@ -38,6 +41,7 @@ public class GameManager : Singleton<GameManager>
         _enemyUnits = new Dictionary<Vector3Int, EnemyUnit>();
         _takenCells = new List<Vector3Int>();
         _allCities = new Dictionary<Vector3Int, CityController>();
+        _pathfinding = new Pathfinding();
         foreach (GameObject o in GameObject.FindGameObjectsWithTag("PlayerUnit"))
         {
             _playerUnits.Add(grid.LocalToCell(o.transform.position), o.GetComponent<UnitInteractable>());
@@ -67,6 +71,7 @@ public class GameManager : Singleton<GameManager>
         }
         
         TurnManager.Instance.OnTurnChanged += OnTurnChanged;
+        
     }
 
     private void OnTurnChanged(TurnStates newturn)
@@ -80,6 +85,8 @@ public class GameManager : Singleton<GameManager>
             }
         }
     }
+
+    public Dictionary<Vector3Int, UnitInteractable> PlayerUnits => _playerUnits;
 
     private void UnitOnOnUnitSelected(UnitInteractable unit)
     {
@@ -152,8 +159,15 @@ public class GameManager : Singleton<GameManager>
         return TakenCells.Contains(cell);
     }
 
+    public Dictionary<Vector3Int, CityController> AllCities => _allCities;
+
     public bool HasCity(Vector3Int cell)
     {
         return _allCities.ContainsKey(cell);
+    }
+
+    public List<Vector3Int> GetPath(Vector3 start, Vector3Int finish)
+    {
+        return _pathfinding.FindPath(grid, grid.WorldToCell(start), finish);
     }
 }

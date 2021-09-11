@@ -2,8 +2,155 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="359edaa5-222c-41c8-8062-0c5d0084d1e6" name="Default Changelist" comment="Pathfinding">
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Arvo-Regular SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Arvo-Regular SDF.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor Default Resources.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor Default Resources/FMOD.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor Default Resources/FMOD/ArrowUp.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor Default Resources/FMOD/BankIcon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor Default Resources/FMOD/Border.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor Default Resources/FMOD/ContinuousParameterIcon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor Default Resources/FMOD/CopyIcon.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor Default Resources/FMOD/CrossYellow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor Default Resources/FMOD/CrossYellow.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor Default Resources/FMOD/Delete.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor Default Resources/FMOD/FMODLogoWhite.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor Default Resources/FMOD/FMODLogoWhite.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor Default Resources/FMOD/FolderIconClosed.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor Default Resources/FMOD/FolderIconOpen.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor Default Resources/FMOD/LevelMeter.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor Default Resources/FMOD/LevelMeter.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor Default Resources/FMOD/SearchIcon.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor Default Resources/FMOD/SearchIconBlack.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor Default Resources/FMOD/Selected.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor Default Resources/FMOD/SelectedAlt.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor Default Resources/FMOD/SnapshotIcon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor Default Resources/FMOD/TransportOpen.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor Default Resources/FMOD/TransportPlayButtonOff.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor Default Resources/FMOD/TransportStopButtonOff.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor Default Resources/FMOD/TransportStopButtonOff.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor Default Resources/FMOD/TransportStopButtonOn.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor Default Resources/FMOD/previewemitter.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Gizmos.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Gizmos/FMOD.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/Cache.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/Cache/Editor/FMODStudioCache.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/FMODUnity.asmdef" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/Resources/FMODStudioSettings.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/Resources/FMODStudioSettings.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/android.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/android/arm64-v8a.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/android/arm64-v8a/libfmod.so.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/android/arm64-v8a/libfmodstudioL.so.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/android/armeabi-v7a/libfmod.so.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/android/armeabi-v7a/libfmodL.so" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/android/armeabi-v7a/libfmodstudio.so.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/android/armeabi-v7a/libfmodstudioL.so.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/android/armeabi-v7a/libresonanceaudio.so" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/android/fmod.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/android/x86/libfmod.so.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/android/x86/libfmodstudio.so" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/android/x86/libfmodstudioL.so.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/android/x86/libresonanceaudio.so" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/html5.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/html5/libfmodstudiounityplugin.bc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/html5/libfmodstudiounityplugin.bc.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/ios.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/ios/libfmodstudiounityplugin.a" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/ios/libfmodstudiounitypluginL.a" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/linux.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/linux/x86/libfmodstudio.so" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/linux/x86/libfmodstudio.so.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/linux/x86_64.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/mac.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/mac/fmodstudio.bundle/Contents.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/mac/fmodstudio.bundle/Contents/Info.plist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/mac/fmodstudio.bundle/Contents/Info.plist.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/mac/fmodstudio.bundle/Contents/_CodeSignature.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/mac/fmodstudioL.bundle.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/mac/fmodstudioL.bundle/Contents/MacOS.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/mac/resonanceaudio.bundle.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/mac/resonanceaudio.bundle/Contents/Info.plist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/mac/resonanceaudio.bundle/Contents/Info.plist.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/mac/resonanceaudio.bundle/Contents/MacOS/resonanceaudio" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/mac/resonanceaudio.bundle/Contents/_CodeSignature/CodeResources.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/tvos/libfmodstudiounitypluginL.a" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/tvos/libfmodstudiounitypluginL.a.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/tvos/libfmodstudiounitypluginsimulator.a.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/tvos/libfmodstudiounitypluginsimulatorL.a" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/uwp/arm/fmod.dll.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/uwp/arm/fmodL.dll.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/uwp/arm/fmodstudioL.dll.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/uwp/x64/fmodL.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/uwp/x64/fmodL.dll.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/uwp/x86/fmodL.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/uwp/x86/fmodstudio.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/uwp/x86/fmodstudio.dll.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/uwp/x86/fmodstudioL.dll.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/win/x86_64/fmodstudio.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/win/x86_64/fmodstudioL.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/lib/win/x86_64/resonanceaudio.dll.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/platform_ios.mm.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/android.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/html5/src.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/html5/src/PlatformWebGL.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/ios.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/ios/src.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/ios/src/PlatformIOS.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/linux/src.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/linux/src/PlatformLinux.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/mac.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/tvos.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/tvos/src.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/win/src.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/win/src/PlatformWindows.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/BankRefresher.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/EditorUtils.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/EditorUtils.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/EventBrowser.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/EventCache.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/EventCache.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/EventRefDrawer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/FMODUnityEditor.asmdef" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/FMODUnityEditor.asmdef.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/FindAndReplace.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/ListView.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/SetupWizard.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/StudioEventEmitterGizmoDrawer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/StudioGlobalParameterTriggerEditor.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/StudioGlobalParameterTriggerEditor.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/Timeline/FMODEventPlayableEditor.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/Timeline/FMODEventTrackEditor.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/Timeline/FMODEventTrackEditor.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/CodeGeneration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/CodeGeneration.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/Platform.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/PlatformGroup.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/PlatformMobileHigh.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/PlatformMobileLow.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/PlatformPlayInEditor.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/RuntimeManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/RuntimeUtils.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/Settings.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/StudioBankLoader.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/StudioListener.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/StudioParameterTrigger.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/Timeline.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/Timeline/FMODEventPlayable.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/Timeline/FMODEventTrack.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/Timeline/FMODEventTrack.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/fmodplugins.cpp.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/wrapper.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/wrapper/fmod.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/wrapper/fmod.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/wrapper/fmod_dsp.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/wrapper/fmod_dsp.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/wrapper/fmod_studio.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Blind war/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Blind war/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EnemyUnit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EnemyUnit.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,10 +163,14 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/BB425196-9FB4-4E5D-80D8-C754D05E61F7/62/f9cd7fad/GridLayout.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ControllerManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/695D1CC9-3CCA-4506-9C52-8C15C9FDD749/2b/49962c45/KeyValuePair`2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CityController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AF218701-FE32-4032-B521-DDD91F13662B/43/42906cc7/UnitySynchronizationContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utils.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AF218701-FE32-4032-B521-DDD91F13662B/90/3f8bd6e8/Transform.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/93A8FC8B-060F-43F2-9F29-52A90C55FDD1/18/474b2056/Tile.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BattleSystem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Fonts/Arvo-Regular SDF.asset" root0="FORCE_HIGHLIGHTING" />
@@ -56,8 +207,9 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/GridInteractor.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BaseClasses/Pathfinding.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ControllerManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/EnemyUnit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/EnemyUnit.cs" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -105,7 +257,7 @@
       <workItem from="1630107703586" duration="11888000" />
       <workItem from="1630280803377" duration="21370000" />
       <workItem from="1630881086052" duration="3601000" />
-      <workItem from="1630886306101" duration="34453000" />
+      <workItem from="1630886306101" duration="38325000" />
     </task>
     <task id="LOCAL-00001" summary="Movement, prefabs">
       <created>1630454201521</created>
@@ -163,7 +315,14 @@
       <option name="project" value="LOCAL" />
       <updated>1631288015056</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Pathfinding">
+      <created>1631288047748</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1631288047748</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -196,98 +355,98 @@
     <option name="LAST_COMMIT_MESSAGE" value="Pathfinding" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1637" height="340" key="GridCell.Tab.0.bottom" timestamp="1631276614828">
+    <state width="1637" height="340" key="GridCell.Tab.0.bottom" timestamp="1631316975779">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
-    <state width="1637" height="340" key="GridCell.Tab.0.bottom/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631276614828" />
+    <state width="1637" height="340" key="GridCell.Tab.0.bottom/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631316975779" />
     <state width="1877" height="340" key="GridCell.Tab.0.bottom/0.30.1920.1050/-1680.39.1680.1020@0.30.1920.1050" timestamp="1631268260611" />
-    <state width="1637" height="340" key="GridCell.Tab.0.center" timestamp="1631276614828">
+    <state width="1637" height="340" key="GridCell.Tab.0.center" timestamp="1631316975779">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
-    <state width="1637" height="340" key="GridCell.Tab.0.center/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631276614828" />
+    <state width="1637" height="340" key="GridCell.Tab.0.center/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631316975779" />
     <state width="1877" height="340" key="GridCell.Tab.0.center/0.30.1920.1050/-1680.39.1680.1020@0.30.1920.1050" timestamp="1631268260611" />
-    <state width="1637" height="340" key="GridCell.Tab.0.left" timestamp="1631276614828">
+    <state width="1637" height="340" key="GridCell.Tab.0.left" timestamp="1631316975779">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
-    <state width="1637" height="340" key="GridCell.Tab.0.left/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631276614828" />
+    <state width="1637" height="340" key="GridCell.Tab.0.left/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631316975779" />
     <state width="1877" height="340" key="GridCell.Tab.0.left/0.30.1920.1050/-1680.39.1680.1020@0.30.1920.1050" timestamp="1631268260610" />
-    <state width="1637" height="340" key="GridCell.Tab.0.right" timestamp="1631276614828">
+    <state width="1637" height="340" key="GridCell.Tab.0.right" timestamp="1631316975779">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
-    <state width="1637" height="340" key="GridCell.Tab.0.right/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631276614828" />
+    <state width="1637" height="340" key="GridCell.Tab.0.right/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631316975779" />
     <state width="1877" height="340" key="GridCell.Tab.0.right/0.30.1920.1050/-1680.39.1680.1020@0.30.1920.1050" timestamp="1631268260611" />
-    <state width="1637" height="340" key="GridCell.Tab.1.bottom" timestamp="1631276614829">
+    <state width="1637" height="340" key="GridCell.Tab.1.bottom" timestamp="1631316997159">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
-    <state width="1637" height="340" key="GridCell.Tab.1.bottom/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631276614829" />
+    <state width="1637" height="340" key="GridCell.Tab.1.bottom/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631316997159" />
     <state width="1877" height="340" key="GridCell.Tab.1.bottom/0.30.1920.1050/-1680.39.1680.1020@0.30.1920.1050" timestamp="1631268260541" />
-    <state width="1637" height="340" key="GridCell.Tab.1.center" timestamp="1631276614828">
+    <state width="1637" height="340" key="GridCell.Tab.1.center" timestamp="1631316997159">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
-    <state width="1637" height="340" key="GridCell.Tab.1.center/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631276614828" />
+    <state width="1637" height="340" key="GridCell.Tab.1.center/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631316997159" />
     <state width="1877" height="340" key="GridCell.Tab.1.center/0.30.1920.1050/-1680.39.1680.1020@0.30.1920.1050" timestamp="1631268260541" />
-    <state width="1637" height="340" key="GridCell.Tab.1.left" timestamp="1631276614828">
+    <state width="1637" height="340" key="GridCell.Tab.1.left" timestamp="1631316997159">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
-    <state width="1637" height="340" key="GridCell.Tab.1.left/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631276614828" />
+    <state width="1637" height="340" key="GridCell.Tab.1.left/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631316997159" />
     <state width="1877" height="340" key="GridCell.Tab.1.left/0.30.1920.1050/-1680.39.1680.1020@0.30.1920.1050" timestamp="1631268260541" />
-    <state width="1637" height="340" key="GridCell.Tab.1.right" timestamp="1631276614829">
+    <state width="1637" height="340" key="GridCell.Tab.1.right" timestamp="1631316997159">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
-    <state width="1637" height="340" key="GridCell.Tab.1.right/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631276614829" />
+    <state width="1637" height="340" key="GridCell.Tab.1.right/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631316997159" />
     <state width="1877" height="340" key="GridCell.Tab.1.right/0.30.1920.1050/-1680.39.1680.1020@0.30.1920.1050" timestamp="1631268260541" />
-    <state width="1637" height="340" key="GridCell.Tab.2.bottom" timestamp="1631276614829">
+    <state width="1637" height="340" key="GridCell.Tab.2.bottom" timestamp="1631316975696">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
-    <state width="1637" height="340" key="GridCell.Tab.2.bottom/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631276614829" />
+    <state width="1637" height="340" key="GridCell.Tab.2.bottom/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631316975696" />
     <state width="1877" height="340" key="GridCell.Tab.2.bottom/0.30.1920.1050/-1680.39.1680.1020@0.30.1920.1050" timestamp="1631268260541" />
-    <state width="1637" height="340" key="GridCell.Tab.2.center" timestamp="1631276614829">
+    <state width="1637" height="340" key="GridCell.Tab.2.center" timestamp="1631316975695">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
-    <state width="1637" height="340" key="GridCell.Tab.2.center/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631276614829" />
+    <state width="1637" height="340" key="GridCell.Tab.2.center/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631316975695" />
     <state width="1877" height="340" key="GridCell.Tab.2.center/0.30.1920.1050/-1680.39.1680.1020@0.30.1920.1050" timestamp="1631268260541" />
-    <state width="1637" height="340" key="GridCell.Tab.2.left" timestamp="1631276614829">
+    <state width="1637" height="340" key="GridCell.Tab.2.left" timestamp="1631316975695">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
-    <state width="1637" height="340" key="GridCell.Tab.2.left/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631276614829" />
+    <state width="1637" height="340" key="GridCell.Tab.2.left/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631316975695" />
     <state width="1877" height="340" key="GridCell.Tab.2.left/0.30.1920.1050/-1680.39.1680.1020@0.30.1920.1050" timestamp="1631268260541" />
-    <state width="1637" height="340" key="GridCell.Tab.2.right" timestamp="1631276614829">
+    <state width="1637" height="340" key="GridCell.Tab.2.right" timestamp="1631316975695">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
-    <state width="1637" height="340" key="GridCell.Tab.2.right/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631276614829" />
+    <state width="1637" height="340" key="GridCell.Tab.2.right/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631316975695" />
     <state width="1877" height="340" key="GridCell.Tab.2.right/0.30.1920.1050/-1680.39.1680.1020@0.30.1920.1050" timestamp="1631268260541" />
-    <state width="1637" height="340" key="GridCell.Tab.3.bottom" timestamp="1631276614829">
+    <state width="1637" height="340" key="GridCell.Tab.3.bottom" timestamp="1631316975696">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
-    <state width="1637" height="340" key="GridCell.Tab.3.bottom/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631276614829" />
+    <state width="1637" height="340" key="GridCell.Tab.3.bottom/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631316975696" />
     <state width="1877" height="340" key="GridCell.Tab.3.bottom/0.30.1920.1050/-1680.39.1680.1020@0.30.1920.1050" timestamp="1631268260541" />
-    <state width="1637" height="340" key="GridCell.Tab.3.center" timestamp="1631276614829">
+    <state width="1637" height="340" key="GridCell.Tab.3.center" timestamp="1631316975696">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
-    <state width="1637" height="340" key="GridCell.Tab.3.center/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631276614829" />
+    <state width="1637" height="340" key="GridCell.Tab.3.center/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631316975696" />
     <state width="1877" height="340" key="GridCell.Tab.3.center/0.30.1920.1050/-1680.39.1680.1020@0.30.1920.1050" timestamp="1631268260541" />
-    <state width="1637" height="340" key="GridCell.Tab.3.left" timestamp="1631276614829">
+    <state width="1637" height="340" key="GridCell.Tab.3.left" timestamp="1631316975696">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
-    <state width="1637" height="340" key="GridCell.Tab.3.left/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631276614829" />
+    <state width="1637" height="340" key="GridCell.Tab.3.left/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631316975696" />
     <state width="1877" height="340" key="GridCell.Tab.3.left/0.30.1920.1050/-1680.39.1680.1020@0.30.1920.1050" timestamp="1631268260541" />
-    <state width="1637" height="340" key="GridCell.Tab.3.right" timestamp="1631276614829">
+    <state width="1637" height="340" key="GridCell.Tab.3.right" timestamp="1631316975696">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
-    <state width="1637" height="340" key="GridCell.Tab.3.right/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631276614829" />
+    <state width="1637" height="340" key="GridCell.Tab.3.right/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631316975696" />
     <state width="1877" height="340" key="GridCell.Tab.3.right/0.30.1920.1050/-1680.39.1680.1020@0.30.1920.1050" timestamp="1631268260541" />
-    <state x="-1036" y="223" key="RiderGenerateDialog" timestamp="1631058545137">
+    <state x="-1036" y="223" key="RiderGenerateDialog" timestamp="1631316858710">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
-    <state x="-1036" y="223" key="RiderGenerateDialog/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631058545137" />
+    <state x="-1036" y="223" key="RiderGenerateDialog/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631316858710" />
     <state x="-1056" y="253" key="VCS.ChangeListViewerDialog" timestamp="1631024247543">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
     <state x="-1056" y="253" key="VCS.ChangeListViewerDialog/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631024247543" />
-    <state x="-1248" y="281" key="Vcs.Push.Dialog.v2" timestamp="1631288018346">
+    <state x="-1248" y="281" key="Vcs.Push.Dialog.v2" timestamp="1631288050410">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
-    <state x="-1248" y="281" key="Vcs.Push.Dialog.v2/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631288018346" />
+    <state x="-1248" y="281" key="Vcs.Push.Dialog.v2/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631288050410" />
     <state x="494" y="279" key="Vcs.Push.Dialog.v2/0.30.1920.1050/-1680.39.1680.1020@0.30.1920.1050" timestamp="1631186754625" />
     <state width="848" height="518" key="XDebugger.FullValuePopup" timestamp="1630191677528">
       <screen x="-1680" y="39" width="1680" height="1020" />
@@ -382,6 +541,32 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/EnemyUnit.cs</url>
+          <line>25</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/EnemyUnit.cs" initialLine="25">
+            <startOffsets>
+              <option value="332" />
+            </startOffsets>
+            <endOffsets>
+              <option value="393" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/EnemyUnit.cs</url>
+          <line>31</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/EnemyUnit.cs" initialLine="31">
+            <startOffsets>
+              <option value="635" />
+            </startOffsets>
+            <endOffsets>
+              <option value="739" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="24" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
