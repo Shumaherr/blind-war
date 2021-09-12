@@ -34,8 +34,8 @@ public class Pathfinding
             // Шаг 6.
             foreach (var neighbourNode in Neighbors(currentNode.Position))
             {
-                if(!walkableGrid.HasTile(neighbourNode) || GameManager.Instance.HasUnit(neighbourNode)
-                                                        || GameManager.Instance.HasCity(neighbourNode))
+                if(!walkableGrid.HasTile(neighbourNode) || 
+                   ((GameManager.Instance.HasUnit(neighbourNode) || GameManager.Instance.HasCity(neighbourNode)) && neighbourNode != goal))
                     continue;
                 PathTile openNeighbourNode = new PathTile(neighbourNode, currentNode);
                 openNeighbourNode.HeuristicEstimatePathLength = GetHeuristicPathLength(neighbourNode, goal);

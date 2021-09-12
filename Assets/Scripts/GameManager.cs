@@ -170,4 +170,6 @@ public class GameManager : Singleton<GameManager>
     {
         return _pathfinding.FindPath(grid, grid.WorldToCell(start), finish);
     }
+
+    public Tilemap Grid => grid;
 }

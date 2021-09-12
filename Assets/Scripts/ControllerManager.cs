@@ -55,15 +55,15 @@ public class ControllerManager : Singleton<ControllerManager>
                 return;
             }
 
-            MoveUnitToTile(tilePos);
+            MoveUnitToTile(_selectedUnit.transform, tilePos);
         }
     }
 
-    private void MoveUnitToTile(Vector3Int tilePos)
+    public void MoveUnitToTile(Transform unitToMove, Vector3Int tilePos)
     {
-        var position = _selectedUnit.transform.position;
+        var position = unitToMove.transform.position;
         GameManager.Instance.TakenCells.Remove(walkableTilemap.LocalToCell(position));
-        Transform selectedUnitTransform = _selectedUnit.transform;
+        Transform selectedUnitTransform = unitToMove.transform;
         Vector3 cellCenterWorld = walkableTilemap.GetCellCenterWorld(tilePos);
         Vector3Int unitCell = walkableTilemap.WorldToCell(position);
         Debug.Log("Move for " + Mathf.Round(Vector3.Distance(tilePos, unitCell)) + " cells");
