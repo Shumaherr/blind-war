@@ -15,30 +15,38 @@ public class EnemyUnit : Unit
 
     public override void InitMoves()
     {
+        _moves = baseUnit.Moves;
+    }
+    
+    public void ChangeMoves(int moves = 1)
+    {
+        _moves = Math.Max(0, _moves - moves);
     }
 
     public void DoMove()
     {
         
         //TODO Ограничить количество ходов
-        while (_currentPath.Count > 0)
+        while (_currentPath.Count > 0 && Moves > 0)
         {
             ControllerManager.Instance.MoveUnitToTile(this.transform, _currentPath.Dequeue());
+            ChangeMoves();
+            
         }
     }
 
     public void DoTurn()
     {
+        InitMoves();
         List<List<Vector3Int>> pathes = new List<List<Vector3Int>>();
-        Pathfinding pathfinding = new Pathfinding();
         foreach (var unit in GameManager.Instance.PlayerUnits.Where(pair => pair.Value.BaseUnit.UnitType == BaseUnit.KillUnit))
         {
-            pathes.Add(pathfinding.FindPath(GameManager.Instance.Grid,GameManager.Instance.Grid.WorldToCell(transform.position), unit.Key));
+            pathes.Add(GameManager.Instance.GetPath(transform.position, unit.Key));
         }
 
         foreach (var city in GameManager.Instance.AllCities.Where(pair => pair.Value.Owner == CityOwner.Player))
         {
-            pathes.Add(pathfinding.FindPath(GameManager.Instance.Grid,GameManager.Instance.Grid.WorldToCell(transform.position), city.Key));
+            pathes.Add(GameManager.Instance.GetPath(transform.position, city.Key));
         }
 
         int min = 0;

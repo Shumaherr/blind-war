@@ -62,13 +62,16 @@ public class ControllerManager : Singleton<ControllerManager>
     public void MoveUnitToTile(Transform unitToMove, Vector3Int tilePos)
     {
         var position = unitToMove.transform.position;
-        GameManager.Instance.TakenCells.Remove(walkableTilemap.LocalToCell(position));
-        Transform selectedUnitTransform = unitToMove.transform;
-        Vector3 cellCenterWorld = walkableTilemap.GetCellCenterWorld(tilePos);
         Vector3Int unitCell = walkableTilemap.WorldToCell(position);
-        Debug.Log("Move for " + Mathf.Round(Vector3.Distance(tilePos, unitCell)) + " cells");
-        StartCoroutine(MoveFromTo(selectedUnitTransform, position, cellCenterWorld, 3));
-        GameManager.Instance.TakenCells.Add(walkableTilemap.LocalToCell(tilePos));
+        int countCells = (int) Mathf.Round(Vector3.Distance(tilePos, unitCell));
+        if (countCells == 0)
+            return;
+        GameManager.Instance.TakenCells.Remove(walkableTilemap.LocalToCell(position));
+        Vector3 cellCenterWorld = walkableTilemap.GetCellCenterWorld(tilePos);
+        
+        Debug.Log("Move for " + countCells + " cells");
+        StartCoroutine(MoveFromTo(unitToMove, position, cellCenterWorld, 3));
+        GameManager.Instance.TakenCells.Add(walkableTilemap.WorldToCell(tilePos));
         Debug.Log("End");
         ClearSelected();
     }

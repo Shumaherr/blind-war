@@ -2072,6 +2072,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyHorseman
       objectReference: {fileID: 0}
+    - target: {fileID: 5562703872971599037, guid: 2e90c602b28f27b4d808e1fb11ccba22, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7389496761382188883, guid: 2e90c602b28f27b4d808e1fb11ccba22, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -2082,11 +2086,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7389496761382188883, guid: 2e90c602b28f27b4d808e1fb11ccba22, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.33
+      value: 0.11
       objectReference: {fileID: 0}
     - target: {fileID: 7389496761382188883, guid: 2e90c602b28f27b4d808e1fb11ccba22, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.27973682
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7389496761382188883, guid: 2e90c602b28f27b4d808e1fb11ccba22, type: 3}
       propertyPath: m_LocalRotation.w

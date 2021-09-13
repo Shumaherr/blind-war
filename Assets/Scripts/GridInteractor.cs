@@ -33,7 +33,7 @@ public class GridInteractor : BaseInteractable
             mousePos.z = 4;
             Vector2 clickWorldPos = mainCamera.ScreenToWorldPoint(mousePos);
             Vector3Int clickCellPos = _grid.WorldToCell(clickWorldPos);
-            if(!_grid.HasTile(clickCellPos) || /*!IsNeighbor(ControllerManager.Instance.SelectedUnitCell(), clickCellPos) ||*/
+            if(!_grid.HasTile(clickCellPos) || !IsNeighbor(ControllerManager.Instance.SelectedUnitCell(), clickCellPos) ||
                GameManager.Instance.TakenCells.Contains(clickCellPos))
                 return;
             Debug.Log(clickCellPos);

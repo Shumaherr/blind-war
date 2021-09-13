@@ -145,6 +145,7 @@
           <e p="EnemyUnit.cs" t="Include" />
           <e p="GameManager.cs" t="Include" />
           <e p="GridInteractor.cs" t="Include" />
+          <e p="TilemapDebug.cs" t="Include" />
           <e p="TurnManager.cs" t="Include" />
           <e p="UIManager.cs" t="Include" />
           <e p="UnitInteractable.cs" t="Include" />

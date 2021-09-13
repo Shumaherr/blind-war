@@ -6,7 +6,6 @@ public class UnitInteractable : Unit
     public delegate void OnUnitSelectedDelegate(UnitInteractable unit);
     public event OnUnitSelectedDelegate OnUnitSelected;
     
-    private int _moves;
     
     private void Start()
     {

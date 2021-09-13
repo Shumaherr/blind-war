@@ -83,6 +83,7 @@ public class GameManager : Singleton<GameManager>
                 unit.Value.DoTurn();
                 
             }
+            TurnManager.Instance.ChangeTurn();
         }
     }
 
