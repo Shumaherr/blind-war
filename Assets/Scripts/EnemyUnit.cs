@@ -63,4 +63,9 @@ public class EnemyUnit : Unit
         _currentPath = new Queue<Vector3Int>(pathes[min]);
         DoMove();
     }
+    
+    public override Vector3Int GetUnitCell()
+    {
+        return GameManager.Instance.Grid.WorldToCell(transform.position);
+    }
 }

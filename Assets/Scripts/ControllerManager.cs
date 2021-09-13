@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using FMOD.Studio;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -10,6 +11,8 @@ public class ControllerManager : Singleton<ControllerManager>
     private UnitInteractable _selectedUnit;
     private GridInteractor _gridInteractor;
     private BattleSystem _battleSystem;
+    
+    private FMOD.Studio.EventInstance instance;
 
     public UnitInteractable SelectedUnit
     {
@@ -26,6 +29,7 @@ public class ControllerManager : Singleton<ControllerManager>
     {
         _battleSystem = new BattleSystem();
         _gridInteractor = walkableTilemap.GetComponent<GridInteractor>();
+        instance = new EventInstance();
         _gridInteractor.OnTileSelected += TileSelected;
         //Subscribe to event click on tile
     }
@@ -66,12 +70,28 @@ public class ControllerManager : Singleton<ControllerManager>
         int countCells = (int) Mathf.Round(Vector3.Distance(tilePos, unitCell));
         if (countCells == 0)
             return;
-        GameManager.Instance.TakenCells.Remove(walkableTilemap.LocalToCell(position));
         Vector3 cellCenterWorld = walkableTilemap.GetCellCenterWorld(tilePos);
-        
         Debug.Log("Move for " + countCells + " cells");
+        string eventToPlay;
+        switch (_selectedUnit.BaseUnit.UnitType)
+        {
+            case UnitType.Swordman:
+            case UnitType.Spearman:
+                eventToPlay = "event:/SFX/characters/move_infantry";
+                break;
+            case UnitType.Horseman:
+                eventToPlay = "event:/SFX/characters/move_horseman";
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+        instance = FMODUnity.RuntimeManager.CreateInstance(eventToPlay);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(instance, _selectedUnit.transform);
+        instance.start();
         StartCoroutine(MoveFromTo(unitToMove, position, cellCenterWorld, 3));
-        GameManager.Instance.TakenCells.Add(walkableTilemap.WorldToCell(tilePos));
+        instance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        instance.release();
+        GameManager.Instance.ChangeTakenCell(unitCell, tilePos);
         Debug.Log("End");
         ClearSelected();
     }
@@ -79,6 +99,20 @@ public class ControllerManager : Singleton<ControllerManager>
     private bool StartBattle(EnemyUnit enemyUnit)
     {
         BaseUnit winner = _battleSystem.Fight(_selectedUnit.BaseUnit, enemyUnit.BaseUnit);
+        string eventToPlay;
+        switch (winner.UnitType)
+        {
+            case UnitType.Swordman:
+            case UnitType.Spearman:
+                eventToPlay = "event:/SFX/characters/death_infantry";
+                break;
+            case UnitType.Horseman:
+                eventToPlay = "event:/SFX/characters/death_horseman";
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+        FMODUnity.RuntimeManager.PlayOneShot(eventToPlay, transform.position);  
         if (winner == null)
         {
             GameManager.Instance.KillUnit(enemyUnit);
@@ -90,11 +124,8 @@ public class ControllerManager : Singleton<ControllerManager>
             GameManager.Instance.KillUnit(enemyUnit);
             return true;
         }
-        else
-        {
-            GameManager.Instance.KillUnit(_selectedUnit);
-            return false;
-        }
+        GameManager.Instance.KillUnit(_selectedUnit);
+        return false;
     }
 
     public void ClearSelected()

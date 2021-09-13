@@ -43,10 +43,16 @@ public class UnitInteractable : Unit
         _moves = baseUnit.Moves;
     }
 
+    public override Vector3Int GetUnitCell()
+    {
+        return GameManager.Instance.Grid.WorldToCell(transform.position);
+    }
+
     private void OnMouseDown()
     {
         if (!TurnManager.Instance.isPlayerTurn())
             return;
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/ui/select", transform.position);
         ControllerManager.Instance.SelectedUnit = this;
         if (OnUnitSelected != null) 
             OnUnitSelected.Invoke(this);

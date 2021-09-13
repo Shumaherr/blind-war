@@ -45,12 +45,12 @@ public class GameManager : Singleton<GameManager>
         foreach (GameObject o in GameObject.FindGameObjectsWithTag("PlayerUnit"))
         {
             _playerUnits.Add(grid.LocalToCell(o.transform.position), o.GetComponent<UnitInteractable>());
-            _takenCells.Add(grid.LocalToCell(o.transform.position));
+            _takenCells.Add(grid.WorldToCell(o.transform.position));
         }
         
         foreach (GameObject o in GameObject.FindGameObjectsWithTag("AIUnit"))
         {
-            _enemyUnits.Add(grid.LocalToCell(o.transform.position), o.GetComponent<EnemyUnit>());
+            _enemyUnits.Add(grid.WorldToCell(o.transform.position), o.GetComponent<EnemyUnit>());
         }
         _gridInteractor = grid.GetComponent<GridInteractor>();
         foreach (var unit in _playerUnits)
@@ -128,14 +128,14 @@ public class GameManager : Singleton<GameManager>
     {
         if(unitToKill.gameObject.CompareTag("AIUnit"))
         {
-            _enemyUnits.Remove(_enemyUnits.First((kvp => kvp.Value == unitToKill)).Key);
+            _enemyUnits.Remove(unitToKill.GetUnitCell());
         }
         else
         {
-            _playerUnits.Remove(_enemyUnits.First((kvp => kvp.Value == unitToKill)).Key);
+            _playerUnits.Remove(unitToKill.GetUnitCell());
         }
 
-        _takenCells.Remove(grid.WorldToCell(unitToKill.transform.position));
+        _takenCells.Remove(unitToKill.GetUnitCell());
         
         Destroy(unitToKill.gameObject);
     }
@@ -170,6 +170,12 @@ public class GameManager : Singleton<GameManager>
     public List<Vector3Int> GetPath(Vector3 start, Vector3Int finish)
     {
         return _pathfinding.FindPath(grid, grid.WorldToCell(start), finish);
+    }
+
+    public void ChangeTakenCell(Vector3Int startCell, Vector3Int finishCell)
+    {
+        _takenCells.Remove(startCell);
+        _takenCells.Add(finishCell);
     }
 
     public Tilemap Grid => grid;

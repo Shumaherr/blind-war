@@ -13,4 +13,6 @@ public abstract class Unit : MonoBehaviour
     public BaseUnit BaseUnit => baseUnit;
 
     public abstract void InitMoves();
+
+    public abstract Vector3Int GetUnitCell();
 }
