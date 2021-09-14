@@ -29,7 +29,7 @@ public class EnemyUnit : Unit
         //TODO Ограничить количество ходов
         while (_currentPath.Count > 0 && Moves > 0)
         {
-            ControllerManager.Instance.MoveUnitToTile(this.transform, _currentPath.Dequeue());
+            ControllerManager.Instance.MoveUnitToTile(transform, _currentPath.Dequeue());
             ChangeMoves();
             
         }

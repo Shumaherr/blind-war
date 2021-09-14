@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 
 public class GameManager : Singleton<GameManager>
@@ -13,10 +14,22 @@ public class GameManager : Singleton<GameManager>
     public Camera MainCamera => mainCamera;
 
     [SerializeField] private Tilemap grid;
+    public Tilemap Grid => grid;
     private GridInteractor _gridInteractor;
     private Dictionary<Vector3Int, UnitInteractable> _playerUnits;
 
     private Dictionary<Vector3Int, EnemyUnit> _enemyUnits;
+
+    private Dictionary<Vector3Int, EnemyUnit> EnemyUnits
+    {
+        get => _enemyUnits;
+        set
+        {
+            _enemyUnits = value;
+            if (_enemyUnits.Count == 0)
+                PlayerWin();
+        }
+    }
 
     private List<Vector3Int> _takenCells;
 
@@ -128,7 +141,8 @@ public class GameManager : Singleton<GameManager>
     {
         if(unitToKill.gameObject.CompareTag("AIUnit"))
         {
-            _enemyUnits.Remove(unitToKill.GetUnitCell());
+            EnemyUnits.Remove(unitToKill.GetUnitCell());
+            CheckPlayerWin();
         }
         else
         {
@@ -136,7 +150,6 @@ public class GameManager : Singleton<GameManager>
         }
 
         _takenCells.Remove(unitToKill.GetUnitCell());
-        
         Destroy(unitToKill.gameObject);
     }
 
@@ -174,9 +187,24 @@ public class GameManager : Singleton<GameManager>
 
     public void ChangeTakenCell(Vector3Int startCell, Vector3Int finishCell)
     {
+        if (!_takenCells.Contains(startCell)) 
+            return;
         _takenCells.Remove(startCell);
         _takenCells.Add(finishCell);
     }
+    
+    private void PlayerWin()
+    {
+        SceneManager.LoadScene("Scene_Win");
+    }
 
-    public Tilemap Grid => grid;
+    public void CheckPlayerWin()
+    {
+        if (_enemyUnits.Count <= 0 && _allCities.Count(pair => pair.Value.Owner == CityOwner.AI) <= 0)
+        {
+            //TODO change to event
+            PlayerWin();
+        }
+    }
+    
 }

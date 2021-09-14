@@ -56,6 +56,7 @@ public class ControllerManager : Singleton<ControllerManager>
             if (GameManager.Instance.HasEnemyCity(tilePos))
             {
                 GameManager.Instance.GetCityInCell(tilePos).TakeDamage(_selectedUnit.BaseUnit.Damage);
+                GameManager.Instance.CheckPlayerWin();
                 return;
             }
 
@@ -65,32 +66,14 @@ public class ControllerManager : Singleton<ControllerManager>
 
     public void MoveUnitToTile(Transform unitToMove, Vector3Int tilePos)
     {
-        var position = unitToMove.transform.position;
+        var position = unitToMove.position;
         Vector3Int unitCell = walkableTilemap.WorldToCell(position);
         int countCells = (int) Mathf.Round(Vector3.Distance(tilePos, unitCell));
         if (countCells == 0)
             return;
         Vector3 cellCenterWorld = walkableTilemap.GetCellCenterWorld(tilePos);
         Debug.Log("Move for " + countCells + " cells");
-        string eventToPlay;
-        switch (_selectedUnit.BaseUnit.UnitType)
-        {
-            case UnitType.Swordman:
-            case UnitType.Spearman:
-                eventToPlay = "event:/SFX/characters/move_infantry";
-                break;
-            case UnitType.Horseman:
-                eventToPlay = "event:/SFX/characters/move_horseman";
-                break;
-            default:
-                throw new ArgumentOutOfRangeException();
-        }
-        instance = FMODUnity.RuntimeManager.CreateInstance(eventToPlay);
-        FMODUnity.RuntimeManager.AttachInstanceToGameObject(instance, _selectedUnit.transform);
-        instance.start();
         StartCoroutine(MoveFromTo(unitToMove, position, cellCenterWorld, 3));
-        instance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-        instance.release();
         GameManager.Instance.ChangeTakenCell(unitCell, tilePos);
         Debug.Log("End");
         ClearSelected();
@@ -99,20 +82,8 @@ public class ControllerManager : Singleton<ControllerManager>
     private bool StartBattle(EnemyUnit enemyUnit)
     {
         BaseUnit winner = _battleSystem.Fight(_selectedUnit.BaseUnit, enemyUnit.BaseUnit);
-        string eventToPlay;
-        switch (winner.UnitType)
-        {
-            case UnitType.Swordman:
-            case UnitType.Spearman:
-                eventToPlay = "event:/SFX/characters/death_infantry";
-                break;
-            case UnitType.Horseman:
-                eventToPlay = "event:/SFX/characters/death_horseman";
-                break;
-            default:
-                throw new ArgumentOutOfRangeException();
-        }
-        FMODUnity.RuntimeManager.PlayOneShot(eventToPlay, transform.position);  
+        UnitType winnerType = winner != null ? winner.UnitType : _selectedUnit.BaseUnit.UnitType;
+        FMODUnity.RuntimeManager.PlayOneShot(GetWinnerSfxEventToPlay(winnerType), transform.position);  
         if (winner == null)
         {
             GameManager.Instance.KillUnit(enemyUnit);
@@ -124,8 +95,47 @@ public class ControllerManager : Singleton<ControllerManager>
             GameManager.Instance.KillUnit(enemyUnit);
             return true;
         }
+        
         GameManager.Instance.KillUnit(_selectedUnit);
         return false;
+    }
+
+    private string GetWinnerSfxEventToPlay(UnitType winner)
+    {
+        string eventToPlay;
+        switch (winner)
+        {
+            case UnitType.Swordman:
+            case UnitType.Spearman:
+                eventToPlay = "event:/SFX/characters/death_infantry";
+                break;
+            case UnitType.Horseman:
+                eventToPlay = "event:/SFX/characters/death_horseman";
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+
+        return eventToPlay;
+    }
+    
+    private string GetMovementSfxEventToPlay(UnitType unitType)
+    {
+        string eventToPlay;
+        switch (unitType)
+        {
+            case UnitType.Swordman:
+            case UnitType.Spearman:
+                eventToPlay = "event:/SFX/characters/move_infantry";
+                break;
+            case UnitType.Horseman:
+                eventToPlay = "event:/SFX/characters/move_horseman";
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+
+        return eventToPlay;
     }
 
     public void ClearSelected()
@@ -135,6 +145,13 @@ public class ControllerManager : Singleton<ControllerManager>
 
     private IEnumerator MoveFromTo(Transform objectToMove, Vector3 pos1, Vector3 pos2, float speed)
     {
+        if (TurnManager.Instance.isPlayerTurn())
+        {
+            instance = FMODUnity.RuntimeManager.CreateInstance(GetMovementSfxEventToPlay(_selectedUnit.BaseUnit.UnitType));
+            FMODUnity.RuntimeManager.AttachInstanceToGameObject(instance, _selectedUnit.transform);
+        }
+            
+        instance.start();
         float step = (speed / (pos1 - pos2).magnitude) * Time.fixedDeltaTime;
         float t = 0;
         while (t <= 1.0f)
@@ -143,7 +160,8 @@ public class ControllerManager : Singleton<ControllerManager>
             objectToMove.position = Vector3.Lerp(pos1, pos2, t); // Move objectToMove closer to b
             yield return new WaitForFixedUpdate(); // Leave the routine and return here in the next frame
         }
-
+        instance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        instance.release();
         objectToMove.position = pos2;
     }
 
