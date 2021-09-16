@@ -131,6 +131,11 @@ public class GameManager : Singleton<GameManager>
     {
         return _allCities.ContainsKey(cell) && _allCities[cell].Owner == CityOwner.AI;
     }
+    
+    public bool HasPlayerCity(Vector3Int cell)
+    {
+        return _allCities.ContainsKey(cell) && _allCities[cell].Owner == CityOwner.Player;
+    }
 
     public CityController GetCityInCell(Vector3Int cell)
     {
@@ -193,6 +198,15 @@ public class GameManager : Singleton<GameManager>
         _takenCells.Add(finishCell);
     }
     
+    public void ChangeEnemyCell(Vector3Int startCell, Vector3Int finishCell)
+    {
+        if (!_enemyUnits.ContainsKey(startCell)) 
+            return;
+        EnemyUnit unit = _enemyUnits[startCell];
+        _enemyUnits.Remove(startCell);
+        _enemyUnits.Add(finishCell, unit);
+    }
+
     private void PlayerWin()
     {
         SceneManager.LoadScene("Scene_Win");

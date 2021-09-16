@@ -51,7 +51,7 @@ public class ControllerManager : Singleton<ControllerManager>
                 return;
             _selectedUnit.ChangeMoves(1);
             if (GameManager.Instance.HasEnemyUnit(tilePos))
-                if (!StartBattle(GameManager.Instance.GetEnemyUnitInCell(tilePos)))
+                if (!StartBattle(GameManager.Instance.GetEnemyUnitInCell(tilePos), _selectedUnit))
                     return;
             if (GameManager.Instance.HasEnemyCity(tilePos))
             {
@@ -63,6 +63,8 @@ public class ControllerManager : Singleton<ControllerManager>
             MoveUnitToTile(_selectedUnit.transform, tilePos);
         }
     }
+
+    public BattleSystem BattleSystem => _battleSystem;
 
     public void MoveUnitToTile(Transform unitToMove, Vector3Int tilePos)
     {
@@ -79,24 +81,24 @@ public class ControllerManager : Singleton<ControllerManager>
         ClearSelected();
     }
 
-    private bool StartBattle(EnemyUnit enemyUnit)
+    public bool StartBattle(Unit enemyUnit, Unit playerUnit)
     {
-        BaseUnit winner = _battleSystem.Fight(_selectedUnit.BaseUnit, enemyUnit.BaseUnit);
-        UnitType winnerType = winner != null ? winner.UnitType : _selectedUnit.BaseUnit.UnitType;
+        BaseUnit winner = _battleSystem.Fight(playerUnit.BaseUnit, enemyUnit.BaseUnit);
+        UnitType winnerType = winner != null ? winner.UnitType : playerUnit.BaseUnit.UnitType;
         FMODUnity.RuntimeManager.PlayOneShot(GetWinnerSfxEventToPlay(winnerType), transform.position);  
         if (winner == null)
         {
             GameManager.Instance.KillUnit(enemyUnit);
-            GameManager.Instance.KillUnit(_selectedUnit);
+            GameManager.Instance.KillUnit(playerUnit);
         }
 
-        if (_selectedUnit.BaseUnit == winner)
+        if (playerUnit.BaseUnit == winner)
         {
             GameManager.Instance.KillUnit(enemyUnit);
             return true;
         }
         
-        GameManager.Instance.KillUnit(_selectedUnit);
+        GameManager.Instance.KillUnit(playerUnit);
         return false;
     }
 
