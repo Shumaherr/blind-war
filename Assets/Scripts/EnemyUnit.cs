@@ -62,9 +62,12 @@ public class EnemyUnit : Unit
         }
         
         //pathes[min].RemoveAt(0);
-        pathes[min].RemoveAt(pathes[min].Count - 1);
-        _currentPath = new List<Vector3Int>(pathes[min]);
-        DoMove();
+        if(pathes[min] != null)
+        {
+            pathes[min].RemoveAt(pathes[min].Count - 1);
+            _currentPath = new List<Vector3Int>(pathes[min]);
+            DoMove();
+        }
         DoFight();
         ChangeMoves();
     }

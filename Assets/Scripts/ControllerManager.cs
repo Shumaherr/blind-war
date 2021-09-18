@@ -61,6 +61,10 @@ public class ControllerManager : Singleton<ControllerManager>
             }
 
             MoveUnitToTile(_selectedUnit.transform, tilePos);
+            UnitInteractable tempUnit = GameManager.Instance.PlayerUnits[_selectedUnit.GetUnitCell()];
+            GameManager.Instance.PlayerUnits.Remove(_selectedUnit.GetUnitCell());
+            GameManager.Instance.PlayerUnits.Add(tilePos, tempUnit);
+            ClearSelected();
         }
     }
 
@@ -78,7 +82,6 @@ public class ControllerManager : Singleton<ControllerManager>
         StartCoroutine(MoveFromTo(unitToMove, position, cellCenterWorld, 3));
         GameManager.Instance.ChangeTakenCell(unitCell, tilePos);
         Debug.Log("End");
-        ClearSelected();
     }
 
     public bool StartBattle(Unit enemyUnit, Unit playerUnit)

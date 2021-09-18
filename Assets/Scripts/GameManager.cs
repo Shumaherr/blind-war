@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
@@ -18,17 +19,14 @@ public class GameManager : Singleton<GameManager>
     private GridInteractor _gridInteractor;
     private Dictionary<Vector3Int, UnitInteractable> _playerUnits;
 
-    private Dictionary<Vector3Int, EnemyUnit> _enemyUnits;
+    private Dictionary<Vector3Int, EnemyUnit> _enemyUnitsPos;
+    private List<EnemyUnit> _enemyUnits;
+    private List<Vector3Int> _enemyUnitsToDelete;
 
-    private Dictionary<Vector3Int, EnemyUnit> EnemyUnits
+    private Dictionary<Vector3Int, EnemyUnit> EnemyUnitsPos
     {
-        get => _enemyUnits;
-        set
-        {
-            _enemyUnits = value;
-            if (_enemyUnits.Count == 0)
-                PlayerWin();
-        }
+        get => _enemyUnitsPos;
+        set =>_enemyUnitsPos = value;
     }
 
     private List<Vector3Int> _takenCells;
@@ -51,19 +49,22 @@ public class GameManager : Singleton<GameManager>
     void Start()
     {
         _playerUnits = new Dictionary<Vector3Int, UnitInteractable>();
-        _enemyUnits = new Dictionary<Vector3Int, EnemyUnit>();
+        _enemyUnitsPos = new Dictionary<Vector3Int, EnemyUnit>();
+        _enemyUnits = new List<EnemyUnit>();
+        _enemyUnitsToDelete = new List<Vector3Int>();
         _takenCells = new List<Vector3Int>();
         _allCities = new Dictionary<Vector3Int, CityController>();
         _pathfinding = new Pathfinding();
         foreach (GameObject o in GameObject.FindGameObjectsWithTag("PlayerUnit"))
         {
-            _playerUnits.Add(grid.LocalToCell(o.transform.position), o.GetComponent<UnitInteractable>());
+            _playerUnits.Add(grid.WorldToCell(o.transform.position), o.GetComponent<UnitInteractable>());
             _takenCells.Add(grid.WorldToCell(o.transform.position));
         }
         
         foreach (GameObject o in GameObject.FindGameObjectsWithTag("AIUnit"))
         {
-            _enemyUnits.Add(grid.WorldToCell(o.transform.position), o.GetComponent<EnemyUnit>());
+            _enemyUnits.Add(o.GetComponent<EnemyUnit>());
+            _enemyUnitsPos.Add(grid.WorldToCell(o.transform.position), o.GetComponent<EnemyUnit>());
         }
         _gridInteractor = grid.GetComponent<GridInteractor>();
         foreach (var unit in _playerUnits)
@@ -93,8 +94,13 @@ public class GameManager : Singleton<GameManager>
         {
             foreach (var unit in _enemyUnits)
             {
-                unit.Value.DoTurn();
+                unit.DoTurn();
                 
+            }
+
+            foreach (var unit in _enemyUnitsToDelete)
+            {
+                _enemyUnitsPos.Remove(unit);
             }
             TurnManager.Instance.ChangeTurn();
         }
@@ -114,12 +120,12 @@ public class GameManager : Singleton<GameManager>
 
     public EnemyUnit GetEnemyUnitInCell(Vector3Int cell)
     {
-        return _enemyUnits[cell];
+        return _enemyUnitsPos[cell];
     }
 
     public bool HasEnemyUnit(Vector3Int cell)
     {
-        return _enemyUnits.ContainsKey(cell);
+        return _enemyUnitsPos.ContainsKey(cell);
     }
     
     public bool HasPlayerUnit(Vector3Int cell)
@@ -146,7 +152,9 @@ public class GameManager : Singleton<GameManager>
     {
         if(unitToKill.gameObject.CompareTag("AIUnit"))
         {
-            EnemyUnits.Remove(unitToKill.GetUnitCell());
+            //EnemyUnits.Remove(unitToKill.GetUnitCell());
+            _enemyUnitsToDelete.Add(unitToKill.GetUnitCell());
+            Destroy(unitToKill.gameObject);
             CheckPlayerWin();
         }
         else
@@ -200,11 +208,11 @@ public class GameManager : Singleton<GameManager>
     
     public void ChangeEnemyCell(Vector3Int startCell, Vector3Int finishCell)
     {
-        if (!_enemyUnits.ContainsKey(startCell)) 
+        if (!_enemyUnitsPos.ContainsKey(startCell)) 
             return;
-        EnemyUnit unit = _enemyUnits[startCell];
-        _enemyUnits.Remove(startCell);
-        _enemyUnits.Add(finishCell, unit);
+        EnemyUnit unit = _enemyUnitsPos[startCell];
+        _enemyUnitsPos.Remove(startCell);
+        _enemyUnitsPos.Add(finishCell, unit);
     }
 
     private void PlayerWin()
