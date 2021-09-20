@@ -40,6 +40,7 @@ public class EnemyUnit : Unit
     {
         InitMoves();
         List<List<Vector3Int>> pathes = new List<List<Vector3Int>>();
+        Vector3Int unitCell = GetUnitCell();
         foreach (var unit in GameManager.Instance.PlayerUnits.Where(pair =>
             pair.Value.BaseUnit.UnitType == BaseUnit.KillUnit))
         {

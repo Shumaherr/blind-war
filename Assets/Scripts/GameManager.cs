@@ -85,23 +85,25 @@ public class GameManager : Singleton<GameManager>
         }
         
         TurnManager.Instance.OnTurnChanged += OnTurnChanged;
-        
+        OnTurnChanged(TurnStates.PlayerTurn);
     }
 
     private void OnTurnChanged(TurnStates newturn)
     {
         if (newturn == TurnStates.AITurn)
         {
+            foreach (var unit in _enemyUnitsToDelete)
+            {
+                _enemyUnits.Remove(_enemyUnitsPos[unit]);
+                _enemyUnitsPos.Remove(unit);
+            }
+            _enemyUnitsToDelete = new List<Vector3Int>();
             foreach (var unit in _enemyUnits)
             {
                 unit.DoTurn();
                 
             }
-
-            foreach (var unit in _enemyUnitsToDelete)
-            {
-                _enemyUnitsPos.Remove(unit);
-            }
+            
             TurnManager.Instance.ChangeTurn();
         }
     }
@@ -154,12 +156,12 @@ public class GameManager : Singleton<GameManager>
         {
             //EnemyUnits.Remove(unitToKill.GetUnitCell());
             _enemyUnitsToDelete.Add(unitToKill.GetUnitCell());
-            Destroy(unitToKill.gameObject);
             CheckPlayerWin();
         }
         else
         {
             _playerUnits.Remove(unitToKill.GetUnitCell());
+            CheckPlayerLoose();
         }
 
         _takenCells.Remove(unitToKill.GetUnitCell());
@@ -229,4 +231,17 @@ public class GameManager : Singleton<GameManager>
         }
     }
     
+    public void CheckPlayerLoose()
+    {
+        if (_playerUnits.Count <= 0 && _allCities.Count(pair => pair.Value.Owner == CityOwner.Player) <= 0)
+        {
+            //TODO change to event
+            PlayerLoose();
+        }
+    }
+
+    private void PlayerLoose()
+    {
+        SceneManager.LoadScene("Scene_Defeat");
+    }
 }
