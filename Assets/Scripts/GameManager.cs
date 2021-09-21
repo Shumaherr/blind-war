@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
+using Random = UnityEngine.Random;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -117,7 +118,8 @@ public class GameManager : Singleton<GameManager>
             _gridInteractor.UnhighlightCells();
             return;
         }
-        _gridInteractor.HighLightCells(grid.LocalToCell(unit.gameObject.transform.position));
+        _gridInteractor.HighlightNeighbourCells(grid.LocalToCell(unit.gameObject.transform.position));
+        unit.UsePerk();
     }
 
     public EnemyUnit GetEnemyUnitInCell(Vector3Int cell)
@@ -243,5 +245,15 @@ public class GameManager : Singleton<GameManager>
     private void PlayerLoose()
     {
         SceneManager.LoadScene("Scene_Defeat");
+    }
+
+    public bool HighlightCellWithoutEnemy()
+    {
+        List<Vector3Int> tempList = Utils.Neighbors(ControllerManager.Instance.SelectedUnitCell()).
+            Where(cell => _enemyUnitsPos.ContainsKey(cell)).ToList();
+        if (tempList.Count == 0)
+            return false;
+        _gridInteractor.HighlightCell(tempList[Random.Range(0,tempList.Count)], Color.red);
+        return true;
     }
 }

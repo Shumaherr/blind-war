@@ -101,8 +101,10 @@ public class EnemyUnit : Unit
         return GameManager.Instance.Grid.WorldToCell(transform.position);
     }
 
-    public bool CanMove()
+    private bool CanMove()
     {
         return _moves > 0;
     }
+
+    
 }

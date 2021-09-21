@@ -58,4 +58,20 @@ public class UnitInteractable : Unit
             OnUnitSelected.Invoke(this);
         Debug.Log("Unit clicked" + baseUnit.UnitType);
     }
+    
+    public void UsePerk()
+    {
+        switch (BaseUnit.UnitType)
+        {
+            case UnitType.Swordman:
+                break;
+            case UnitType.Spearman:
+                GameManager.Instance.HighlightCellWithoutEnemy();
+                break;
+            case UnitType.Horseman:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+    }
 }

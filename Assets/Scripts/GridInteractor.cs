@@ -63,7 +63,7 @@ public class GridInteractor : BaseInteractable
         return Neighbors(cell1).Contains(cell2);
     }
 
-    public void HighLightCells(Vector3Int cellToHighlight)
+    public void HighlightNeighbourCells(Vector3Int cellToHighlight)
     {
         if(_highlightedTiles.Count != 0)
             UnhighlightCells();
@@ -72,9 +72,17 @@ public class GridInteractor : BaseInteractable
             if(GameManager.Instance.TakenCells.Contains(cell))
                 continue;
             _grid.SetTileFlags(cell, TileFlags.None);
-            _grid.SetColor(cell, Color.grey);
+            _grid.SetColor(cell, Color.gray);
             _highlightedTiles.Add(cell);
         }
+        
+    }
+
+    public void HighlightCell(Vector3Int cell, Color highlightColor)
+    {
+        _grid.SetTileFlags(cell, TileFlags.None);
+        _grid.SetColor(cell, highlightColor);
+        _highlightedTiles.Add(cell);
     }
 
     public void UnhighlightCells()
