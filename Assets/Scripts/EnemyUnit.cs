@@ -4,14 +4,27 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class EnemyUnit : Unit
 {
     private List<Vector3Int> _currentPath;
+    private SpriteRenderer _renderer;
 
     private void Start()
     {
+        _renderer = GetComponentInChildren<SpriteRenderer>();
+        _renderer.sprite = BaseUnit.GeneralizedSprite;
+    }
 
+    public void HideUnit()
+    {
+        _renderer.enabled = false;
+    }
+    
+    public void ShowUnit()
+    {
+        _renderer.enabled = true;
     }
 
     public override void InitMoves()
@@ -75,6 +88,21 @@ public class EnemyUnit : Unit
         ChangeMoves();
     }
 
+    public void ChangeVisibility()
+    {
+        if (IsNearPlayerUnit())
+            ShowUnit();
+        else
+        {
+            HideUnit();
+        }
+    }
+
+    private void Update()
+    {
+        ChangeVisibility();
+    }
+
     private void DoFight()
     {
         Vector3Int unitCell = GetUnitCell();
@@ -108,5 +136,9 @@ public class EnemyUnit : Unit
         return _moves > 0;
     }
 
+    private bool IsNearPlayerUnit()
+    {
+        return Utils.Neighbors(GetUnitCell()).Any(i => GameManager.Instance.HasPlayerUnit(i));
+    }
     
 }
