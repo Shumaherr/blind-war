@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 public class EnemyUnit : Unit
@@ -10,6 +11,7 @@ public class EnemyUnit : Unit
 
     private void Start()
     {
+
     }
 
     public override void InitMoves()

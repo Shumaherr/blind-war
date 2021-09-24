@@ -1,14 +1,35 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using TMPro;
 using UnityEngine;
 
 public class UnitInteractable : Unit
 {
+    
+    private string _dialogText;
+    private Transform _dialogBox;
+
+    public string DialogText
+    {
+        get => _dialogText;
+        set
+        {
+            _dialogText = value;
+            _textMeshPro.text = _dialogText;
+        } 
+    }
+
+    private TextMeshPro _textMeshPro;
     public delegate void OnUnitSelectedDelegate(UnitInteractable unit);
     public event OnUnitSelectedDelegate OnUnitSelected;
     
     
     private void Start()
     {
+        _dialogBox = transform.Find("Dialog/DialogBox");
+        DeactivateDialog();
+        _textMeshPro = GetComponentInChildren<TextMeshPro>();
         TurnManager.Instance.OnTurnChanged += ChangeTurn;
         Debug.Log("Unit: " + baseUnit.UnitType);
         InitMoves();
@@ -60,18 +81,32 @@ public class UnitInteractable : Unit
     }
     
     public void UsePerk()
-    {
-        switch (BaseUnit.UnitType)
+    { 
+        HashSet<UnitType> neighbourTypes = GameManager.Instance.GetNeighbourUnitTypes();
+        if (neighbourTypes == null)
         {
-            case UnitType.Swordman:
-                break;
-            case UnitType.Spearman:
-                GameManager.Instance.HighlightCellWithoutEnemy();
-                break;
-            case UnitType.Horseman:
-                break;
-            default:
-                throw new ArgumentOutOfRangeException();
+            DialogText = "There is no enemy units";
+            ActivateDialog();
+            return;
         }
+
+        string tempString = neighbourTypes.Aggregate("I feel ", (current, neighbourType) => current + neighbourType + " ");
+        DialogText = tempString;
+        ActivateDialog();
+    }
+
+    public void ActivateDialog()
+    {
+        _dialogBox.localScale = new Vector3(1,1,1);
+    }
+    
+    public void DeactivateDialog()
+    {
+        _dialogBox.localScale = new Vector3(0,0,0);
+    }
+
+    public void SetDialogText(string newText)
+    {
+        _dialogText = newText;
     }
 }

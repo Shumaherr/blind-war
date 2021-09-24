@@ -46,7 +46,7 @@ public class ControllerManager : Singleton<ControllerManager>
                 walkableTilemap.SetTileFlags(vector3Int, TileFlags.None);
                 walkableTilemap.SetColor(vector3Int, Color.magenta);
             }*/
-
+            _selectedUnit.DeactivateDialog();
             if (!TurnManager.Instance.isPlayerTurn() || !_selectedUnit.CanMove())
                 return;
             _selectedUnit.ChangeMoves(1);

@@ -256,4 +256,20 @@ public class GameManager : Singleton<GameManager>
         _gridInteractor.HighlightCell(tempList[Random.Range(0,tempList.Count)], Color.red);
         return true;
     }
+
+    public HashSet<UnitType> GetNeighbourUnitTypes()
+    {
+        HashSet<UnitType> neighbourUnits = new HashSet<UnitType>();
+        foreach (var neighborCell in  Utils.Neighbors(ControllerManager.Instance.SelectedUnitCell()))
+        {
+            if (_enemyUnitsPos.ContainsKey(neighborCell))
+            {
+                neighbourUnits.Add(_enemyUnitsPos[neighborCell].BaseUnit.UnitType);
+            }
+        }
+
+        if (neighbourUnits.Count == 0)
+            return null;
+        return neighbourUnits;
+    }
 }

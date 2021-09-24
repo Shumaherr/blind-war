@@ -2612,6 +2612,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemySwordman
       objectReference: {fileID: 0}
+    - target: {fileID: 4822974505000520649, guid: 68b86dfc4f0e2a34baabf873147f76ec, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4822974505000520649, guid: 68b86dfc4f0e2a34baabf873147f76ec, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -2.73
+      objectReference: {fileID: 0}
+    - target: {fileID: 4822974505000520649, guid: 68b86dfc4f0e2a34baabf873147f76ec, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 8043409302480400508, guid: 68b86dfc4f0e2a34baabf873147f76ec, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -2803,6 +2815,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyHorseman
       objectReference: {fileID: 0}
+    - target: {fileID: 5475690778781895910, guid: 2e90c602b28f27b4d808e1fb11ccba22, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5475690778781895910, guid: 2e90c602b28f27b4d808e1fb11ccba22, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 5475690778781895910, guid: 2e90c602b28f27b4d808e1fb11ccba22, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1.08
+      objectReference: {fileID: 0}
     - target: {fileID: 5562703872971599037, guid: 2e90c602b28f27b4d808e1fb11ccba22, type: 3}
       propertyPath: m_SortingOrder
       value: 2
@@ -2925,6 +2949,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1834978186114226446, guid: e12405b80b85b5b4ea024d7a85811284, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1834978186114226446, guid: e12405b80b85b5b4ea024d7a85811284, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -2.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1834978186114226446, guid: e12405b80b85b5b4ea024d7a85811284, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.15
+      objectReference: {fileID: 0}
     - target: {fileID: 3748803687193322171, guid: e12405b80b85b5b4ea024d7a85811284, type: 3}
       propertyPath: m_RootOrder
       value: 12
