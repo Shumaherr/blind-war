@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Unit : MonoBehaviour
 {
-    [SerializeField] protected BaseUnit baseUnit;
-    
     protected int _moves;
+    [SerializeField] protected BaseUnit baseUnit;
 
     public int Moves => _moves;
 

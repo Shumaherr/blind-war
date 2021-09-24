@@ -1,14 +1,18 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
+using FMODUnity;
 using TMPro;
 using UnityEngine;
 
 public class UnitInteractable : Unit
 {
-    
-    private string _dialogText;
+    public delegate void OnUnitSelectedDelegate(UnitInteractable unit);
+
     private Transform _dialogBox;
+
+    private string _dialogText;
+
+    private TextMeshPro _textMeshPro;
 
     public string DialogText
     {
@@ -17,14 +21,12 @@ public class UnitInteractable : Unit
         {
             _dialogText = value;
             _textMeshPro.text = _dialogText;
-        } 
+        }
     }
 
-    private TextMeshPro _textMeshPro;
-    public delegate void OnUnitSelectedDelegate(UnitInteractable unit);
     public event OnUnitSelectedDelegate OnUnitSelected;
-    
-    
+
+
     private void Start()
     {
         _dialogBox = transform.Find("Dialog/DialogBox");
@@ -73,16 +75,15 @@ public class UnitInteractable : Unit
     {
         if (!TurnManager.Instance.isPlayerTurn())
             return;
-        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/ui/select", transform.position);
+        RuntimeManager.PlayOneShot("event:/SFX/ui/select", transform.position);
         ControllerManager.Instance.SelectedUnit = this;
-        if (OnUnitSelected != null) 
-            OnUnitSelected.Invoke(this);
+        OnUnitSelected?.Invoke(this);
         Debug.Log("Unit clicked" + baseUnit.UnitType);
     }
-    
+
     public void UsePerk()
-    { 
-        HashSet<UnitType> neighbourTypes = GameManager.Instance.GetNeighbourUnitTypes();
+    {
+        var neighbourTypes = GameManager.Instance.GetNeighbourUnitTypes();
         if (neighbourTypes == null)
         {
             DialogText = "There is no enemy units";
@@ -90,19 +91,19 @@ public class UnitInteractable : Unit
             return;
         }
 
-        string tempString = neighbourTypes.Aggregate("I feel ", (current, neighbourType) => current + neighbourType + " ");
+        var tempString = neighbourTypes.Aggregate("I feel ", (current, neighbourType) => current + neighbourType + " ");
         DialogText = tempString;
         ActivateDialog();
     }
 
     public void ActivateDialog()
     {
-        _dialogBox.localScale = new Vector3(1,1,1);
+        _dialogBox.localScale = new Vector3(1, 1, 1);
     }
-    
+
     public void DeactivateDialog()
     {
-        _dialogBox.localScale = new Vector3(0,0,0);
+        _dialogBox.localScale = new Vector3(0, 0, 0);
     }
 
     public void SetDialogText(string newText)

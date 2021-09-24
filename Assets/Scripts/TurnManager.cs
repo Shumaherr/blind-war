@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public enum TurnStates
@@ -9,31 +8,28 @@ public enum TurnStates
 
 public class TurnManager : Singleton<TurnManager>
 {
-    private TurnStates _turn;
-
-    public TurnStates Turn => _turn;
+    public delegate void OnTurnChangedDelegate(TurnStates newTurn);
 
     [SerializeField] public TurnStates firstTurn = TurnStates.PlayerTurn;
 
-    public delegate void OnTurnChangedDelegate(TurnStates newTurn);
+    public TurnStates Turn { get; private set; }
 
     public event OnTurnChangedDelegate OnTurnChanged;
 
     private void Start()
     {
-        _turn = firstTurn;
+        Turn = firstTurn;
     }
 
     public void ChangeTurn()
     {
         ControllerManager.Instance.ClearSelected();
-        _turn = _turn is TurnStates.PlayerTurn ? TurnStates.AITurn : TurnStates.PlayerTurn;
-        if (OnTurnChanged != null)
-            OnTurnChanged(_turn);
+        Turn = Turn is TurnStates.PlayerTurn ? TurnStates.AITurn : TurnStates.PlayerTurn;
+        OnTurnChanged?.Invoke(Turn);
     }
 
     public bool isPlayerTurn()
     {
-        return _turn == TurnStates.PlayerTurn;
+        return Turn == TurnStates.PlayerTurn;
     }
 }

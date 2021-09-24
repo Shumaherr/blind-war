@@ -1,19 +1,18 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using FMOD.Studio;
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using STOP_MODE = FMOD.Studio.STOP_MODE;
 
 public class ControllerManager : Singleton<ControllerManager>
 {
-    [SerializeField] private Tilemap walkableTilemap;
-    private UnitInteractable _selectedUnit;
     private GridInteractor _gridInteractor;
-    private BattleSystem _battleSystem;
-    
-    private FMOD.Studio.EventInstance instance;
+    private UnitInteractable _selectedUnit;
+
+    private EventInstance instance;
+    [SerializeField] private Tilemap walkableTilemap;
 
     public UnitInteractable SelectedUnit
     {
@@ -28,7 +27,6 @@ public class ControllerManager : Singleton<ControllerManager>
 
     private void Start()
     {
-        _battleSystem = new BattleSystem();
         _gridInteractor = walkableTilemap.GetComponent<GridInteractor>();
         instance = new EventInstance();
         _gridInteractor.OnTileSelected += TileSelected;
@@ -50,7 +48,7 @@ public class ControllerManager : Singleton<ControllerManager>
             _selectedUnit.DeactivateDialog();
             if (!TurnManager.Instance.isPlayerTurn() || !_selectedUnit.CanMove())
                 return;
-            _selectedUnit.ChangeMoves(1);
+            _selectedUnit.ChangeMoves();
             if (GameManager.Instance.HasEnemyUnit(tilePos))
                 if (!StartBattle(GameManager.Instance.GetEnemyUnitInCell(tilePos), _selectedUnit))
                     return;
@@ -62,23 +60,21 @@ public class ControllerManager : Singleton<ControllerManager>
             }
 
             MoveUnitToTile(_selectedUnit.transform, tilePos);
-            UnitInteractable tempUnit = GameManager.Instance.PlayerUnits[_selectedUnit.GetUnitCell()];
+            var tempUnit = GameManager.Instance.PlayerUnits[_selectedUnit.GetUnitCell()];
             GameManager.Instance.PlayerUnits.Remove(_selectedUnit.GetUnitCell());
             GameManager.Instance.PlayerUnits.Add(tilePos, tempUnit);
             ClearSelected();
         }
     }
 
-    public BattleSystem BattleSystem => _battleSystem;
-
     public void MoveUnitToTile(Transform unitToMove, Vector3Int tilePos)
     {
         var position = unitToMove.position;
-        Vector3Int unitCell = walkableTilemap.WorldToCell(position);
-        int countCells = (int) Mathf.Round(Vector3.Distance(tilePos, unitCell));
+        var unitCell = walkableTilemap.WorldToCell(position);
+        var countCells = (int) Mathf.Round(Vector3.Distance(tilePos, unitCell));
         if (countCells == 0)
             return;
-        Vector3 cellCenterWorld = walkableTilemap.GetCellCenterWorld(tilePos);
+        var cellCenterWorld = walkableTilemap.GetCellCenterWorld(tilePos);
         Debug.Log("Move for " + countCells + " cells");
         StartCoroutine(MoveFromTo(unitToMove, position, cellCenterWorld, 3));
         GameManager.Instance.ChangeTakenCell(unitCell, tilePos);
@@ -87,9 +83,9 @@ public class ControllerManager : Singleton<ControllerManager>
 
     public bool StartBattle(Unit enemyUnit, Unit playerUnit)
     {
-        BaseUnit winner = _battleSystem.Fight(playerUnit.BaseUnit, enemyUnit.BaseUnit);
-        UnitType winnerType = winner != null ? winner.UnitType : playerUnit.BaseUnit.UnitType;
-        FMODUnity.RuntimeManager.PlayOneShot(GetWinnerSfxEventToPlay(winnerType), transform.position);  
+        var winner = BattleSystem.Fight(playerUnit.BaseUnit, enemyUnit.BaseUnit);
+        var winnerType = winner != null ? winner.UnitType : playerUnit.BaseUnit.UnitType;
+        RuntimeManager.PlayOneShot(GetWinnerSfxEventToPlay(winnerType), transform.position);
         if (winner == null)
         {
             GameManager.Instance.KillUnit(enemyUnit);
@@ -101,45 +97,33 @@ public class ControllerManager : Singleton<ControllerManager>
             GameManager.Instance.KillUnit(enemyUnit);
             return true;
         }
-        
+
         GameManager.Instance.KillUnit(playerUnit);
         return false;
     }
 
-    private string GetWinnerSfxEventToPlay(UnitType winner)
+    private static string GetWinnerSfxEventToPlay(UnitType winner)
     {
-        string eventToPlay;
-        switch (winner)
+        var eventToPlay = winner switch
         {
-            case UnitType.Swordman:
-            case UnitType.Spearman:
-                eventToPlay = "event:/SFX/characters/death_infantry";
-                break;
-            case UnitType.Horseman:
-                eventToPlay = "event:/SFX/characters/death_horseman";
-                break;
-            default:
-                throw new ArgumentOutOfRangeException();
-        }
+            UnitType.Swordman => "event:/SFX/characters/death_infantry",
+            UnitType.Spearman => "event:/SFX/characters/death_infantry",
+            UnitType.Horseman => "event:/SFX/characters/death_horseman",
+            _ => throw new ArgumentOutOfRangeException()
+        };
 
         return eventToPlay;
     }
-    
-    private string GetMovementSfxEventToPlay(UnitType unitType)
+
+    private static string GetMovementSfxEventToPlay(UnitType unitType)
     {
-        string eventToPlay;
-        switch (unitType)
+        var eventToPlay = unitType switch
         {
-            case UnitType.Swordman:
-            case UnitType.Spearman:
-                eventToPlay = "event:/SFX/characters/move_infantry";
-                break;
-            case UnitType.Horseman:
-                eventToPlay = "event:/SFX/characters/move_horseman";
-                break;
-            default:
-                throw new ArgumentOutOfRangeException();
-        }
+            UnitType.Swordman => "event:/SFX/characters/move_infantry",
+            UnitType.Spearman => "event:/SFX/characters/move_infantry",
+            UnitType.Horseman => "event:/SFX/characters/move_horseman",
+            _ => throw new ArgumentOutOfRangeException()
+        };
 
         return eventToPlay;
     }
@@ -153,12 +137,12 @@ public class ControllerManager : Singleton<ControllerManager>
     {
         if (TurnManager.Instance.isPlayerTurn())
         {
-            instance = FMODUnity.RuntimeManager.CreateInstance(GetMovementSfxEventToPlay(_selectedUnit.BaseUnit.UnitType));
-            FMODUnity.RuntimeManager.AttachInstanceToGameObject(instance, _selectedUnit.transform);
+            instance = RuntimeManager.CreateInstance(GetMovementSfxEventToPlay(_selectedUnit.BaseUnit.UnitType));
+            RuntimeManager.AttachInstanceToGameObject(instance, _selectedUnit.transform);
         }
-            
+
         instance.start();
-        float step = (speed / (pos1 - pos2).magnitude) * Time.fixedDeltaTime;
+        var step = speed / (pos1 - pos2).magnitude * Time.fixedDeltaTime;
         float t = 0;
         while (t <= 1.0f)
         {
@@ -166,7 +150,8 @@ public class ControllerManager : Singleton<ControllerManager>
             objectToMove.position = Vector3.Lerp(pos1, pos2, t); // Move objectToMove closer to b
             yield return new WaitForFixedUpdate(); // Leave the routine and return here in the next frame
         }
-        instance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+
+        instance.stop(STOP_MODE.ALLOWFADEOUT);
         instance.release();
         objectToMove.position = pos2;
     }

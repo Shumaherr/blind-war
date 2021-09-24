@@ -1,10 +1,7 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using TMPro;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 public class EnemyUnit : Unit
 {
@@ -21,7 +18,7 @@ public class EnemyUnit : Unit
     {
         _renderer.enabled = false;
     }
-    
+
     public void ShowUnit()
     {
         _renderer.enabled = true;
@@ -39,51 +36,44 @@ public class EnemyUnit : Unit
 
     public void DoMove()
     {
-        int lastStep = 0;
-        for (int i = 1; i < _currentPath.Count; i++)
+        var lastStep = 0;
+        for (var i = 1; i < _currentPath.Count; i++)
         {
-            if(Moves == 0)
+            if (Moves == 0)
                 break;
             ControllerManager.Instance.MoveUnitToTile(transform, _currentPath[i]);
             lastStep = i;
             ChangeMoves();
         }
+
         GameManager.Instance.ChangeEnemyCell(_currentPath[0], _currentPath[lastStep]);
     }
 
     public void DoTurn()
     {
         InitMoves();
-        List<List<Vector3Int>> pathes = new List<List<Vector3Int>>();
-        Vector3Int unitCell = GetUnitCell();
+        var pathes = new List<List<Vector3Int>>();
         foreach (var unit in GameManager.Instance.PlayerUnits.Where(pair =>
             pair.Value.BaseUnit.UnitType == BaseUnit.KillUnit))
-        {
             pathes.Add(GameManager.Instance.GetPath(transform.position, unit.Key));
-        }
 
         foreach (var city in GameManager.Instance.AllCities.Where(pair => pair.Value.Owner == CityOwner.Player))
-        {
             pathes.Add(GameManager.Instance.GetPath(transform.position, city.Key));
-        }
-        if(pathes.Count == 0) //TODO what to do if no targets was found
+        if (pathes.Count == 0) //TODO what to do if no targets was found
             return;
-        int min = 0;
-        for (int i = 1; i < pathes.Count; i++)
-        {
+        var min = 0;
+        for (var i = 1; i < pathes.Count; i++)
             if (pathes[i].Count < pathes[min].Count)
-            {
                 min = i;
-            }
-        }
-        
+
         //pathes[min].RemoveAt(0);
-        if(pathes[min] != null)
+        if (pathes[min] != null)
         {
             pathes[min].RemoveAt(pathes[min].Count - 1);
             _currentPath = new List<Vector3Int>(pathes[min]);
             DoMove();
         }
+
         DoFight();
         ChangeMoves();
     }
@@ -93,9 +83,7 @@ public class EnemyUnit : Unit
         if (IsNearPlayerUnit())
             ShowUnit();
         else
-        {
             HideUnit();
-        }
     }
 
     private void Update()
@@ -105,7 +93,7 @@ public class EnemyUnit : Unit
 
     private void DoFight()
     {
-        Vector3Int unitCell = GetUnitCell();
+        var unitCell = GetUnitCell();
         foreach (var cell in Utils.Neighbors(unitCell))
         {
             if (!CanMove())
@@ -140,5 +128,4 @@ public class EnemyUnit : Unit
     {
         return Utils.Neighbors(GetUnitCell()).Any(i => GameManager.Instance.HasPlayerUnit(i));
     }
-    
 }

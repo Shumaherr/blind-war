@@ -5,9 +5,5 @@ public class SwordmanSO : BaseUnit
 {
     public override void Use()
     {
-
     }
-
-
-        
 }
