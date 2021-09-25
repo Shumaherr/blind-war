@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed4b79c717179d0448403c775662a2f0, type: 3}
   m_Name: Horseman
   m_EditorClassIdentifier: 
-  unitType: 2
-  killUnit: 0
-  generalizedSprite: {fileID: -4292911939982777642, guid: 69453a13de175e7488bacd9897332dd8, type: 3}
-  moves: 3
+  baseSprite: {fileID: 0}
   damage: 1
-  unitPrefab: {fileID: 0}
+  generalizedSprite: {fileID: 21300000, guid: 18976d4e3f0ec4e4a8f7ebbab8e062bd, type: 3}
+  killUnit: 0
+  moves: 3
+  unitType: 2
