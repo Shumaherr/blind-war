@@ -4,11 +4,10 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="359edaa5-222c-41c8-8062-0c5d0084d1e6" name="Default Changelist" comment="Code cleanup">
+    <list default="true" id="359edaa5-222c-41c8-8062-0c5d0084d1e6" name="Default Changelist" comment="New sprite">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Blind war/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Blind war/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UnitsSO/Horseman.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UnitsSO/Horseman.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UnitsSO/Spearman.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UnitsSO/Spearman.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UnitsSO/Swordman.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UnitsSO/Swordman.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,13 +73,13 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UIManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CityController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/EnemyUnit.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BaseClasses/Pathfinding.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ControllerManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UnitInteractable.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/TurnManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GridInteractor.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
       </list>
     </option>
   </component>
@@ -134,7 +133,7 @@
       <workItem from="1631882127465" duration="17546000" />
       <workItem from="1632214886446" duration="6183000" />
       <workItem from="1632348819946" duration="14790000" />
-      <workItem from="1632556496183" duration="443000" />
+      <workItem from="1632556496183" duration="2060000" />
     </task>
     <task id="LOCAL-00001" summary="Movement, prefabs">
       <created>1630454201521</created>
@@ -276,7 +275,14 @@
       <option name="project" value="LOCAL" />
       <updated>1632526698318</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="New sprite">
+      <created>1632556953030</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1632556953030</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -316,7 +322,8 @@
     <MESSAGE value="Fixes, new perk (one for all types)" />
     <MESSAGE value="Perk ready, hide enemies (temp sprite)" />
     <MESSAGE value="Code cleanup" />
-    <option name="LAST_COMMIT_MESSAGE" value="Code cleanup" />
+    <MESSAGE value="New sprite" />
+    <option name="LAST_COMMIT_MESSAGE" value="New sprite" />
   </component>
   <component name="WindowStateProjectService">
     <state x="-1082" y="410" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1" timestamp="1632526129548">
@@ -412,10 +419,10 @@
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
     <state x="-1056" y="253" key="VCS.ChangeListViewerDialog/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631024247543" />
-    <state x="-1248" y="281" key="Vcs.Push.Dialog.v2" timestamp="1632526699765">
+    <state x="-1248" y="281" key="Vcs.Push.Dialog.v2" timestamp="1632556954590">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
-    <state x="-1248" y="281" key="Vcs.Push.Dialog.v2/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1632526699765" />
+    <state x="-1248" y="281" key="Vcs.Push.Dialog.v2/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1632556954590" />
     <state x="494" y="279" key="Vcs.Push.Dialog.v2/0.30.1920.1050/-1680.39.1680.1020@0.30.1920.1050" timestamp="1631562892622" />
     <state width="848" height="518" key="XDebugger.FullValuePopup" timestamp="1632056225567">
       <screen x="-1680" y="39" width="1680" height="1020" />
@@ -461,13 +468,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/GameManager.cs</url>
-          <line>145</line>
+          <line>146</line>
           <properties documentPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" initialLine="134">
             <startOffsets>
-              <option value="5187" />
+              <option value="5236" />
             </startOffsets>
             <endOffsets>
-              <option value="5233" />
+              <option value="5282" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="44" />
@@ -477,10 +484,10 @@
           <line>139</line>
           <properties documentPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" initialLine="143">
             <startOffsets>
-              <option value="5004" />
+              <option value="5053" />
             </startOffsets>
             <endOffsets>
-              <option value="5048" />
+              <option value="5097" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="55" />
@@ -513,13 +520,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/GameManager.cs</url>
-          <line>193</line>
+          <line>194</line>
           <properties documentPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" initialLine="210">
             <startOffsets>
-              <option value="6467" />
+              <option value="6516" />
             </startOffsets>
             <endOffsets>
-              <option value="6510" />
+              <option value="6559" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="78" />

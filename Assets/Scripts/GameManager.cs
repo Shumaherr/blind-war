@@ -137,12 +137,13 @@ public class GameManager : Singleton<GameManager>
     {
         if (unitToKill.gameObject.CompareTag("AIUnit"))
         {
-            //EnemyUnits.Remove(unitToKill.GetUnitCell());
+            EnemyUnitsPos.Remove(unitToKill.GetUnitCell());
             _enemyUnitsToDelete.Add(unitToKill.GetUnitCell());
             CheckPlayerWin();
         }
         else
         {
+            _gridInteractor.UnhighlightCells();
             PlayerUnits.Remove(unitToKill.GetUnitCell());
             CheckPlayerLoose();
         }
