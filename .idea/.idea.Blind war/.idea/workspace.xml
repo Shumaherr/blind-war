@@ -4,9 +4,11 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="359edaa5-222c-41c8-8062-0c5d0084d1e6" name="Default Changelist" comment="New sprite">
+    <list default="true" id="359edaa5-222c-41c8-8062-0c5d0084d1e6" name="Default Changelist" comment="Hot fix">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Blind war/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Blind war/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Blind war/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Blind war/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CityController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CityController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,8 +41,10 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/04258D1C-DC10-4424-8C2A-17A6A31A3CF7/87/617ff017/UnitySynchronizationContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/TurnManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GridInteractor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/TilemapDebug.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/695D1CC9-3CCA-4506-9C52-8C15C9FDD749/96/0f37ea5d/Dictionary`2.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Healthbar.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UnitsSO/HorsemanSO.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BaseClasses/Unit.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/EnemyUnit.cs" root0="FORCE_HIGHLIGHTING" />
@@ -71,7 +75,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/BaseClasses/Singletone.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BaseClasses/BaseUnit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UIManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/CityController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/EnemyUnit.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BaseClasses/Pathfinding.cs" />
@@ -80,6 +83,8 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/TurnManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GridInteractor.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Healthbar.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/CityController.cs" />
       </list>
     </option>
   </component>
@@ -107,10 +112,10 @@
       <option name="pid" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="8896">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="8896" />
       <method v="2" />
     </configuration>
   </component>
@@ -133,7 +138,8 @@
       <workItem from="1631882127465" duration="17546000" />
       <workItem from="1632214886446" duration="6183000" />
       <workItem from="1632348819946" duration="14790000" />
-      <workItem from="1632556496183" duration="2060000" />
+      <workItem from="1632556496183" duration="2692000" />
+      <workItem from="1632663199364" duration="1409000" />
     </task>
     <task id="LOCAL-00001" summary="Movement, prefabs">
       <created>1630454201521</created>
@@ -282,7 +288,14 @@
       <option name="project" value="LOCAL" />
       <updated>1632556953030</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Hot fix">
+      <created>1632579293720</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1632579293720</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -323,52 +336,53 @@
     <MESSAGE value="Perk ready, hide enemies (temp sprite)" />
     <MESSAGE value="Code cleanup" />
     <MESSAGE value="New sprite" />
-    <option name="LAST_COMMIT_MESSAGE" value="New sprite" />
+    <MESSAGE value="Hot fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Hot fix" />
   </component>
   <component name="WindowStateProjectService">
     <state x="-1082" y="410" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1" timestamp="1632526129548">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
     <state x="-1082" y="410" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1632526129548" />
-    <state width="1637" height="352" key="GridCell.Tab.0.bottom" timestamp="1632529017397">
+    <state width="1637" height="352" key="GridCell.Tab.0.bottom" timestamp="1632666549832">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
-    <state width="1637" height="352" key="GridCell.Tab.0.bottom/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1632529017397" />
+    <state width="1637" height="352" key="GridCell.Tab.0.bottom/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1632666549832" />
     <state width="1620" height="352" key="GridCell.Tab.0.bottom/0.30.1920.1050/-1680.39.1680.1020@0.30.1920.1050" timestamp="1631748383998" />
-    <state width="1637" height="352" key="GridCell.Tab.0.center" timestamp="1632529017397">
+    <state width="1637" height="352" key="GridCell.Tab.0.center" timestamp="1632666549832">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
-    <state width="1637" height="352" key="GridCell.Tab.0.center/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1632529017397" />
+    <state width="1637" height="352" key="GridCell.Tab.0.center/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1632666549832" />
     <state width="1620" height="352" key="GridCell.Tab.0.center/0.30.1920.1050/-1680.39.1680.1020@0.30.1920.1050" timestamp="1631748383998" />
-    <state width="1637" height="352" key="GridCell.Tab.0.left" timestamp="1632529017396">
+    <state width="1637" height="352" key="GridCell.Tab.0.left" timestamp="1632666549831">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
-    <state width="1637" height="352" key="GridCell.Tab.0.left/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1632529017396" />
+    <state width="1637" height="352" key="GridCell.Tab.0.left/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1632666549831" />
     <state width="1620" height="352" key="GridCell.Tab.0.left/0.30.1920.1050/-1680.39.1680.1020@0.30.1920.1050" timestamp="1631748383997" />
-    <state width="1637" height="352" key="GridCell.Tab.0.right" timestamp="1632529017397">
+    <state width="1637" height="352" key="GridCell.Tab.0.right" timestamp="1632666549832">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
-    <state width="1637" height="352" key="GridCell.Tab.0.right/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1632529017397" />
+    <state width="1637" height="352" key="GridCell.Tab.0.right/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1632666549832" />
     <state width="1620" height="352" key="GridCell.Tab.0.right/0.30.1920.1050/-1680.39.1680.1020@0.30.1920.1050" timestamp="1631748383998" />
-    <state width="1637" height="352" key="GridCell.Tab.1.bottom" timestamp="1632529017397">
+    <state width="1637" height="352" key="GridCell.Tab.1.bottom" timestamp="1632666596631">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
-    <state width="1637" height="352" key="GridCell.Tab.1.bottom/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1632529017397" />
+    <state width="1637" height="352" key="GridCell.Tab.1.bottom/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1632666596631" />
     <state width="1620" height="352" key="GridCell.Tab.1.bottom/0.30.1920.1050/-1680.39.1680.1020@0.30.1920.1050" timestamp="1631748383922" />
-    <state width="1637" height="352" key="GridCell.Tab.1.center" timestamp="1632529017397">
+    <state width="1637" height="352" key="GridCell.Tab.1.center" timestamp="1632666596631">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
-    <state width="1637" height="352" key="GridCell.Tab.1.center/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1632529017397" />
+    <state width="1637" height="352" key="GridCell.Tab.1.center/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1632666596631" />
     <state width="1620" height="352" key="GridCell.Tab.1.center/0.30.1920.1050/-1680.39.1680.1020@0.30.1920.1050" timestamp="1631748383922" />
-    <state width="1637" height="352" key="GridCell.Tab.1.left" timestamp="1632529017397">
+    <state width="1637" height="352" key="GridCell.Tab.1.left" timestamp="1632666596631">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
-    <state width="1637" height="352" key="GridCell.Tab.1.left/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1632529017397" />
+    <state width="1637" height="352" key="GridCell.Tab.1.left/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1632666596631" />
     <state width="1620" height="352" key="GridCell.Tab.1.left/0.30.1920.1050/-1680.39.1680.1020@0.30.1920.1050" timestamp="1631748383922" />
-    <state width="1637" height="352" key="GridCell.Tab.1.right" timestamp="1632529017397">
+    <state width="1637" height="352" key="GridCell.Tab.1.right" timestamp="1632666596631">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
-    <state width="1637" height="352" key="GridCell.Tab.1.right/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1632529017397" />
+    <state width="1637" height="352" key="GridCell.Tab.1.right/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1632666596631" />
     <state width="1620" height="352" key="GridCell.Tab.1.right/0.30.1920.1050/-1680.39.1680.1020@0.30.1920.1050" timestamp="1631748383922" />
     <state width="1637" height="352" key="GridCell.Tab.2.bottom" timestamp="1632529017397">
       <screen x="-1680" y="39" width="1680" height="1020" />
@@ -572,19 +586,6 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/UnitInteractable.cs</url>
-          <line>34</line>
-          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/UnitInteractable.cs" initialLine="30">
-            <startOffsets>
-              <option value="726" />
-            </startOffsets>
-            <endOffsets>
-              <option value="775" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="88" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/UnitInteractable.cs</url>
           <line>95</line>
           <properties documentPath="$PROJECT_DIR$/Assets/Scripts/UnitInteractable.cs" initialLine="94">
             <startOffsets>
@@ -595,6 +596,32 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="89" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Healthbar.cs</url>
+          <line>8</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/Healthbar.cs" initialLine="8">
+            <startOffsets>
+              <option value="187" />
+            </startOffsets>
+            <endOffsets>
+              <option value="242" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="90" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/CityController.cs</url>
+          <line>32</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Scripts/CityController.cs" initialLine="32">
+            <startOffsets>
+              <option value="641" />
+            </startOffsets>
+            <endOffsets>
+              <option value="688" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="91" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

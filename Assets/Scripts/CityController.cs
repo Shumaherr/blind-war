@@ -13,6 +13,7 @@ public class CityController : MonoBehaviour
 
     private Sprite _sprite;
     private SpriteRenderer _spriteRenderer;
+    private Healthbar _healthbar;
     [SerializeField] private int maxHealth = 10;
     [SerializeField] private CityOwner owner;
     [SerializeField] private List<Sprite> sprites;
@@ -29,6 +30,7 @@ public class CityController : MonoBehaviour
         set
         {
             _health = value;
+            _healthbar.SetHealthLevel((float)_health / maxHealth);
             if (value <= 0)
                 ChangeOwner();
         }
@@ -44,7 +46,7 @@ public class CityController : MonoBehaviour
     {
         Owner = Owner == CityOwner.Player ? CityOwner.AI : CityOwner.Player;
         ChangeSprite();
-        _health = maxHealth;
+        Health = maxHealth;
         if (Owner == CityOwner.Player)
             GameManager.Instance.AddCityToList(transform.position);
         else
@@ -55,9 +57,10 @@ public class CityController : MonoBehaviour
     private void Start()
     {
         _sprite = owner == CityOwner.Player ? sprites[0] : sprites[1];
+        _healthbar = GetComponentInChildren<Healthbar>();
         _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         _spriteRenderer.sprite = _sprite;
-        _health = maxHealth;
+        Health = maxHealth;
     }
     
     public void TakeDamage(int damage)
