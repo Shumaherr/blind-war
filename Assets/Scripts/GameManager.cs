@@ -10,7 +10,7 @@ public class GameManager : Singleton<GameManager>
     private ControllerManager _controller;
     private List<EnemyUnit> _enemyUnits;
 
-    private List<Vector3Int> _enemyUnitsToDelete;
+    private List<EnemyUnit> _enemyUnitsToDelete;
     private GridInteractor _gridInteractor;
 
     private Pathfinding _pathfinding;
@@ -38,7 +38,7 @@ public class GameManager : Singleton<GameManager>
         PlayerUnits = new Dictionary<Vector3Int, UnitInteractable>();
         EnemyUnitsPos = new Dictionary<Vector3Int, EnemyUnit>();
         _enemyUnits = new List<EnemyUnit>();
-        _enemyUnitsToDelete = new List<Vector3Int>();
+        _enemyUnitsToDelete = new List<EnemyUnit>();
         TakenCells = new List<Vector3Int>();
         AllCities = new Dictionary<Vector3Int, CityController>();
         _pathfinding = new Pathfinding();
@@ -80,11 +80,10 @@ public class GameManager : Singleton<GameManager>
         {
             foreach (var unit in _enemyUnitsToDelete)
             {
-                _enemyUnits.Remove(EnemyUnitsPos[unit]);
-                EnemyUnitsPos.Remove(unit);
+                _enemyUnits.Remove(unit);
             }
 
-            _enemyUnitsToDelete = new List<Vector3Int>();
+            _enemyUnitsToDelete = new List<EnemyUnit>();
             foreach (var unit in _enemyUnits) unit.DoTurn();
 
             TurnManager.Instance.ChangeTurn();
@@ -138,7 +137,7 @@ public class GameManager : Singleton<GameManager>
         if (unitToKill.gameObject.CompareTag("AIUnit"))
         {
             EnemyUnitsPos.Remove(unitToKill.GetUnitCell());
-            _enemyUnitsToDelete.Add(unitToKill.GetUnitCell());
+            _enemyUnitsToDelete.Add((EnemyUnit)unitToKill);
             CheckPlayerWin();
         }
         else
