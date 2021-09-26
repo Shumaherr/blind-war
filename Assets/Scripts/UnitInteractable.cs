@@ -76,6 +76,7 @@ public class UnitInteractable : Unit
         if (!TurnManager.Instance.isPlayerTurn())
             return;
         RuntimeManager.PlayOneShot("event:/SFX/ui/select", transform.position);
+        ControllerManager.Instance.SelectedUnit?.DeactivateDialog();
         ControllerManager.Instance.SelectedUnit = this;
         OnUnitSelected?.Invoke(this);
         Debug.Log("Unit clicked" + baseUnit.UnitType);
