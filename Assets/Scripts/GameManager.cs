@@ -4,8 +4,17 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 
+public enum GameState
+{
+    GameInit,
+    GameStart,
+    PlayerWin,
+    PlayerLose
+}
 public class GameManager : Singleton<GameManager>
 {
+    private GameState _gameState;
+    private SoundManager _soundManager;
     private List<CityController> _AICities;
     private ControllerManager _controller;
     private List<EnemyUnit> _enemyUnits;
@@ -21,7 +30,7 @@ public class GameManager : Singleton<GameManager>
 
     [SerializeField] private Tilemap grid;
     [SerializeField] private Camera mainCamera;
-
+    
     public Camera MainCamera => mainCamera;
     public Tilemap Grid => grid;
 
@@ -32,9 +41,14 @@ public class GameManager : Singleton<GameManager>
     public Dictionary<Vector3Int, UnitInteractable> PlayerUnits { get; private set; }
 
     public Dictionary<Vector3Int, CityController> AllCities { get; private set; }
+    
+    public delegate void OnGameStateChangedDelegate(GameState newState);
+    public event OnGameStateChangedDelegate OnGameStateChanged;
 
     private void Start()
     {
+        _soundManager = new SoundManager();
+        GameState = GameState.GameInit;
         PlayerUnits = new Dictionary<Vector3Int, UnitInteractable>();
         EnemyUnitsPos = new Dictionary<Vector3Int, EnemyUnit>();
         _enemyUnits = new List<EnemyUnit>();
@@ -72,6 +86,17 @@ public class GameManager : Singleton<GameManager>
 
         TurnManager.Instance.OnTurnChanged += OnTurnChanged;
         OnTurnChanged(TurnStates.PlayerTurn);
+        GameState = GameState.GameStart;
+    }
+
+    protected GameState GameState
+    {
+        get => _gameState;
+        set
+        {
+            _gameState = value;
+            OnGameStateChanged?.Invoke(_gameState);
+        } 
     }
 
     private void OnTurnChanged(TurnStates newturn)
@@ -198,7 +223,7 @@ public class GameManager : Singleton<GameManager>
         EnemyUnitsPos.Add(finishCell, unit);
     }
 
-    private static void PlayerWin()
+    private void PlayerWin()
     {
         SceneManager.LoadScene("Scene_Win");
     }
@@ -214,11 +239,12 @@ public class GameManager : Singleton<GameManager>
     {
         if (PlayerUnits.Count <= 0 && AllCities.Count(pair => pair.Value.Owner == CityOwner.Player) <= 0)
             //TODO change to event
-            PlayerLoose();
+            PlayerLose();
     }
 
-    private static void PlayerLoose()
+    private void PlayerLose()
     {
+        GameState = GameState.PlayerLose;
         SceneManager.LoadScene("Scene_Defeat");
     }
 

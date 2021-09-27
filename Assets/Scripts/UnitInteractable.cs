@@ -7,6 +7,7 @@ using UnityEngine;
 public class UnitInteractable : Unit
 {
     public delegate void OnUnitSelectedDelegate(UnitInteractable unit);
+    public event OnUnitSelectedDelegate OnUnitSelected;
 
     private Transform _dialogBox;
 
@@ -23,10 +24,7 @@ public class UnitInteractable : Unit
             _textMeshPro.text = _dialogText;
         }
     }
-
-    public event OnUnitSelectedDelegate OnUnitSelected;
-
-
+    
     private void Start()
     {
         _dialogBox = transform.Find("Dialog/DialogBox");

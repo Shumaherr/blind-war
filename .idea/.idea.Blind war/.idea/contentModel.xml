@@ -146,6 +146,7 @@
           <e p="GameManager.cs" t="Include" />
           <e p="GridInteractor.cs" t="Include" />
           <e p="Healthbar.cs" t="Include" />
+          <e p="SoundManager.cs" t="Include" />
           <e p="TilemapDebug.cs" t="Include" />
           <e p="TurnManager.cs" t="Include" />
           <e p="UIManager.cs" t="Include" />
