@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using FMODUnity;
 using UnityEngine;
 
 public enum CityOwner
@@ -48,9 +49,15 @@ public class CityController : MonoBehaviour
         ChangeSprite();
         Health = maxHealth;
         if (Owner == CityOwner.Player)
+        {
             GameManager.Instance.AddCityToList(transform.position);
+            RuntimeManager.PlayOneShot("event:/SFX/environment/castle_capture");
+        }
         else
+        {
             GameManager.Instance.RemoveCityToList(transform.position);
+            RuntimeManager.PlayOneShot("event:/SFX/environment/castle_lose");
+        }
     }
 
     // Start is called before the first frame update
@@ -65,6 +72,8 @@ public class CityController : MonoBehaviour
     
     public void TakeDamage(int damage)
     {
+        if(_health - damage > 0) //for avoid castle_siege & castle_capture sounds at one time
+            RuntimeManager.PlayOneShot("event:/SFX/environment/castle_siege");
         Health -= damage;
     }
 }

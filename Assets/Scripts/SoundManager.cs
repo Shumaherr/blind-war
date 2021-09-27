@@ -1,8 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using FMOD.Studio;
+using FMODUnity;
 using UnityEngine;
+using STOP_MODE = FMOD.Studio.STOP_MODE;
 
 public class SoundManager
 {
@@ -29,10 +30,12 @@ public class SoundManager
             case GameState.PlayerWin:
                 _mainMusicInstance.stop(STOP_MODE.IMMEDIATE);
                 _ambienceInstance.stop(STOP_MODE.ALLOWFADEOUT);
+                RuntimeManager.PlayOneShot("event:/Music/music_win");
                 break;
             case GameState.PlayerLose:
                 _mainMusicInstance.stop(STOP_MODE.IMMEDIATE);
                 _ambienceInstance.stop(STOP_MODE.ALLOWFADEOUT);
+                RuntimeManager.PlayOneShot("event:/Music/music_lose");
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(newstate), newstate, null);
