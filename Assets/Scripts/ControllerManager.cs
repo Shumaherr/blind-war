@@ -55,6 +55,7 @@ public class ControllerManager : Singleton<ControllerManager>
             if (GameManager.Instance.HasEnemyCity(tilePos))
             {
                 GameManager.Instance.GetCityInCell(tilePos).TakeDamage(_selectedUnit.BaseUnit.Damage);
+                _gridInteractor.UnhighlightCells();
                 GameManager.Instance.CheckPlayerWin();
                 return;
             }
@@ -85,7 +86,7 @@ public class ControllerManager : Singleton<ControllerManager>
     {
         var winner = BattleSystem.Fight(playerUnit.BaseUnit, enemyUnit.BaseUnit);
         var winnerType = winner != null ? winner.UnitType : playerUnit.BaseUnit.UnitType;
-        RuntimeManager.PlayOneShot(GetWinnerSfxEventToPlay(winnerType), transform.position);
+        RuntimeManager.PlayOneShot(SoundManager.GetWinnerSfxEventToPlay(winnerType), transform.position);
         if (winner == null)
         {
             GameManager.Instance.KillUnit(enemyUnit);
@@ -102,31 +103,7 @@ public class ControllerManager : Singleton<ControllerManager>
         return false;
     }
 
-    private static string GetWinnerSfxEventToPlay(UnitType winner)
-    {
-        var eventToPlay = winner switch
-        {
-            UnitType.Swordman => "event:/SFX/characters/death_infantry",
-            UnitType.Spearman => "event:/SFX/characters/death_infantry",
-            UnitType.Horseman => "event:/SFX/characters/death_horseman",
-            _ => throw new ArgumentOutOfRangeException()
-        };
-
-        return eventToPlay;
-    }
-
-    private static string GetMovementSfxEventToPlay(UnitType unitType)
-    {
-        var eventToPlay = unitType switch
-        {
-            UnitType.Swordman => "event:/SFX/characters/move_infantry",
-            UnitType.Spearman => "event:/SFX/characters/move_infantry",
-            UnitType.Horseman => "event:/SFX/characters/move_horseman",
-            _ => throw new ArgumentOutOfRangeException()
-        };
-
-        return eventToPlay;
-    }
+    
 
     public void ClearSelected()
     {
@@ -137,7 +114,7 @@ public class ControllerManager : Singleton<ControllerManager>
     {
         if (TurnManager.Instance.isPlayerTurn())
         {
-            instance = RuntimeManager.CreateInstance(GetMovementSfxEventToPlay(_selectedUnit.BaseUnit.UnitType));
+            instance = RuntimeManager.CreateInstance(SoundManager.GetMovementSfxEventToPlay(_selectedUnit.BaseUnit.UnitType));
             RuntimeManager.AttachInstanceToGameObject(instance, _selectedUnit.transform);
         }
 

@@ -4,9 +4,10 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="359edaa5-222c-41c8-8062-0c5d0084d1e6" name="Default Changelist" comment="Add sound to city">
+    <list default="true" id="359edaa5-222c-41c8-8062-0c5d0084d1e6" name="Default Changelist" comment="Win and lose sounds">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Blind war/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Blind war/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ControllerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ControllerManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SoundManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SoundManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,11 +81,11 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/TurnManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GridInteractor.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Healthbar.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/ControllerManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UnitInteractable.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SoundManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CityController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SoundManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ControllerManager.cs" />
       </list>
     </option>
   </component>
@@ -139,7 +140,7 @@
       <workItem from="1632214886446" duration="6183000" />
       <workItem from="1632348819946" duration="14790000" />
       <workItem from="1632556496183" duration="2692000" />
-      <workItem from="1632663199364" duration="7161000" />
+      <workItem from="1632663199364" duration="7406000" />
     </task>
     <task id="LOCAL-00001" summary="Movement, prefabs">
       <created>1630454201521</created>
@@ -330,7 +331,14 @@
       <option name="project" value="LOCAL" />
       <updated>1632783218100</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Win and lose sounds">
+      <created>1632783726765</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1632783726765</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -377,7 +385,8 @@
     <MESSAGE value="Fix removing enemy units" />
     <MESSAGE value="Sound manager, add main music and ambience" />
     <MESSAGE value="Add sound to city" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add sound to city" />
+    <MESSAGE value="Win and lose sounds" />
+    <option name="LAST_COMMIT_MESSAGE" value="Win and lose sounds" />
   </component>
   <component name="WindowStateProjectService">
     <state x="-1082" y="410" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1" timestamp="1632526129548">
@@ -473,10 +482,10 @@
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
     <state x="-1056" y="253" key="VCS.ChangeListViewerDialog/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631024247543" />
-    <state x="-1248" y="281" key="Vcs.Push.Dialog.v2" timestamp="1632783219775">
+    <state x="-1248" y="281" key="Vcs.Push.Dialog.v2" timestamp="1632783728366">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
-    <state x="-1248" y="281" key="Vcs.Push.Dialog.v2/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1632783219775" />
+    <state x="-1248" y="281" key="Vcs.Push.Dialog.v2/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1632783728366" />
     <state x="494" y="279" key="Vcs.Push.Dialog.v2/0.30.1920.1050/-1680.39.1680.1020@0.30.1920.1050" timestamp="1631562892622" />
     <state width="848" height="518" key="XDebugger.FullValuePopup" timestamp="1632056225567">
       <screen x="-1680" y="39" width="1680" height="1020" />
@@ -512,10 +521,10 @@
           <line>94</line>
           <properties documentPath="$PROJECT_DIR$/Assets/Scripts/ControllerManager.cs" initialLine="64">
             <startOffsets>
-              <option value="3553" />
+              <option value="3566" />
             </startOffsets>
             <endOffsets>
-              <option value="3554" />
+              <option value="3567" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="10" />

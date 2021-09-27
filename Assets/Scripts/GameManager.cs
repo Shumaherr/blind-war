@@ -167,6 +167,7 @@ public class GameManager : Singleton<GameManager>
         }
         else
         {
+            ControllerManager.Instance.SelectedUnit = null;
             _gridInteractor.UnhighlightCells();
             PlayerUnits.Remove(unitToKill.GetUnitCell());
             CheckPlayerLose();
