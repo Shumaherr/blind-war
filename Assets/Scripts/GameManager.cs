@@ -169,7 +169,7 @@ public class GameManager : Singleton<GameManager>
         {
             _gridInteractor.UnhighlightCells();
             PlayerUnits.Remove(unitToKill.GetUnitCell());
-            CheckPlayerLoose();
+            CheckPlayerLose();
         }
 
         TakenCells.Remove(unitToKill.GetUnitCell());
@@ -225,17 +225,18 @@ public class GameManager : Singleton<GameManager>
 
     private void PlayerWin()
     {
+        GameState = GameState.PlayerWin;
         SceneManager.LoadScene("Scene_Win");
     }
 
     public void CheckPlayerWin()
     {
-        if (_enemyUnits.Count <= 0 && AllCities.Count(pair => pair.Value.Owner == CityOwner.AI) <= 0)
+        if (EnemyUnitsPos.Count <= 0 && AllCities.Count(pair => pair.Value.Owner == CityOwner.AI) <= 0)
             //TODO change to event
             PlayerWin();
     }
 
-    public void CheckPlayerLoose()
+    public void CheckPlayerLose()
     {
         if (PlayerUnits.Count <= 0 && AllCities.Count(pair => pair.Value.Owner == CityOwner.Player) <= 0)
             //TODO change to event
