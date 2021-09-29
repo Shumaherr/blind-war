@@ -59,7 +59,6 @@ sysinfo.txt
 crashlytics-build.properties
 
 .idea/
-/Assets/
 
 # Never ignore DLLs in the FMOD subfolder.
 !/[Aa]ssets/Plugins/FMOD/**/lib/*
