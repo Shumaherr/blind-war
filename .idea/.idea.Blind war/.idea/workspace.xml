@@ -4,7 +4,14 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="359edaa5-222c-41c8-8062-0c5d0084d1e6" name="Default Changelist" comment="Fixes" />
+    <list default="true" id="359edaa5-222c-41c8-8062-0c5d0084d1e6" name="Default Changelist" comment="Fixes">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/MapManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Blind war/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Blind war/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Blind war/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Blind war/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ControllerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ControllerManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TilesSO/TileData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TilesSO/TileData.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,6 +28,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Editor/GenericDictionaryPropertyDrawer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CityController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AF218701-FE32-4032-B521-DDD91F13662B/68/32b9bb40/Vector3Int.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/MapManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/04258D1C-DC10-4424-8C2A-17A6A31A3CF7/87/617ff017/UnitySynchronizationContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GridInteractor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/TilemapDebug.cs" root0="FORCE_HIGHLIGHTING" />
@@ -84,12 +92,13 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UnitInteractable.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CityController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SoundManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/ControllerManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Healthbar.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BaseClasses/SerializedDictionary.cs" />
         <option value="$PROJECT_DIR$/Assets/Editor/GenericDictionaryPropertyDrawer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BaseClasses/GenericDictionary.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MapManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ControllerManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/TilesSO/TileData.cs" />
       </list>
     </option>
@@ -151,7 +160,7 @@
       <workItem from="1633202952303" duration="79000" />
       <workItem from="1633300440901" duration="905000" />
       <workItem from="1633307466712" duration="333000" />
-      <workItem from="1639702719646" duration="5151000" />
+      <workItem from="1639702719646" duration="8656000" />
     </task>
     <task id="LOCAL-00001" summary="Movement, prefabs">
       <created>1630454201521</created>
@@ -491,15 +500,12 @@
     </state>
     <state width="1637" height="213" key="GridCell.Tab.3.right/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1632784601673" />
     <state width="1620" height="352" key="GridCell.Tab.3.right/0.30.1920.1050/-1680.39.1680.1020@0.30.1920.1050" timestamp="1631748383922" />
-    <state x="-1036" y="223" key="RiderGenerateDialog" timestamp="1632701304877">
-      <screen x="-1680" y="39" width="1680" height="1020" />
+    <state x="736" y="219" key="RiderGenerateDialog" timestamp="1640047416138">
+      <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="-1036" y="223" key="RiderGenerateDialog/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1632701304877" />
     <state x="736" y="219" key="RiderGenerateDialog/0.30.1920.1050/-1680.39.1680.1020@0.30.1920.1050" timestamp="1631490329259" />
-    <state x="-1056" y="253" key="VCS.ChangeListViewerDialog" timestamp="1631024247543">
-      <screen x="-1680" y="39" width="1680" height="1020" />
-    </state>
-    <state x="-1056" y="253" key="VCS.ChangeListViewerDialog/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1631024247543" />
+    <state x="736" y="219" key="RiderGenerateDialog/0.30.1920.1050/-1920.11.1920.1050/-2970.-573.1050.1650@0.30.1920.1050" timestamp="1640047416138" />
     <state x="-1248" y="281" key="Vcs.Push.Dialog.v2" timestamp="1632784193358">
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
@@ -513,10 +519,6 @@
       <screen x="-1680" y="39" width="1680" height="1020" />
     </state>
     <state x="-1031" y="465" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1632225489464" />
-    <state x="-1177" y="259" width="672" height="678" key="search.everywhere.popup" timestamp="1630490486565">
-      <screen x="-1680" y="39" width="1680" height="1020" />
-    </state>
-    <state x="-1177" y="259" width="672" height="678" key="search.everywhere.popup/0.30.1920.1050/-1680.39.1680.1020@-1680.39.1680.1020" timestamp="1630490486565" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -536,13 +538,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/ControllerManager.cs</url>
-          <line>95</line>
+          <line>96</line>
           <properties documentPath="$PROJECT_DIR$/Assets/Scripts/ControllerManager.cs" initialLine="64">
             <startOffsets>
-              <option value="3618" />
+              <option value="3811" />
             </startOffsets>
             <endOffsets>
-              <option value="3619" />
+              <option value="3812" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="10" />
