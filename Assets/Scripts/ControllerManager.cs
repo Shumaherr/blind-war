@@ -35,9 +35,7 @@ public class ControllerManager : Singleton<ControllerManager>
 
     private void TileSelected(Vector3Int tilePos)
     {
-        Debug.Log("Tile" + MapManager.Instance.GetTileName(walkableTilemap.GetTile(tilePos)) + " clicked. Current unit " + _selectedUnit.BaseUnit.UnitType + 
-                  " have " + MapManager.Instance.GetTurnPoints(_selectedUnit.BaseUnit, walkableTilemap.GetTile(tilePos)) + " moves");
-        if (_selectedUnit)
+         if (_selectedUnit)
         {
             //For tests
             /*Pathfinding pathfinding = new Pathfinding();
