@@ -21,14 +21,16 @@ public class MapManager : Singleton<MapManager>
         }
     }
 
-    public byte GetTurnPoints(UnitType unitType, TileBase tile)
+    public byte GetTurnPoints(BaseUnit unit, TileBase tile)
     {
-        return _tilesData[tile].maxMovement[unitType];
+        return !_tilesData.ContainsKey(tile) ? unit.Moves : _tilesData[tile].maxMovement[unit.UnitType];
     }
 
     public string GetTileName(TileBase tile)
     {
         return _tilesData[tile].tileName;
     }
+    
+    
     
 }

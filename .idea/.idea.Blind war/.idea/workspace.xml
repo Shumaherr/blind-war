@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="359edaa5-222c-41c8-8062-0c5d0084d1e6" name="Default Changelist" comment="Fixes">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/TilesSO/Rock Tile.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/TilesSO/Rock Tile.asset.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Blind war/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Blind war/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ControllerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ControllerManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GridInteractor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GridInteractor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MapManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MapManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,18 +88,18 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/BattleSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BaseClasses/Pathfinding.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/TurnManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GridInteractor.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UnitInteractable.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CityController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SoundManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Healthbar.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BaseClasses/SerializedDictionary.cs" />
         <option value="$PROJECT_DIR$/Assets/Editor/GenericDictionaryPropertyDrawer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BaseClasses/GenericDictionary.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/TilesSO/TileData.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MapManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ControllerManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MapManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GridInteractor.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
       </list>
     </option>
   </component>
@@ -123,10 +127,10 @@
       <option name="pid" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="20180">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="20180" />
       <method v="2" />
     </configuration>
   </component>
@@ -156,7 +160,7 @@
       <workItem from="1633202952303" duration="79000" />
       <workItem from="1633300440901" duration="905000" />
       <workItem from="1633307466712" duration="333000" />
-      <workItem from="1639702719646" duration="10545000" />
+      <workItem from="1639702719646" duration="11901000" />
     </task>
     <task id="LOCAL-00001" summary="Movement, prefabs">
       <created>1630454201521</created>
@@ -550,10 +554,10 @@
           <line>171</line>
           <properties documentPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" initialLine="134">
             <startOffsets>
-              <option value="5851" />
+              <option value="5821" />
             </startOffsets>
             <endOffsets>
-              <option value="5897" />
+              <option value="5867" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="44" />
@@ -563,10 +567,10 @@
           <line>163</line>
           <properties documentPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" initialLine="143">
             <startOffsets>
-              <option value="5668" />
+              <option value="5638" />
             </startOffsets>
             <endOffsets>
-              <option value="5712" />
+              <option value="5682" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="55" />
@@ -576,10 +580,10 @@
           <line>113</line>
           <properties documentPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" initialLine="96">
             <startOffsets>
-              <option value="4183" />
+              <option value="4153" />
             </startOffsets>
             <endOffsets>
-              <option value="4197" />
+              <option value="4167" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="76" />
@@ -602,10 +606,10 @@
           <line>219</line>
           <properties documentPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" initialLine="210">
             <startOffsets>
-              <option value="7166" />
+              <option value="7136" />
             </startOffsets>
             <endOffsets>
-              <option value="7208" />
+              <option value="7178" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="78" />

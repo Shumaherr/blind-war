@@ -123,7 +123,7 @@ public class GameManager : Singleton<GameManager>
             return;
         }
 
-        _gridInteractor.HighlightNeighbourCells(grid.LocalToCell(unit.gameObject.transform.position));
+        _gridInteractor.HighlightNeighbourCells(unit.BaseUnit);
         unit.UsePerk();
     }
 

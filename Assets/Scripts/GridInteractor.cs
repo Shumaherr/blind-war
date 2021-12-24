@@ -54,13 +54,13 @@ public class GridInteractor : BaseInteractable
         return Neighbors(cell1).Contains(cell2);
     }
 
-    public void HighlightNeighbourCells(Vector3Int cellToHighlight)
+    public void HighlightNeighbourCells(BaseUnit selectedUnit)
     {
         if (_highlightedTiles.Count != 0)
             UnhighlightCells();
         foreach (var cell in Neighbors(ControllerManager.Instance.SelectedUnitCell()))
         {
-            if (GameManager.Instance.TakenCells.Contains(cell))
+            if (GameManager.Instance.TakenCells.Contains(cell) || MapManager.Instance.GetTurnPoints(selectedUnit, _grid.GetTile(cell)) <= 0)
                 continue;
             _grid.SetTileFlags(cell, TileFlags.None);
             _grid.SetColor(cell, Color.gray);
