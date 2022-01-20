@@ -143,6 +143,7 @@
             <e p="PathTile.cs" t="Include" />
             <e p="SerializedDictionary.cs" t="Include" />
             <e p="Singletone.cs" t="Include" />
+            <e p="TileData.cs" t="Include" />
             <e p="Unit.cs" t="Include" />
           </e>
           <e p="BattleSystem.cs" t="Include" />
@@ -155,9 +156,6 @@
           <e p="MapManager.cs" t="Include" />
           <e p="SoundManager.cs" t="Include" />
           <e p="TilemapDebug.cs" t="Include" />
-          <e p="TilesSO" t="Include">
-            <e p="TileData.cs" t="Include" />
-          </e>
           <e p="TurnManager.cs" t="Include" />
           <e p="UIManager.cs" t="Include" />
           <e p="UnitInteractable.cs" t="Include" />

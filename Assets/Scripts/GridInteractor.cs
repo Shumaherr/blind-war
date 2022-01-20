@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using static Utils;
@@ -60,7 +61,7 @@ public class GridInteractor : BaseInteractable
             UnhighlightCells();
         foreach (var cell in Neighbors(ControllerManager.Instance.SelectedUnitCell()))
         {
-            if (GameManager.Instance.TakenCells.Contains(cell) || MapManager.Instance.GetTurnPoints(selectedUnit, _grid.GetTile(cell)) <= 0)
+            if (GameManager.Instance.TakenCells.Contains(cell) || _grid.GetTile(cell) == null || MapManager.Instance.GetTurnPoints(selectedUnit, _grid.GetTile(cell)) <= 0)
                 continue;
             _grid.SetTileFlags(cell, TileFlags.None);
             _grid.SetColor(cell, Color.gray);
