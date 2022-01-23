@@ -10,11 +10,22 @@ public class UnitInteractable : Unit
     public event OnUnitSelectedDelegate OnUnitSelected;
 
     private Transform _dialogBox;
-
+    private Healthbar _healthbar;
     private string _dialogText;
 
     private TextMeshPro _textMeshPro;
-
+    
+    private int Health
+    {
+        get => _health;
+        set
+        {
+            _health = value;
+            _healthbar.SetHealthLevel((float)_health / baseUnit.MaxHealth);
+            if (value <= 0)
+                UnitDie();
+        }
+    }
     public string DialogText
     {
         get => _dialogText;
@@ -28,11 +39,15 @@ public class UnitInteractable : Unit
     private void Start()
     {
         _dialogBox = transform.Find("Dialog/DialogBox");
+        _healthbar = GetComponentInChildren<Healthbar>();
         DeactivateDialog();
         _textMeshPro = GetComponentInChildren<TextMeshPro>();
         TurnManager.Instance.OnTurnChanged += ChangeTurn;
         Debug.Log("Unit: " + baseUnit.UnitType);
         InitMoves();
+        InitHealth();
+        _healthbar.SetHealthLevel(Health/BaseUnit.MaxHealth);
+        Health = 1;
     }
 
     private void ChangeTurn(TurnStates newturn)
@@ -78,6 +93,11 @@ public class UnitInteractable : Unit
         ControllerManager.Instance.SelectedUnit = this;
         OnUnitSelected?.Invoke(this);
         Debug.Log("Unit clicked" + baseUnit.UnitType);
+    }
+
+    private void UnitDie()
+    {
+        //TODO
     }
 
     public void UsePerk()

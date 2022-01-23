@@ -2,21 +2,23 @@
 
 public enum UnitType
 {
-    Swordman,
-    Spearman,
-    Horseman
+    Stabbing,
+    Cutting,
+    Crushing,
+    Distant,
+    Magic
 }
 
 public abstract class BaseUnit : ScriptableObject
 {
     [SerializeField] protected Sprite baseSprite;
-
     [SerializeField] protected byte damage;
     [SerializeField] private Sprite generalizedSprite;
     [SerializeField] protected UnitType killUnit;
     [SerializeField] protected byte moves;
     [SerializeField] protected UnitType unitType;
-
+    [SerializeField] protected byte maxHealth;
+    
     public UnitType UnitType => unitType;
 
     public UnitType KillUnit => killUnit;
@@ -29,5 +31,6 @@ public abstract class BaseUnit : ScriptableObject
 
     public Sprite BaseSprite => baseSprite;
 
+    public byte MaxHealth => maxHealth;
     public abstract void Use();
 }

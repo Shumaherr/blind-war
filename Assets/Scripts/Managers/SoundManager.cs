@@ -44,27 +44,11 @@ public class SoundManager
     
     public static string GetWinnerSfxEventToPlay(UnitType winner)
     {
-        var eventToPlay = winner switch
-        {
-            UnitType.Swordman => "event:/SFX/characters/death_infantry",
-            UnitType.Spearman => "event:/SFX/characters/death_infantry",
-            UnitType.Horseman => "event:/SFX/characters/death_horseman",
-            _ => throw new ArgumentOutOfRangeException()
-        };
-
-        return eventToPlay;
+        return "event:/SFX/characters/death_infantry";
     }
 
     public static string GetMovementSfxEventToPlay(UnitType unitType)
     {
-        var eventToPlay = unitType switch
-        {
-            UnitType.Swordman => "event:/SFX/characters/move_infantry",
-            UnitType.Spearman => "event:/SFX/characters/move_infantry",
-            UnitType.Horseman => "event:/SFX/characters/move_horseman",
-            _ => throw new ArgumentOutOfRangeException()
-        };
-
-        return eventToPlay;
+        return "event:/SFX/characters/move_infantry";
     }
 }
