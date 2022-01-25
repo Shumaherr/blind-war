@@ -11,11 +11,22 @@ public abstract class Unit : MonoBehaviour
     
     [SerializeField] protected BaseUnit baseUnit;
 
+
+    protected virtual int Health
+    {
+        get => _health;
+        set => _health = value;
+    }
     public int Moves => _moves;
 
     public BaseUnit BaseUnit => baseUnit;
 
     public abstract void InitMoves();
+
+    protected void TakeDamage(int ammount)
+    {
+        Health -= ammount;
+    }
     
     public void InitHealth()
     {

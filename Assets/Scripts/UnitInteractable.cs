@@ -15,7 +15,7 @@ public class UnitInteractable : Unit
 
     private TextMeshPro _textMeshPro;
     
-    private int Health
+    protected override int Health
     {
         get => _health;
         set
