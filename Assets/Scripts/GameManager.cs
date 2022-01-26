@@ -124,7 +124,6 @@ public class GameManager : Singleton<GameManager>
         }
 
         _gridInteractor.HighlightNeighbourCells(unit.BaseUnit);
-        unit.UsePerk();
     }
 
     public EnemyUnit GetEnemyUnitInCell(Vector3Int cell)

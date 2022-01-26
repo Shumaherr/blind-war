@@ -9,6 +9,6 @@ public class TileData : ScriptableObject
 {
     public string tileName;
     public TileBase tileBase;
-    public GenericDictionary<UnitType, byte> movePenalty;
+    public GenericDictionary<UnitType, int> moveCost;
     
 }

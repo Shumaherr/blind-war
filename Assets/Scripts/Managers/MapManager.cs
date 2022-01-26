@@ -24,8 +24,8 @@ public class MapManager : Singleton<MapManager>
     public int GetTurnPoints(BaseUnit unit, TileBase tile)
     {
         if (!_tilesData.ContainsKey(tile))
-            return unit.Moves;
-        return unit.Moves * (_tilesData[tile].movePenalty[unit.UnitType] / 100);
+            return 1;
+        return (int)(_tilesData[tile].moveCost[unit.UnitType]);
     }
 
     public string GetTileName(TileBase tile)

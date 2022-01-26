@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Unit : MonoBehaviour
@@ -7,8 +9,9 @@ public abstract class Unit : MonoBehaviour
     protected int _health;
 
     protected int _level;
-    
-    
+
+    protected List<Item> inventory;
+    protected List<Action> perks;
     [SerializeField] protected BaseUnit baseUnit;
 
 
@@ -23,9 +26,9 @@ public abstract class Unit : MonoBehaviour
 
     public abstract void InitMoves();
 
-    protected void TakeDamage(int ammount)
+    protected void TakeDamage(int amount)
     {
-        Health -= ammount;
+        Health = _health > amount ? Health -= amount : 0;
     }
     
     public void InitHealth()

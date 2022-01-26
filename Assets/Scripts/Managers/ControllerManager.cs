@@ -44,10 +44,10 @@ public class ControllerManager : Singleton<ControllerManager>
                 walkableTilemap.SetTileFlags(vector3Int, TileFlags.None);
                 walkableTilemap.SetColor(vector3Int, Color.magenta);
             }*/
-            _selectedUnit.DeactivateDialog();
+            //_selectedUnit.DeactivateDialog();
             if (!TurnManager.Instance.isPlayerTurn() || !_selectedUnit.CanMove())
                 return;
-            if (MapManager.Instance.GetTurnPoints(_selectedUnit.BaseUnit, walkableTilemap.GetTile(tilePos)) <= 0)
+            if (MapManager.Instance.GetTurnPoints(_selectedUnit.BaseUnit, walkableTilemap.GetTile(tilePos)) > _selectedUnit.Moves)
                 return;
             _selectedUnit.ChangeMoves(MapManager.Instance.GetTurnPoints(_selectedUnit.BaseUnit, walkableTilemap.GetTile(tilePos)));
             if (GameManager.Instance.HasEnemyUnit(tilePos))

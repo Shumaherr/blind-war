@@ -40,14 +40,13 @@ public class UnitInteractable : Unit
     {
         _dialogBox = transform.Find("Dialog/DialogBox");
         _healthbar = GetComponentInChildren<Healthbar>();
-        DeactivateDialog();
+        //DeactivateDialog();
         _textMeshPro = GetComponentInChildren<TextMeshPro>();
         TurnManager.Instance.OnTurnChanged += ChangeTurn;
         Debug.Log("Unit: " + baseUnit.UnitType);
         InitMoves();
         InitHealth();
         _healthbar.SetHealthLevel(Health/BaseUnit.MaxHealth);
-        Health = 1;
     }
 
     private void ChangeTurn(TurnStates newturn)
@@ -89,7 +88,7 @@ public class UnitInteractable : Unit
         if (!TurnManager.Instance.isPlayerTurn())
             return;
         RuntimeManager.PlayOneShot("event:/SFX/ui/select", transform.position);
-        ControllerManager.Instance.SelectedUnit?.DeactivateDialog();
+        //ControllerManager.Instance.SelectedUnit?.DeactivateDialog();
         ControllerManager.Instance.SelectedUnit = this;
         OnUnitSelected?.Invoke(this);
         Debug.Log("Unit clicked" + baseUnit.UnitType);
@@ -98,21 +97,6 @@ public class UnitInteractable : Unit
     private void UnitDie()
     {
         //TODO
-    }
-
-    public void UsePerk()
-    {
-        var neighbourTypes = GameManager.Instance.GetNeighbourUnitTypes();
-        if (neighbourTypes == null)
-        {
-            DialogText = "There is no enemy units";
-            ActivateDialog();
-            return;
-        }
-
-        var tempString = neighbourTypes.Aggregate("I feel ", (current, neighbourType) => current + neighbourType + " ");
-        DialogText = tempString;
-        ActivateDialog();
     }
 
     public void ActivateDialog()

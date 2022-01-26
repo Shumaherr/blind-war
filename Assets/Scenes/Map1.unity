@@ -990,6 +990,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6442041906260730129, guid: 84b44d617d86b864faadd64e3ae16f5f, type: 3}
+      propertyPath: baseUnit
+      value: 
+      objectReference: {fileID: 11400000, guid: 662fa213bacc0014997202515ea4e2bf, type: 2}
     - target: {fileID: 6442041906260730131, guid: 84b44d617d86b864faadd64e3ae16f5f, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1038,6 +1042,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spearman
       objectReference: {fileID: 0}
+    - target: {fileID: 6442041906260730134, guid: 84b44d617d86b864faadd64e3ae16f5f, type: 3}
+      propertyPath: m_TagString
+      value: PlayerUnit
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84b44d617d86b864faadd64e3ae16f5f, type: 3}
 --- !u!1 &1768502650
@@ -1053,6 +1061,7 @@ GameObject:
   - component: {fileID: 1768502652}
   - component: {fileID: 1768502653}
   - component: {fileID: 1768502651}
+  - component: {fileID: 1768502656}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1127,6 +1136,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1768502656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1768502650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2fd1b1dfdee5404ea5c50aa9466f3c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileDatas:
+  - {fileID: 11400000, guid: 81db283c64132ae4da679b96538d3648, type: 2}
 --- !u!1 &1781269788
 GameObject:
   m_ObjectHideFlags: 0
