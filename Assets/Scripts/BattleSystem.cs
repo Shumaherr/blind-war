@@ -1,9 +1,17 @@
 public class BattleSystem
 {
-    public static BaseUnit Fight(BaseUnit firstFighter, BaseUnit secondFighter)
+    public static Unit Fight(Unit firstFighter, Unit secondFighter)
     {
-        if (firstFighter.UnitType == secondFighter.UnitType)
+        if (firstFighter.BaseUnit.KillUnit == secondFighter.BaseUnit.UnitType)
+            return firstFighter;
+        if (secondFighter.BaseUnit.KillUnit == firstFighter.BaseUnit.UnitType)
+            return secondFighter;
+        else
+        {
+            secondFighter.TakeDamage(firstFighter.Damage);
+			if(secondFighter.IsDead)
+				return firstFighter;
             return null;
-        return firstFighter.KillUnit == secondFighter.UnitType ? firstFighter : secondFighter;
+        }
     }
 }

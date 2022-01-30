@@ -44,8 +44,7 @@ public class UnitInteractable : Unit
         _textMeshPro = GetComponentInChildren<TextMeshPro>();
         TurnManager.Instance.OnTurnChanged += ChangeTurn;
         Debug.Log("Unit: " + baseUnit.UnitType);
-        InitMoves();
-        InitHealth();
+        InitUnit();
         _healthbar.SetHealthLevel(Health/BaseUnit.MaxHealth);
     }
 
@@ -94,9 +93,9 @@ public class UnitInteractable : Unit
         Debug.Log("Unit clicked" + baseUnit.UnitType);
     }
 
-    private void UnitDie()
+    protected override void UnitDie()
     {
-        //TODO
+        IsDead = true;
     }
 
     public void ActivateDialog()

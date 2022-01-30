@@ -12,7 +12,7 @@ public enum UnitType
 public abstract class BaseUnit : ScriptableObject
 {
     [SerializeField] protected Sprite baseSprite;
-    [SerializeField] protected byte damage;
+    [SerializeField] protected byte baseDamage;
     [SerializeField] private Sprite generalizedSprite;
     [SerializeField] protected UnitType killUnit;
     [SerializeField] protected byte moves;
@@ -27,7 +27,7 @@ public abstract class BaseUnit : ScriptableObject
 
     public Sprite GeneralizedSprite => generalizedSprite;
 
-    public byte Damage => damage;
+    public byte BaseDamage => baseDamage;
 
     public Sprite BaseSprite => baseSprite;
 

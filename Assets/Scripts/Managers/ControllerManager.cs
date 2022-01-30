@@ -53,13 +53,6 @@ public class ControllerManager : Singleton<ControllerManager>
             if (GameManager.Instance.HasEnemyUnit(tilePos))
                 if (!StartBattle(GameManager.Instance.GetEnemyUnitInCell(tilePos), _selectedUnit))
                     return;
-            if (GameManager.Instance.HasEnemyCity(tilePos))
-            {
-                GameManager.Instance.GetCityInCell(tilePos).TakeDamage(_selectedUnit.BaseUnit.Damage);
-                _gridInteractor.UnhighlightCells();
-                GameManager.Instance.CheckPlayerWin();
-                return;
-            }
 
             MoveUnitToTile(_selectedUnit.transform, tilePos);
             var tempUnit = GameManager.Instance.PlayerUnits[_selectedUnit.GetUnitCell()];
@@ -85,14 +78,11 @@ public class ControllerManager : Singleton<ControllerManager>
 
     public bool StartBattle(Unit enemyUnit, Unit playerUnit)
     {
-        var winner = BattleSystem.Fight(playerUnit.BaseUnit, enemyUnit.BaseUnit);
-        var winnerType = winner != null ? winner.UnitType : playerUnit.BaseUnit.UnitType;
-        RuntimeManager.PlayOneShot(SoundManager.GetWinnerSfxEventToPlay(winnerType), transform.position);
+        var winner = BattleSystem.Fight(playerUnit, enemyUnit);
         if (winner == null)
-        {
-            GameManager.Instance.KillUnit(enemyUnit);
-            GameManager.Instance.KillUnit(playerUnit);
-        }
+            return false;
+        var winnerType = winner != null ? winner.BaseUnit.UnitType : playerUnit.BaseUnit.UnitType;
+        RuntimeManager.PlayOneShot(SoundManager.GetWinnerSfxEventToPlay(winnerType), transform.position);
 
         if (playerUnit.BaseUnit == winner)
         {

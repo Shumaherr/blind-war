@@ -8,7 +8,11 @@ public abstract class Unit : MonoBehaviour
 
     protected int _health;
 
+    protected int _damage;
+
     protected int _level;
+
+    protected bool isDead;
 
     protected List<Item> inventory;
     protected List<Action> perks;
@@ -20,20 +24,41 @@ public abstract class Unit : MonoBehaviour
         get => _health;
         set => _health = value;
     }
+    public int Damage => _damage;
     public int Moves => _moves;
+
+    public bool IsDead
+    {
+        get => isDead;
+        set => isDead = value;
+    }
 
     public BaseUnit BaseUnit => baseUnit;
 
     public abstract void InitMoves();
 
-    protected void TakeDamage(int amount)
+    public void TakeDamage(int amount)
     {
         Health = _health > amount ? Health -= amount : 0;
     }
     
-    public void InitHealth()
+    private void InitHealth()
     {
         _health = baseUnit.MaxHealth;
     }
+
+    private void InitDamage()
+    {
+        _damage = BaseUnit.BaseDamage;
+    }
+
+    protected void InitUnit()
+    {
+        InitHealth();
+        InitMoves();
+        InitDamage();
+    }
+
+    protected abstract void UnitDie();
     public abstract Vector3Int GetUnitCell();
 }

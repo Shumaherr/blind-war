@@ -12,6 +12,7 @@ public class EnemyUnit : Unit
     {
         _renderer = GetComponentInChildren<SpriteRenderer>();
         _renderer.sprite = BaseUnit.GeneralizedSprite;
+        InitUnit();
     }
 
     public void HideUnit()
@@ -105,12 +106,6 @@ public class EnemyUnit : Unit
                     GameManager.Instance.PlayerUnits[cell]);
                 ChangeMoves();
             }
-
-            if (GameManager.Instance.HasPlayerCity(cell))
-            {
-                GameManager.Instance.GetCityInCell(cell).TakeDamage(BaseUnit.Damage);
-                ChangeMoves();
-            }
         }
     }
 
@@ -122,6 +117,11 @@ public class EnemyUnit : Unit
     private bool CanMove()
     {
         return _moves > 0;
+    }
+
+    protected override void UnitDie()
+    {
+        IsDead = true;
     }
 
     private bool IsNearPlayerUnit()
