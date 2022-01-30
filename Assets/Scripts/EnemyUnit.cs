@@ -7,6 +7,17 @@ public class EnemyUnit : Unit
 {
     private List<Vector3Int> _currentPath;
     private SpriteRenderer _renderer;
+    
+    protected override int Health
+    {
+        get => _health;
+        set
+        {
+            _health = value;
+            if (value <= 0)
+                UnitDie();
+        }
+    }
 
     private void Start()
     {

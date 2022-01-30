@@ -96,6 +96,7 @@ public class UnitInteractable : Unit
     protected override void UnitDie()
     {
         IsDead = true;
+        
     }
 
     public void ActivateDialog()

@@ -70,6 +70,8 @@ public class GameManager : Singleton<GameManager>
 
         _gridInteractor = grid.GetComponent<GridInteractor>();
         foreach (var unit in PlayerUnits) unit.Value.OnUnitSelected += UnitOnOnUnitSelected;
+		foreach (var unit in PlayerUnits) unit.Value.OnUnitDie += OnUnitDie;
+		foreach (var unit in EnemyUnitsPos) unit.Value.OnUnitDie += OnUnitDie;
 
         foreach (var city in GameObject.FindGameObjectsWithTag("PlayerCity"))
         {
@@ -114,6 +116,11 @@ public class GameManager : Singleton<GameManager>
             TurnManager.Instance.ChangeTurn();
         }
     }
+
+	private void OnUnitDie(Unit unit)
+	{
+		KillUnit(unit);
+	}
 
     private void UnitOnOnUnitSelected(UnitInteractable unit)
     {

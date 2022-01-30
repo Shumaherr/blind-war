@@ -30,16 +30,25 @@ public abstract class Unit : MonoBehaviour
     public bool IsDead
     {
         get => isDead;
-        set => isDead = value;
+        set
+		{
+			isDead = value;
+			if(value)
+				OnUnitDie?.Invoke(this);
+		}
     }
 
     public BaseUnit BaseUnit => baseUnit;
+
+	public delegate void OnUnitDieDelegate(Unit unit);
+    public event OnUnitDieDelegate OnUnitDie;
 
     public abstract void InitMoves();
 
     public void TakeDamage(int amount)
     {
         Health = _health > amount ? Health -= amount : 0;
+		Debug.Log("Taken "+ amount + " damage. Health: " + Health);
     }
     
     private void InitHealth()
