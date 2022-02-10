@@ -78,6 +78,8 @@ public class ControllerManager : Singleton<ControllerManager>
 
     public bool StartBattle(Unit enemyUnit, Unit playerUnit)
     {
+        if (!enemyUnit.enabled || !playerUnit.enabled)
+            return false;
         var winner = BattleSystem.Fight(playerUnit, enemyUnit);
         if (winner == null)
             return false;

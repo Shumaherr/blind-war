@@ -9,8 +9,6 @@ public class BattleSystem
         else
         {
             secondFighter.TakeDamage(firstFighter.Damage);
-			if(secondFighter.IsDead)
-				return firstFighter;
             return null;
         }
     }

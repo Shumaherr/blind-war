@@ -50,7 +50,7 @@ public abstract class Unit : MonoBehaviour
         Health = _health > amount ? Health -= amount : 0;
 		Debug.Log("Taken "+ amount + " damage. Health: " + Health);
     }
-    
+
     private void InitHealth()
     {
         _health = baseUnit.MaxHealth;
@@ -66,6 +66,7 @@ public abstract class Unit : MonoBehaviour
         InitHealth();
         InitMoves();
         InitDamage();
+        IsDead = false;
     }
 
     protected abstract void UnitDie();

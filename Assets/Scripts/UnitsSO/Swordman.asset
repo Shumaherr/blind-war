@@ -15,7 +15,7 @@ MonoBehaviour:
   baseSprite: {fileID: 0}
   baseDamage: 2
   generalizedSprite: {fileID: 21300000, guid: 18976d4e3f0ec4e4a8f7ebbab8e062bd, type: 3}
-  killUnit: 1
+  killUnit: 4
   moves: 1
-  unitType: 0
-  maxHealth: 10
+  unitType: 1
+  maxHealth: 2

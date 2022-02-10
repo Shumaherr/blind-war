@@ -18,4 +18,4 @@ MonoBehaviour:
   killUnit: 2
   moves: 2
   unitType: 0
-  maxHealth: 10
+  maxHealth: 2
