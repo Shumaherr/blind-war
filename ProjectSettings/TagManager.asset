@@ -8,6 +8,7 @@ TagManager:
   - AIUnit
   - PlayerCity
   - AICity
+  - Grid
   layers:
   - Default
   - TransparentFX

@@ -9,11 +9,11 @@ public class UnitInteractable : Unit
     public delegate void OnUnitSelectedDelegate(UnitInteractable unit);
     public event OnUnitSelectedDelegate OnUnitSelected;
 
-    private Transform _dialogBox;
-    private Healthbar _healthbar;
-    private string _dialogText;
+    protected Transform _dialogBox;
+    protected Healthbar _healthbar;
+    protected string _dialogText;
 
-    private TextMeshPro _textMeshPro;
+    protected TextMeshPro _textMeshPro;
     
     protected override int Health
     {
@@ -36,19 +36,18 @@ public class UnitInteractable : Unit
         }
     }
     
-    private void Start()
+    protected virtual void Awake()
     {
         _dialogBox = transform.Find("Dialog/DialogBox");
         _healthbar = GetComponentInChildren<Healthbar>();
         //DeactivateDialog();
         _textMeshPro = GetComponentInChildren<TextMeshPro>();
         TurnManager.Instance.OnTurnChanged += ChangeTurn;
-        Debug.Log("Unit: " + baseUnit.UnitType);
         InitUnit();
         _healthbar.SetHealthLevel(Health/BaseUnit.MaxHealth);
     }
 
-    private void ChangeTurn(TurnStates newturn)
+    protected void ChangeTurn(TurnStates newturn)
     {
         switch (newturn)
         {
@@ -77,12 +76,9 @@ public class UnitInteractable : Unit
         _moves = baseUnit.Moves;
     }
 
-    public override Vector3Int GetUnitCell()
-    {
-        return GameManager.Instance.Grid.WorldToCell(transform.position);
-    }
+    
 
-    private void OnMouseDown()
+    protected void OnMouseDown()
     {
         if (!TurnManager.Instance.isPlayerTurn())
             return;
@@ -90,7 +86,7 @@ public class UnitInteractable : Unit
         //ControllerManager.Instance.SelectedUnit?.DeactivateDialog();
         ControllerManager.Instance.SelectedUnit = this;
         OnUnitSelected?.Invoke(this);
-        Debug.Log("Unit clicked" + baseUnit.UnitType);
+        
     }
 
     protected override void UnitDie()

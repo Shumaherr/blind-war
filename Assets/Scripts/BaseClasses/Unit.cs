@@ -14,8 +14,15 @@ public abstract class Unit : MonoBehaviour
 
     protected bool isDead;
 
-    protected List<Item> inventory;
-    protected List<Action> perks;
+    [SerializeField] protected List<Item> inventory = new List<Item>();
+
+    public List<Item> Inventory
+    {
+        get => inventory;
+        set => inventory = value;
+    }
+
+    protected List<Action> perks = new List<Action>();
     [SerializeField] protected BaseUnit baseUnit;
 
 
@@ -50,6 +57,7 @@ public abstract class Unit : MonoBehaviour
         Health = _health > amount ? Health -= amount : 0;
 		Debug.Log("Taken "+ amount + " damage. Health: " + Health);
     }
+    
 
     private void InitHealth()
     {
@@ -67,8 +75,12 @@ public abstract class Unit : MonoBehaviour
         InitMoves();
         InitDamage();
         IsDead = false;
+        
     }
 
     protected abstract void UnitDie();
-    public abstract Vector3Int GetUnitCell();
+    public Vector3Int GetUnitCell()
+    {
+        return GameManager.Instance.Grid.WorldToCell(transform.position);
+    }
 }
