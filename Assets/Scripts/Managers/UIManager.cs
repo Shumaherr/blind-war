@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -15,12 +16,22 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         TurnManager.Instance.OnTurnChanged += OnTurnChanged;
-        //iconsSlots = new List<RawImage>();
+        iconsSlots.ForEach(item => item.GetComponent<ItemSelector>().OnItemSelected += OnOnItemSelected);
         HideInventory();
+    }
+
+    private void OnOnItemSelected(int itemnum)
+    {
+        if (ControllerManager.Instance.SelectedUnit.Inventory.Count > 0)
+        {
+
+            ControllerManager.Instance.SelectedUnit.Inventory[itemnum].TryToUse();
+        }
     }
 
     public void HideInventory()
     {
+        iconsSlots.ForEach(item => item.texture = null);
         inventoryCanvas.gameObject.SetActive(false);
     }
     
@@ -43,5 +54,11 @@ public class UIManager : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene("SampleScene");
+    }
+
+    public void UpdateInventory()
+    {
+        HideInventory();
+        ShowInventory();
     }
 }

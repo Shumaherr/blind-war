@@ -13,6 +13,7 @@ public class Grenade : Item
 
     protected override void Use()
     {
-        //TODO
+        Debug.Log("Grenade used");
+        
     }
 }

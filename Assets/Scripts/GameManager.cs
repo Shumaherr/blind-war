@@ -280,4 +280,9 @@ public class GameManager : Singleton<GameManager>
 
         return neighbourUnits.Count == 0 ? null : neighbourUnits;
     }
+
+    public void UpdateInventoryUI()
+    {
+        _uiManager.UpdateInventory();
+    }
 }

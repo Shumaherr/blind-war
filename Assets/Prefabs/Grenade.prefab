@@ -45,3 +45,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: e9d4143c19529834981ac6821a04aecd, type: 3}
   name: Grenade
+  usable: 1
