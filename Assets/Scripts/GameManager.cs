@@ -285,4 +285,10 @@ public class GameManager : Singleton<GameManager>
     {
         _uiManager.UpdateInventory();
     }
+
+    public void UnselectUnit()
+    {
+        _gridInteractor.UnhighlightCells();
+        _uiManager.HideInventory();
+    }
 }

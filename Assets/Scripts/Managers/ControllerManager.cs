@@ -19,8 +19,8 @@ public class ControllerManager : Singleton<ControllerManager>
         get => _selectedUnit;
         set
         {
-            if (value == null)
-                _gridInteractor.UnhighlightCells();
+            
+                GameManager.Instance.UnselectUnit(); //TODO redraw inventory
             _selectedUnit = value;
         }
     }

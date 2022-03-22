@@ -17,5 +17,5 @@ MonoBehaviour:
   moveCost:
     list:
     - Key: 0
-      Value: 2
+      Value: 1
     keyCollision: 0
