@@ -19,8 +19,7 @@ public class ControllerManager : Singleton<ControllerManager>
         get => _selectedUnit;
         set
         {
-            
-                GameManager.Instance.UnselectUnit(); //TODO redraw inventory
+            GameManager.Instance.UnselectUnit();
             _selectedUnit = value;
         }
     }

@@ -32,7 +32,11 @@ public abstract class Unit : MonoBehaviour
         set => _health = value;
     }
     public int Damage => _damage;
-    public int Moves => _moves;
+    public virtual int Moves
+    {
+        get => _moves;
+        set => _moves = value;
+    }
 
     public bool IsDead
     {

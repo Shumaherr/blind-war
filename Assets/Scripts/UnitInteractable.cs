@@ -11,6 +11,7 @@ public class UnitInteractable : Unit
 
     protected Transform _dialogBox;
     protected Healthbar _healthbar;
+    protected TurnBar _turnBar;
     protected string _dialogText;
 
     protected TextMeshPro _textMeshPro;
@@ -24,6 +25,16 @@ public class UnitInteractable : Unit
             _healthbar.SetHealthLevel((float)_health / baseUnit.MaxHealth);
             if (value <= 0)
                 UnitDie();
+        }
+    }
+    
+    public override int Moves
+    {
+        get => _moves;
+        set
+        {
+            _moves = value;
+            _turnBar.SetTurnText(_moves, BaseUnit.Moves);
         }
     }
     public string DialogText
@@ -40,6 +51,7 @@ public class UnitInteractable : Unit
     {
         _dialogBox = transform.Find("Dialog/DialogBox");
         _healthbar = GetComponentInChildren<Healthbar>();
+        _turnBar = GetComponentInChildren<TurnBar>();
         //DeactivateDialog();
         _textMeshPro = GetComponentInChildren<TextMeshPro>();
         TurnManager.Instance.OnTurnChanged += ChangeTurn;
@@ -63,7 +75,7 @@ public class UnitInteractable : Unit
 
     public void ChangeMoves(int moves = 1)
     {
-        _moves = Math.Max(0, _moves - moves);
+        Moves = Math.Max(0, _moves - moves);
     }
 
     public bool CanMove()
@@ -73,7 +85,7 @@ public class UnitInteractable : Unit
 
     public override void InitMoves()
     {
-        _moves = baseUnit.Moves;
+        Moves = baseUnit.Moves;
     }
 
     
