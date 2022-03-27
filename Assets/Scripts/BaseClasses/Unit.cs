@@ -54,14 +54,10 @@ public abstract class Unit : MonoBehaviour
 	public delegate void OnUnitDieDelegate(Unit unit);
     public event OnUnitDieDelegate OnUnitDie;
 
-    public abstract void InitMoves();
+    protected abstract void InitMoves();
 
-    public void TakeDamage(int amount)
-    {
-        Health = _health > amount ? Health -= amount : 0;
-		Debug.Log("Taken "+ amount + " damage. Health: " + Health);
-    }
-    
+    public abstract void TakeDamage(int amount);
+
 
     private void InitHealth()
     {

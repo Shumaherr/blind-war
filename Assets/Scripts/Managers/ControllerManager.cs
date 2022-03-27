@@ -50,7 +50,7 @@ public class ControllerManager : Singleton<ControllerManager>
                 return;
             _selectedUnit.ChangeMoves(MapManager.Instance.GetTurnPoints(_selectedUnit.BaseUnit, walkableTilemap.GetTile(tilePos)));
             if (GameManager.Instance.HasEnemyUnit(tilePos))
-                if (!StartBattle(GameManager.Instance.GetEnemyUnitInCell(tilePos), _selectedUnit))
+                if (!StartBattle(_selectedUnit, GameManager.Instance.GetEnemyUnitInCell(tilePos)))
                     return;
 
             MoveUnitToTile(_selectedUnit.transform, tilePos);
@@ -85,7 +85,7 @@ public class ControllerManager : Singleton<ControllerManager>
         var winnerType = winner != null ? winner.BaseUnit.UnitType : playerUnit.BaseUnit.UnitType;
         RuntimeManager.PlayOneShot(SoundManager.GetWinnerSfxEventToPlay(winnerType), transform.position);
 
-        if (playerUnit.BaseUnit == winner)
+        if (playerUnit == winner)
         {
             GameManager.Instance.KillUnit(enemyUnit);
             return true;

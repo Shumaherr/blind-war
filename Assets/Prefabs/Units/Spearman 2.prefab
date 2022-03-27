@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4554517550052528155}
   - component: {fileID: 4445222968466385866}
   - component: {fileID: 8527825106675254296}
+  - component: {fileID: 2582500170349778484}
   m_Layer: 0
   m_Name: TurnsBar
   m_TagString: Untagged
@@ -170,6 +171,18 @@ MonoBehaviour:
   _SortingLayer: 0
   _SortingLayerID: 0
   _SortingOrder: 0
+--- !u!114 &2582500170349778484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5786599456998364738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ed53d5cbaf8144468426b3a3e0fc551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7485839877856229051
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,7 +275,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7485839878214109499}
   - component: {fileID: 7485839878214109496}
-  - component: {fileID: 4505201951381387419}
+  - component: {fileID: 8356646315945811002}
   m_Layer: 0
   m_Name: Spearman 2
   m_TagString: PlayerUnit
@@ -303,7 +316,7 @@ CapsuleCollider2D:
   m_Offset: {x: -0.009687692, y: 0.080730796}
   m_Size: {x: 0.66146153, y: 1.1097934}
   m_Direction: 0
---- !u!114 &4505201951381387419
+--- !u!114 &8356646315945811002
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

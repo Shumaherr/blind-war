@@ -8,7 +8,7 @@ public class BattleSystem
             return secondFighter;
         else
         {
-            secondFighter.TakeDamage(firstFighter.Damage);
+            firstFighter.TakeDamage(secondFighter.Damage);
             return null;
         }
     }
