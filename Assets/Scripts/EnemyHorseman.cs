@@ -22,8 +22,8 @@ public class EnemyHorseman : EnemyUnitBase
     
     public override void DoTurn()
     {
-        InitMoves();
-        var pathes = new List<List<Vector3Int>>();
+        base.DoTurn();
+            var pathes = new List<List<Vector3Int>>();
         foreach (var unit in GameManager.Instance.PlayerUnits)
             pathes.Add(GameManager.Instance.GetPath(transform.position, unit.Key));
         

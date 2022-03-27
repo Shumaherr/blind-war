@@ -13,5 +13,7 @@ public class EnemySwordman : EnemyUnitBase
     public override void DoTurn()
     {
         base.DoTurn();
+        DoFight();
+        ChangeMoves();
     }
 }

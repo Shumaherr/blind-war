@@ -59,7 +59,7 @@ public class EnemyUnitBase : Unit
 
     public virtual void DoTurn()
     {
-
+        InitMoves();
 
     }
 
@@ -78,11 +78,11 @@ public class EnemyUnitBase : Unit
 
     protected void DoFight()
     {
+        if (!CanMove())
+            return;
         var unitCell = GetUnitCell();
         foreach (var cell in Utils.Neighbors(unitCell))
         {
-            if (!CanMove())
-                return;
             if (GameManager.Instance.HasPlayerUnit(cell))
             {
                 ControllerManager.Instance.StartBattle(this,
