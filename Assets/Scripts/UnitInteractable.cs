@@ -15,7 +15,7 @@ public class UnitInteractable : Unit
     protected string _dialogText;
 
     protected TextMeshPro _textMeshPro;
-    
+
     protected override int Health
     {
         get => _health;
@@ -46,9 +46,16 @@ public class UnitInteractable : Unit
             _textMeshPro.text = _dialogText;
         }
     }
-    
+
+    public override void TakeDamage(int amount)
+    {
+        Health = _health > amount ? Health -= amount : 0;
+        Debug.Log("Taken "+ amount + " damage. Health: " + Health);
+    }
+
     protected virtual void Awake()
     {
+        //enabled = true;
         _dialogBox = transform.Find("Dialog/DialogBox");
         _healthbar = GetComponentInChildren<Healthbar>();
         _turnBar = GetComponentInChildren<TurnBar>();
@@ -84,7 +91,7 @@ public class UnitInteractable : Unit
         return _moves > 0;
     }
 
-    public override void InitMoves()
+    protected override void InitMoves()
     {
         Moves = baseUnit.Moves;
     }

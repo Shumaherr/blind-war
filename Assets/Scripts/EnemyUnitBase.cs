@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EnemyUnitBase : Unit
 {
-    private List<Vector3Int> _currentPath;
+    protected List<Vector3Int> _currentPath;
     private SpriteRenderer _renderer;
     
     protected override int Health
@@ -36,9 +36,15 @@ public class EnemyUnitBase : Unit
         _renderer.enabled = true;
     }
 
-    public override void InitMoves()
+    protected override void InitMoves()
     {
         _moves = baseUnit.Moves;
+    }
+
+    public override void TakeDamage(int amount)
+    {
+        Health = _health > amount ? Health -= amount : 0;
+        Debug.Log("Taken "+ amount + " damage. Health: " + Health);
     }
 
     public void ChangeMoves(int moves = 1)
@@ -48,46 +54,13 @@ public class EnemyUnitBase : Unit
 
     public virtual void DoMove()
     {
-        var lastStep = 0;
-        for (var i = 1; i < _currentPath.Count; i++)
-        {
-            if (Moves == 0)
-                break;
-            ControllerManager.Instance.MoveUnitToTile(transform, _currentPath[i]);
-            lastStep = i;
-            ChangeMoves();
-        }
-
-        GameManager.Instance.ChangeEnemyCell(_currentPath[0], _currentPath[lastStep]);
+        
     }
 
-    public void DoTurn()
+    public virtual void DoTurn()
     {
         InitMoves();
-        var pathes = new List<List<Vector3Int>>();
-        foreach (var unit in GameManager.Instance.PlayerUnits.Where(pair =>
-            pair.Value.BaseUnit.UnitType == BaseUnit.KillUnit))
-            pathes.Add(GameManager.Instance.GetPath(transform.position, unit.Key));
 
-        foreach (var city in GameManager.Instance.AllCities.Where(pair => pair.Value.Owner == CityOwner.Player))
-            pathes.Add(GameManager.Instance.GetPath(transform.position, city.Key));
-        if (pathes.Count == 0) //TODO what to do if no targets was found
-            return;
-        var min = 0;
-        for (var i = 1; i < pathes.Count; i++)
-            if (pathes[i].Count < pathes[min].Count)
-                min = i;
-
-        //pathes[min].RemoveAt(0);
-        if (pathes[min] != null)
-        {
-            pathes[min].RemoveAt(pathes[min].Count - 1);
-            _currentPath = new List<Vector3Int>(pathes[min]);
-            DoMove();
-        }
-
-        DoFight();
-        ChangeMoves();
     }
 
     public void ChangeVisibility()
@@ -103,15 +76,14 @@ public class EnemyUnitBase : Unit
         ChangeVisibility();
     }
 
-    private void DoFight()
+    protected void DoFight()
     {
+        if (!CanMove())
+            return;
         var unitCell = GetUnitCell();
         foreach (var cell in Utils.Neighbors(unitCell))
         {
-            if (!CanMove())
-                return;
-            if (GameManager.Instance.HasPlayerUnit(cell) &&
-                GameManager.Instance.PlayerUnits[cell].BaseUnit.UnitType == BaseUnit.KillUnit)
+            if (GameManager.Instance.HasPlayerUnit(cell))
             {
                 ControllerManager.Instance.StartBattle(this,
                     GameManager.Instance.PlayerUnits[cell]);
