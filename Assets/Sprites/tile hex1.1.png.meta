@@ -336,6 +336,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -345,11 +346,11 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: -1
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -367,6 +368,8 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
@@ -845,6 +848,26 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      tile hex1.1_11: 2210829288274963915
+      tile hex1.1_14: 872331327505930906
+      tile hex1.1_12: -406788314978547159
+      tile hex1.1_13: 2123860011422000718
+      tile hex1.1_2: -6948219669329309732
+      tile hex1.1_17: 1431400149538939427
+      tile hex1.1_16: 840231682455219832
+      tile hex1.1_8: 2754943707801833824
+      tile hex1.1_7: -3457654733911124799
+      tile hex1.1_1: 5521069736143711340
+      tile hex1.1_9: -4526353001515785514
+      tile hex1.1_5: 1802362920695584097
+      tile hex1.1_3: -8348605524000018226
+      tile hex1.1_10: -6258649111019882037
+      tile hex1.1_0: 6839062919005989867
+      tile hex1.1_4: -8638847186088233923
+      tile hex1.1_15: -2287413527512787688
+      tile hex1.1_6: -2003980049278208260
+      tile hex1.1_18: 9002075611032346121
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

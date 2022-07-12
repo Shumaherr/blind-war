@@ -57,6 +57,7 @@ public class UnitInteractable : Unit
         TurnManager.Instance.OnTurnChanged += ChangeTurn;
         InitUnit();
         _healthbar.SetHealthLevel(Health/BaseUnit.MaxHealth);
+        
     }
 
     protected void ChangeTurn(TurnStates newturn)
