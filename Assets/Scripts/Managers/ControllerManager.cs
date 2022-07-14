@@ -46,9 +46,9 @@ public class ControllerManager : Singleton<ControllerManager>
             //_selectedUnit.DeactivateDialog();
             if (!TurnManager.Instance.isPlayerTurn() || !_selectedUnit.CanMove())
                 return;
-            if (MapManager.Instance.GetTurnPoints(_selectedUnit.BaseUnit, walkableTilemap.GetTile(tilePos)) > _selectedUnit.Moves)
+            if (MapManager.Instance.GetMoveCosts(_selectedUnit.BaseUnit, walkableTilemap.GetTile(tilePos)) >= _selectedUnit.Moves)
                 return;
-            _selectedUnit.ChangeMoves(MapManager.Instance.GetTurnPoints(_selectedUnit.BaseUnit, walkableTilemap.GetTile(tilePos)));
+            _selectedUnit.ChangeMoves(MapManager.Instance.GetMoveCosts(_selectedUnit.BaseUnit, walkableTilemap.GetTile(tilePos)));
             if (GameManager.Instance.HasEnemyUnit(tilePos))
                 if (!StartBattle(_selectedUnit, GameManager.Instance.GetEnemyUnitInCell(tilePos)))
                     return;

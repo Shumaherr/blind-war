@@ -2,8 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class MinimapController : MonoBehaviour
+public class MinimapController : MonoBehaviour, IPointerClickHandler
 {
 
     public Material cameraBoxMaterial;
@@ -81,4 +82,23 @@ public class MinimapController : MonoBehaviour
         GL.PopMatrix();
     }
 
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        Debug.Log("Minimap clicked at: " + eventData.position);
+        var miniMapRect = GetComponent<RectTransform>().rect;
+        var screenRect = new Rect(
+            transform.position.x, 
+            transform.position.y, 
+            miniMapRect.width, miniMapRect.height);
+    
+        var mousePos = Input.mousePosition;
+        mousePos.y -= screenRect.y;
+        mousePos.x -= screenRect.x;
+
+        var camPos = new Vector3(
+            mousePos.x *  (GameManager.Instance.Grid.size.x * GameManager.Instance.Grid.cellSize.x / screenRect.width),
+            mousePos.y *  (GameManager.Instance.Grid.size.y * GameManager.Instance.Grid.cellSize.y / screenRect.height),
+            Camera.main.transform.position.z);
+        Camera.main.transform.position = camPos;
+    }
 }

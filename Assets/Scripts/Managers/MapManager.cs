@@ -21,7 +21,7 @@ public class MapManager : Singleton<MapManager>
         }
     }
 
-    public int GetTurnPoints(BaseUnit unit, TileBase tile)
+    public int GetMoveCosts(BaseUnit unit, TileBase tile)
     {
         if (!_tilesData.ContainsKey(tile))
             return 1;

@@ -62,7 +62,7 @@ public class GridInteractor : BaseInteractable
         foreach (var cell in Neighbors(ControllerManager.Instance.SelectedUnitCell()))
         {
             if (GameManager.Instance.TakenCells.Contains(cell) || _grid.GetTile(cell) == null || 
-                MapManager.Instance.GetTurnPoints(selectedUnit, _grid.GetTile(cell)) > selectedUnit.Moves)
+                MapManager.Instance.GetMoveCosts(selectedUnit, _grid.GetTile(cell)) >= selectedUnit.Moves)
                 continue;
             _grid.SetTileFlags(cell, TileFlags.None);
             _grid.SetColor(cell, Color.gray);

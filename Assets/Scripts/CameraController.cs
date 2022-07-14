@@ -175,7 +175,7 @@ public class CameraController : MonoBehaviour {
             //movement limits
             pos = transform.position;
             pos.y = Mathf.Clamp(pos.y, heightLimit.x, heightLimit.y);
-            pos.z = Mathf.Clamp(pos.z, lenghtLimit.x, lenghtLimit.y);
+            //pos.z = Mathf.Clamp(pos.z, lenghtLimit.x, lenghtLimit.y);
             pos.x = Mathf.Clamp(pos.x, widthLimit.x, widthLimit.y);
             transform.position = pos;
         }
