@@ -8,7 +8,7 @@ public class TurnBar : MonoBehaviour
 {
     private TextMeshPro _turnText;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         _turnText = GetComponent<TextMeshPro>();
     }

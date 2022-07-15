@@ -24,14 +24,14 @@ public class ControllerManager : Singleton<ControllerManager>
         }
     }
 
-    private void Start()
+    public void Start()
     {
-        _gridInteractor = walkableTilemap.GetComponent<GridInteractor>();
+        _gridInteractor = GameObject.FindGameObjectWithTag("Grid").GetComponent<GridInteractor>();
         instance = new EventInstance();
         _gridInteractor.OnTileSelected += TileSelected;
         //Subscribe to event click on tile
     }
-
+    
     private void TileSelected(Vector3Int tilePos)
     {
          if (_selectedUnit)
@@ -46,7 +46,7 @@ public class ControllerManager : Singleton<ControllerManager>
             //_selectedUnit.DeactivateDialog();
             if (!TurnManager.Instance.isPlayerTurn() || !_selectedUnit.CanMove())
                 return;
-            if (MapManager.Instance.GetMoveCosts(_selectedUnit.BaseUnit, walkableTilemap.GetTile(tilePos)) >= _selectedUnit.Moves)
+            if (MapManager.Instance.GetMoveCosts(_selectedUnit.BaseUnit, walkableTilemap.GetTile(tilePos)) > _selectedUnit.Moves)
                 return;
             _selectedUnit.ChangeMoves(MapManager.Instance.GetMoveCosts(_selectedUnit.BaseUnit, walkableTilemap.GetTile(tilePos)));
             if (GameManager.Instance.HasEnemyUnit(tilePos))

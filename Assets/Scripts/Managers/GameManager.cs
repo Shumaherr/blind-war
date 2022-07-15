@@ -46,8 +46,9 @@ public class GameManager : Singleton<GameManager>
     public delegate void OnGameStateChangedDelegate(GameState newState);
     public event OnGameStateChangedDelegate OnGameStateChanged;
 
-    private void Start()
+    private void Awake()
     {
+        
         _soundManager = new SoundManager();
         _uiManager = GetComponent<UIManager>();
         GameState = GameState.GameInit;
@@ -70,7 +71,7 @@ public class GameManager : Singleton<GameManager>
             EnemyUnitsPos.Add(grid.WorldToCell(o.transform.position), o.GetComponent<EnemyUnitBase>());
         }
 
-        _gridInteractor = grid.GetComponent<GridInteractor>();
+        _gridInteractor = GameObject.FindGameObjectWithTag("Grid").GetComponent<GridInteractor>();
         foreach (var unit in PlayerUnits) unit.Value.OnUnitSelected += UnitOnOnUnitSelected;
 		foreach (var unit in PlayerUnits) unit.Value.OnUnitDie += OnUnitDie;
 		foreach (var unit in EnemyUnitsPos) unit.Value.OnUnitDie += OnUnitDie;
@@ -114,8 +115,7 @@ public class GameManager : Singleton<GameManager>
 
             _enemyUnitsToDelete = new List<EnemyUnitBase>();
             foreach (var unit in _enemyUnits) unit.DoTurn();
-
-            TurnManager.Instance.ChangeTurn();
+            
         }
     }
 
