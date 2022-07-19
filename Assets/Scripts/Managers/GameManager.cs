@@ -45,12 +45,20 @@ public class GameManager : Singleton<GameManager>
     
     public delegate void OnGameStateChangedDelegate(GameState newState);
     public event OnGameStateChangedDelegate OnGameStateChanged;
+    private SpawnManager _spawnManager;
+
+    public SpawnManager SpawnManager
+    {
+        get => _spawnManager;
+        set => _spawnManager = value;
+    }
 
     private void Awake()
     {
         
         _soundManager = new SoundManager();
         _uiManager = GetComponent<UIManager>();
+        _spawnManager = GetComponent<SpawnManager>();
         GameState = GameState.GameInit;
         PlayerUnits = new Dictionary<Vector3Int, UnitInteractable>();
         EnemyUnitsPos = new Dictionary<Vector3Int, EnemyUnitBase>();
@@ -291,4 +299,43 @@ public class GameManager : Singleton<GameManager>
         _gridInteractor.UnhighlightCells();
         _uiManager.HideInventory();
     }
+    public Vector3Int GetFreeNeighbourCell(Vector3Int cell)
+    {
+        var neighbours = Utils.Neighbors(cell);
+        foreach (var neighbour in neighbours)
+            if (!IsCellTaken(neighbour))
+                return neighbour;
+        return Vector3Int.zero;
+    }
+
+    public Vector3Int GetFreeRandomNeighbourCell(Vector3Int cell)
+    {
+        var neighbours = Utils.Neighbors(cell);
+        var vector3Ints = neighbours.ToList();
+        var randomCell = vector3Ints.ElementAt(Random.Range(0, vector3Ints.Count()));
+        while ((randomCell == Vector3Int.zero || IsCellTaken(randomCell)) && vector3Ints.Count > 0)
+        {
+            vector3Ints.Remove(randomCell);
+            randomCell = vector3Ints.ElementAt(Random.Range(0, vector3Ints.Count()));
+        }
+        return vector3Ints.Count > 0 ? randomCell : Vector3Int.zero; //TODO change Vector3Int.zero to error
+    }
+    
+    public void AddUnitToList(Transform unit)
+    {
+        if (unit.gameObject.CompareTag("AIUnit"))
+        {
+            EnemyUnitsPos.Add(unit.GetComponent<EnemyUnitBase>().GetUnitCell(), unit.GetComponent<EnemyUnitBase>());
+        }
+        else
+        {
+            PlayerUnits.Add(unit.GetComponent<UnitInteractable>().GetUnitCell(), unit.GetComponent<UnitInteractable>());
+            TakenCells.Add(unit.GetComponent<UnitInteractable>().GetUnitCell());
+            unit.GetComponent<UnitInteractable>().OnUnitSelected += UnitOnOnUnitSelected;
+            
+        }
+        
+    }
+    
+
 }

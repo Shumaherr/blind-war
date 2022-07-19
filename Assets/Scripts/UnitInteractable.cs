@@ -3,12 +3,12 @@ using System.Linq;
 using FMODUnity;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class UnitInteractable : Unit
 {
-    public delegate void OnUnitSelectedDelegate(UnitInteractable unit);
-    public event OnUnitSelectedDelegate OnUnitSelected;
-
+    public event Action<UnitInteractable> OnUnitSelected;
+    
     protected Transform _dialogBox;
     protected Healthbar _healthbar;
     protected TurnBar _turnBar;
@@ -56,7 +56,7 @@ public class UnitInteractable : Unit
     protected virtual void Awake()
     {
         //enabled = true;
-        _dialogBox = transform.Find("Dialog/DialogBox");
+        
         _healthbar = GetComponentInChildren<Healthbar>();
         _turnBar = GetComponentInChildren<TurnBar>();
         //DeactivateDialog();
@@ -64,7 +64,6 @@ public class UnitInteractable : Unit
         TurnManager.Instance.OnTurnChanged += ChangeTurn;
         InitUnit();
         _healthbar.SetHealthLevel(Health/BaseUnit.MaxHealth);
-        
     }
 
     protected void ChangeTurn(TurnStates newturn)
@@ -75,6 +74,8 @@ public class UnitInteractable : Unit
                 InitMoves();
                 break;
             case TurnStates.AITurn:
+                if(GetComponent<Fortificate>())
+                    Debug.Log(name + " is fortified");
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(newturn), newturn, null);
@@ -100,12 +101,14 @@ public class UnitInteractable : Unit
 
     protected void OnMouseDown()
     {
+        Debug.Log(OnUnitSelected?.GetInvocationList());
         if (!TurnManager.Instance.isPlayerTurn())
             return;
         RuntimeManager.PlayOneShot("event:/SFX/ui/select", transform.position);
         //ControllerManager.Instance.SelectedUnit?.DeactivateDialog();
         ControllerManager.Instance.SelectedUnit = this;
         OnUnitSelected?.Invoke(this);
+        Perks.ForEach(perk => perk.Use());
         
     }
 
@@ -113,19 +116,5 @@ public class UnitInteractable : Unit
     {
         IsDead = true;
     }
-
-    public void ActivateDialog()
-    {
-        _dialogBox.localScale = new Vector3(1, 1, 1);
-    }
-
-    public void DeactivateDialog()
-    {
-        _dialogBox.localScale = new Vector3(0, 0, 0);
-    }
-
-    public void SetDialogText(string newText)
-    {
-        _dialogText = newText;
-    }
+    
 }

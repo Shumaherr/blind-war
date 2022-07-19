@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Linq;
 using FMOD.Studio;
 using FMODUnity;
 using UnityEngine;
@@ -80,8 +81,11 @@ public class ControllerManager : Singleton<ControllerManager>
         if (!enemyUnit.enabled || !playerUnit.enabled)
             return false;
         var winner = BattleSystem.Fight(playerUnit, enemyUnit);
+        var loser = winner == playerUnit ? enemyUnit : playerUnit;
         if (winner == null)
             return false;
+        loser.Perks.OfType<Fortificate>().First(p => p.IsActive()).DecreaseAttacksAmount();
+
         var winnerType = winner != null ? winner.BaseUnit.UnitType : playerUnit.BaseUnit.UnitType;
         RuntimeManager.PlayOneShot(SoundManager.GetWinnerSfxEventToPlay(winnerType), transform.position);
 

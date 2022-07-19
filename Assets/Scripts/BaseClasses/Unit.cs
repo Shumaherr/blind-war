@@ -22,7 +22,7 @@ public abstract class Unit : MonoBehaviour
         set => inventory = value;
     }
 
-    protected List<Action> perks = new List<Action>();
+    public List<Perk> Perks { get; } = new List<Perk>();
     [SerializeField] protected BaseUnit baseUnit;
 
 
@@ -69,7 +69,7 @@ public abstract class Unit : MonoBehaviour
         _damage = BaseUnit.BaseDamage;
     }
 
-    protected void InitUnit()
+    public void InitUnit()
     {
         InitHealth();
         InitMoves();

@@ -10,11 +10,6 @@ public class Spearman : UnitInteractable
     {
         base.Awake();
        
-        perks.Add(Concentration);
-    }
-
-    public void Concentration()
-    {
-        //Реализация перка
+        Perks.Add(gameObject.AddComponent<Fortificate>());
     }
 }

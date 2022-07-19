@@ -6,10 +6,8 @@ public class BattleSystem
             return firstFighter;
         if (secondFighter.BaseUnit.KillUnit == firstFighter.BaseUnit.UnitType)
             return secondFighter;
-        else
-        {
-            firstFighter.TakeDamage(secondFighter.Damage);
-            return null;
-        }
+        firstFighter.TakeDamage(secondFighter.Damage);
+        return null;
     }
+    
 }
