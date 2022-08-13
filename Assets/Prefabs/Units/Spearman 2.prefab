@@ -279,7 +279,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7485839878214109499}
   - component: {fileID: 7485839878214109496}
-  - component: {fileID: 8356646315945811002}
+  - component: {fileID: 4374255370332167678}
+  - component: {fileID: 550657694673166602}
   m_Layer: 0
   m_Name: Spearman 2
   m_TagString: PlayerUnit
@@ -321,7 +322,7 @@ CapsuleCollider2D:
   m_Offset: {x: -0.009687692, y: 0.080730796}
   m_Size: {x: 0.66146153, y: 1.1097934}
   m_Direction: 0
---- !u!114 &8356646315945811002
+--- !u!114 &4374255370332167678
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -330,11 +331,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 7485839878214109502}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b24527715d2df4485896eb9124ba9985, type: 3}
+  m_Script: {fileID: 11500000, guid: 884c58d1f34640b58caf0c69763e1345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory:
-  - {fileID: 1075118248178314505, guid: 6138ca4bc85824e8088787919158229f, type: 3}
+--- !u!114 &550657694673166602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7485839878214109502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c064463777edd8b4080f9912421b52be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: []
   baseUnit: {fileID: 11400000, guid: 662fa213bacc0014997202515ea4e2bf, type: 2}
 --- !u!1001 &6386719109778464325
 PrefabInstance:

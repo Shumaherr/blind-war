@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using FMOD.Studio;
 using FMODUnity;
@@ -10,12 +11,12 @@ using STOP_MODE = FMOD.Studio.STOP_MODE;
 public class ControllerManager : Singleton<ControllerManager>
 {
     private GridInteractor _gridInteractor;
-    private UnitInteractable _selectedUnit;
+    private Unit _selectedUnit;
 
     private EventInstance instance;
     [SerializeField] private Tilemap walkableTilemap;
 
-    public UnitInteractable SelectedUnit
+    public Unit SelectedUnit
     {
         get => _selectedUnit;
         set
@@ -24,12 +25,27 @@ public class ControllerManager : Singleton<ControllerManager>
             _selectedUnit = value;
         }
     }
+    
+    void OnEnable() {
+        EventManager.StartListening("unitSelected", OnUnitSelected);
+    }
+
+    private void OnUnitSelected(Dictionary<string, object> obj)
+    {
+        SelectedUnit = (Unit) obj["unit"];
+        Debug.Log("Selected unit: " + SelectedUnit.name);
+    }
+
+    void OnDisable() {
+        EventManager.StopListening("unitSelected", OnUnitSelected);
+    }
 
     public void Start()
     {
         _gridInteractor = GameObject.FindGameObjectWithTag("Grid").GetComponent<GridInteractor>();
         instance = new EventInstance();
         _gridInteractor.OnTileSelected += TileSelected;
+        
         //Subscribe to event click on tile
     }
     

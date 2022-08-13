@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 
-public abstract class Unit : MonoBehaviour
+[RequireComponent(typeof(IController))]
+public class Unit : MonoBehaviour
 {
     protected int _moves;
 
@@ -13,8 +15,11 @@ public abstract class Unit : MonoBehaviour
     protected int _level;
 
     protected bool isDead;
+    
+    protected IController _controller;
 
     [SerializeField] protected List<Item> inventory = new List<Item>();
+    public event Action<Unit> OnUnitSelected;
 
     public List<Item> Inventory
     {
@@ -54,10 +59,26 @@ public abstract class Unit : MonoBehaviour
 	public delegate void OnUnitDieDelegate(Unit unit);
     public event OnUnitDieDelegate OnUnitDie;
 
-    protected abstract void InitMoves();
+    protected void InitMoves()
+    {
+        Moves = baseUnit.Moves;
+    }
 
-    public abstract void TakeDamage(int amount);
+    public void TakeDamage(int amount)
+    {
+        Health = _health > amount ? Health -= amount : 0;
+        Debug.Log("Taken "+ amount + " damage. Health: " + Health);
+    }
+    
+    public void ChangeMoves(int moves = 1)
+    {
+        Moves = Math.Max(0, _moves - moves);
+    }
 
+    public bool CanMove()
+    {
+        return _moves > 0;
+    }
 
     private void InitHealth()
     {
@@ -78,9 +99,19 @@ public abstract class Unit : MonoBehaviour
         
     }
 
-    protected abstract void UnitDie();
+    protected void UnitDie()
+    {
+        IsDead = true;
+    }
     public Vector3Int GetUnitCell()
     {
         return GameManager.Instance.Grid.WorldToCell(transform.position);
     }
+
+    protected void Start()
+    {
+        _controller = GetComponent<IController>();
+        InitUnit();
+    }
+   
 }

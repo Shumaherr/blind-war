@@ -21,7 +21,20 @@ public class GridInteractor : BaseInteractable
     }
 
     public event OnTileSelectedDelegate OnTileSelected;
+    void OnEnable() {
+        EventManager.StartListening("unitSelected", OnUnitSelected);
+    }
 
+    private void OnUnitSelected(Dictionary<string, object> obj)
+    {
+        var unit = (Unit) obj["unit"];
+        if(unit.CanMove())
+            HighlightNeighbourCells(unit);
+    }
+
+    void OnDisable() {
+        EventManager.StopListening("unitSelected", OnUnitSelected);
+    }
     // Start is called before the first frame update
     private void Start()
     {
@@ -55,14 +68,14 @@ public class GridInteractor : BaseInteractable
         return Neighbors(cell1).Contains(cell2);
     }
 
-    public void HighlightNeighbourCells(BaseUnit selectedUnit)
+    public void HighlightNeighbourCells(Unit selectedUnit)
     {
         if (_highlightedTiles.Count != 0)
             UnhighlightCells();
         foreach (var cell in Neighbors(ControllerManager.Instance.SelectedUnitCell()))
         {
             if (GameManager.Instance.TakenCells.Contains(cell) || _grid.GetTile(cell) == null || 
-                MapManager.Instance.GetMoveCosts(selectedUnit, _grid.GetTile(cell)) > ControllerManager.Instance.SelectedUnit.Moves)
+                MapManager.Instance.GetMoveCosts(selectedUnit.BaseUnit, _grid.GetTile(cell)) > ControllerManager.Instance.SelectedUnit.Moves)
                 continue;
             _grid.SetTileFlags(cell, TileFlags.None);
             _grid.SetColor(cell, Color.gray);

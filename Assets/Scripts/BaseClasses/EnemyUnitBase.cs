@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class EnemyUnitBase : Unit
+public abstract class EnemyUnitBase : Unit
 {
     protected List<Vector3Int> _currentPath;
     private SpriteRenderer _renderer;
@@ -36,12 +36,12 @@ public class EnemyUnitBase : Unit
         _renderer.enabled = true;
     }
 
-    protected override void InitMoves()
+    protected void InitMoves()
     {
         _moves = baseUnit.Moves;
     }
 
-    public override void TakeDamage(int amount)
+    public void TakeDamage(int amount)
     {
         Health = _health > amount ? Health -= amount : 0;
         Debug.Log("Taken "+ amount + " damage. Health: " + Health);
@@ -97,7 +97,7 @@ public class EnemyUnitBase : Unit
         return _moves > 0;
     }
 
-    protected override void UnitDie()
+    protected void UnitDie()
     {
         IsDead = true;
     }

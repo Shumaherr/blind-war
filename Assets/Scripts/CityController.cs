@@ -20,9 +20,9 @@ public class CityController : MonoBehaviour
     [SerializeField] private CityOwner owner;
     [SerializeField] private List<Sprite> sprites;
     [SerializeField] private int _turnsToProduce = 3;
-    private Unit _producingUnit;
+    private BaseUnit _producingUnit;
     private int _turnsToProduceLeft = 0;
-    [SerializeField] private List<Unit> _unitsToProduce;
+    [SerializeField] private List<BaseUnit> _unitsToProduce;
 
     public CityOwner Owner
     {
@@ -41,6 +41,19 @@ public class CityController : MonoBehaviour
                 ChangeOwner();
         }
     }
+    
+    private int TurnsToProduceLeft
+    {
+        get => _turnsToProduceLeft;
+        set
+        {
+            if(value<=0)
+                _turnsToProduceLeft = 0;
+            else
+                _turnsToProduceLeft = value;
+            
+        }
+    }
 
     private void ChangeSprite()
     {
@@ -54,6 +67,7 @@ public class CityController : MonoBehaviour
         ChangeSprite();
         Health = maxHealth;
         _producingUnit = null;
+        ChooseRandomUnitToProduce();
         if (Owner == CityOwner.Player)
         {
             GameManager.Instance.AddCityToList(transform.position);
@@ -84,14 +98,14 @@ public class CityController : MonoBehaviour
         if (newturn == TurnStates.PlayerTurn && Owner == CityOwner.Player ||
             newturn == TurnStates.AITurn && Owner == CityOwner.AI)
         {
-            _turnsToProduceLeft--;
+            TurnsToProduceLeft--;
             CheckProductionIsReady();
         }
     }
 
     private void CheckProductionIsReady()
     {
-        if (_turnsToProduceLeft == 0)
+        if (TurnsToProduceLeft == 0)
         {
             ProduceUnit();
         }
@@ -103,7 +117,8 @@ public class CityController : MonoBehaviour
         var randPos = GameManager.Instance.GetFreeRandomNeighbourCell(ciyPos);
         if (randPos != Vector3Int.zero)
         {
-            GameManager.Instance.SpawnManager.SpawnUnit(_producingUnit, randPos);
+            GameManager.Instance.SpawnManager.SpawnUnit(_producingUnit, owner, randPos);
+            ChooseRandomUnitToProduce();
         }
 
     }

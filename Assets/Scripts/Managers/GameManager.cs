@@ -39,7 +39,7 @@ public class GameManager : Singleton<GameManager>
 
     public List<Vector3Int> TakenCells { get; set; }
 
-    public Dictionary<Vector3Int, UnitInteractable> PlayerUnits { get; private set; }
+    public Dictionary<Vector3Int, Unit> PlayerUnits { get; private set; }
 
     public Dictionary<Vector3Int, CityController> AllCities { get; private set; }
     
@@ -60,7 +60,7 @@ public class GameManager : Singleton<GameManager>
         _uiManager = GetComponent<UIManager>();
         _spawnManager = GetComponent<SpawnManager>();
         GameState = GameState.GameInit;
-        PlayerUnits = new Dictionary<Vector3Int, UnitInteractable>();
+        PlayerUnits = new Dictionary<Vector3Int, Unit>();
         EnemyUnitsPos = new Dictionary<Vector3Int, EnemyUnitBase>();
         _enemyUnits = new List<EnemyUnitBase>();
         _enemyUnitsToDelete = new List<EnemyUnitBase>();
@@ -132,15 +132,9 @@ public class GameManager : Singleton<GameManager>
 		KillUnit(unit);
 	}
 
-    private void UnitOnOnUnitSelected(UnitInteractable unit)
+    private void UnitOnOnUnitSelected(Unit unit)
     {
-        if (!unit.CanMove())
-        {
-            _gridInteractor.UnhighlightCells();
-            return;
-        }
 
-        _gridInteractor.HighlightNeighbourCells(unit.BaseUnit);
         if(unit.Inventory.Count > 0)
             _uiManager.ShowInventory();
             
@@ -312,16 +306,14 @@ public class GameManager : Singleton<GameManager>
     {
         var neighbours = Utils.Neighbors(cell);
         var vector3Ints = neighbours.ToList();
-        var randomCell = vector3Ints.ElementAt(Random.Range(0, vector3Ints.Count()));
-        while ((randomCell == Vector3Int.zero || IsCellTaken(randomCell)) && vector3Ints.Count > 0)
-        {
-            vector3Ints.Remove(randomCell);
-            randomCell = vector3Ints.ElementAt(Random.Range(0, vector3Ints.Count()));
-        }
-        return vector3Ints.Count > 0 ? randomCell : Vector3Int.zero; //TODO change Vector3Int.zero to error
+        vector3Ints.Shuffle();
+        foreach (var neighbour in vector3Ints)
+            if (!IsCellTaken(neighbour))
+                return neighbour;
+        return Vector3Int.zero; //TODO change Vector3Int.zero to error
     }
     
-    public void AddUnitToList(Transform unit)
+    public void AddUnitToList(Transform unit) //With Unit it doesnt work because of event
     {
         if (unit.gameObject.CompareTag("AIUnit"))
         {
