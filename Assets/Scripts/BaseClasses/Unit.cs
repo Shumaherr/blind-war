@@ -1,25 +1,25 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 
 [RequireComponent(typeof(IController))]
 public class Unit : MonoBehaviour
 {
-    protected int _moves;
+    public delegate void OnUnitDieDelegate(Unit unit);
 
-    protected int _health;
+    [SerializeField] protected List<Item> inventory = new();
+    [SerializeField] protected BaseUnit baseUnit;
+
+    protected IController _controller;
 
     protected int _damage;
 
+    protected int _health;
+
     protected int _level;
+    protected int _moves;
 
     protected bool isDead;
-    
-    protected IController _controller;
-
-    [SerializeField] protected List<Item> inventory = new List<Item>();
-    public event Action<Unit> OnUnitSelected;
 
     public List<Item> Inventory
     {
@@ -27,8 +27,7 @@ public class Unit : MonoBehaviour
         set => inventory = value;
     }
 
-    public List<Perk> Perks { get; } = new List<Perk>();
-    [SerializeField] protected BaseUnit baseUnit;
+    public List<Perk> Perks { get; } = new();
 
 
     protected virtual int Health
@@ -36,27 +35,40 @@ public class Unit : MonoBehaviour
         get => _health;
         set => _health = value;
     }
+
     public int Damage => _damage;
-    public virtual int Moves
+
+    public int Moves
     {
         get => _moves;
-        set => _moves = value;
+        private set
+        {
+            _moves = value;
+            OnMovesChanged?.Invoke(_moves, BaseUnit.Moves);
+        }
     }
 
     public bool IsDead
     {
         get => isDead;
         set
-		{
-			isDead = value;
-			if(value)
-				OnUnitDie?.Invoke(this);
-		}
+        {
+            isDead = value;
+            if (value)
+                OnUnitDie?.Invoke(this);
+        }
     }
 
     public BaseUnit BaseUnit => baseUnit;
 
-	public delegate void OnUnitDieDelegate(Unit unit);
+    protected void Start()
+    {
+        _controller = GetComponent<IController>();
+        InitUnit();
+    }
+
+    public event Action<Unit> OnUnitSelected;
+    public event Action<int, int> OnMovesChanged;
     public event OnUnitDieDelegate OnUnitDie;
 
     protected void InitMoves()
@@ -67,9 +79,8 @@ public class Unit : MonoBehaviour
     public void TakeDamage(int amount)
     {
         Health = _health > amount ? Health -= amount : 0;
-        Debug.Log("Taken "+ amount + " damage. Health: " + Health);
     }
-    
+
     public void ChangeMoves(int moves = 1)
     {
         Moves = Math.Max(0, _moves - moves);
@@ -96,22 +107,15 @@ public class Unit : MonoBehaviour
         InitMoves();
         InitDamage();
         IsDead = false;
-        
     }
 
     protected void UnitDie()
     {
         IsDead = true;
     }
+
     public Vector3Int GetUnitCell()
     {
         return GameManager.Instance.Grid.WorldToCell(transform.position);
     }
-
-    protected void Start()
-    {
-        _controller = GetComponent<IController>();
-        InitUnit();
-    }
-   
 }

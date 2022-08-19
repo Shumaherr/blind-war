@@ -1,8 +1,6 @@
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -23,10 +21,7 @@ public class UIManager : MonoBehaviour
     private void OnOnItemSelected(int itemnum)
     {
         if (ControllerManager.Instance.SelectedUnit.Inventory.Count > 0)
-        {
-
             ControllerManager.Instance.SelectedUnit.Inventory[itemnum].TryToUse();
-        }
     }
 
     public void HideInventory()
@@ -34,14 +29,12 @@ public class UIManager : MonoBehaviour
         iconsSlots.ForEach(item => item.texture = null);
         inventoryCanvas.gameObject.SetActive(false);
     }
-    
+
     public void ShowInventory()
     {
         if (ControllerManager.Instance.SelectedUnit.Inventory.Count > 0)
-        {
-            
-            ControllerManager.Instance.SelectedUnit.Inventory.ForEach(item => iconsSlots[0].texture = item.Icon.texture);
-        }
+            ControllerManager.Instance.SelectedUnit.Inventory.ForEach(item =>
+                iconsSlots[0].texture = item.Icon.texture);
         inventoryCanvas.gameObject.SetActive(true);
     }
 

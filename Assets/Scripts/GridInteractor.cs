@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using static Utils;
@@ -9,10 +8,11 @@ public class GridInteractor : BaseInteractable
 {
     public delegate void OnTileSelectedDelegate(Vector3Int tilePos);
 
+    [SerializeField] private Camera mainCamera;
+
     private Tilemap _grid;
 
     private List<Vector3Int> _highlightedTiles;
-    [SerializeField] private Camera mainCamera;
 
 
     public GridInteractor(List<Vector3Int> highlightedTiles)
@@ -20,21 +20,6 @@ public class GridInteractor : BaseInteractable
         _highlightedTiles = highlightedTiles;
     }
 
-    public event OnTileSelectedDelegate OnTileSelected;
-    void OnEnable() {
-        EventManager.StartListening("unitSelected", OnUnitSelected);
-    }
-
-    private void OnUnitSelected(Dictionary<string, object> obj)
-    {
-        var unit = (Unit) obj["unit"];
-        if(unit.CanMove())
-            HighlightNeighbourCells(unit);
-    }
-
-    void OnDisable() {
-        EventManager.StopListening("unitSelected", OnUnitSelected);
-    }
     // Start is called before the first frame update
     private void Start()
     {
@@ -52,11 +37,36 @@ public class GridInteractor : BaseInteractable
             Vector2 clickWorldPos = mainCamera.ScreenToWorldPoint(mousePos);
             var clickCellPos = _grid.WorldToCell(clickWorldPos);
             if (!_grid.HasTile(clickCellPos) ||
-                !IsNeighbor(ControllerManager.Instance.SelectedUnitCell(), clickCellPos) ||
+                !IsNeighbor(UnitCell(ControllerManager.Instance.SelectedUnit), clickCellPos) ||
                 GameManager.Instance.TakenCells.Contains(clickCellPos))
                 return;
             OnTileSelected?.Invoke(clickCellPos);
         }
+    }
+
+    private void OnEnable()
+    {
+        EventManager.StartListening("unitSelected", OnUnitSelected);
+        EventManager.StartListening("unitMoved", OnUnitMoved);
+    }
+
+    private void OnDisable()
+    {
+        EventManager.StopListening("unitSelected", OnUnitSelected);
+    }
+
+    public event OnTileSelectedDelegate OnTileSelected;
+
+    private void OnUnitMoved(Dictionary<string, object> obj)
+    {
+        UnhighlightCells();
+    }
+
+    private void OnUnitSelected(Dictionary<string, object> obj)
+    {
+        var unit = (Unit)obj["unit"];
+        if (unit.CanMove())
+            HighlightNeighbourCells(unit);
     }
 
     public override void Interact()
@@ -72,10 +82,10 @@ public class GridInteractor : BaseInteractable
     {
         if (_highlightedTiles.Count != 0)
             UnhighlightCells();
-        foreach (var cell in Neighbors(ControllerManager.Instance.SelectedUnitCell()))
+        foreach (var cell in Neighbors(UnitCell(selectedUnit)))
         {
-            if (GameManager.Instance.TakenCells.Contains(cell) || _grid.GetTile(cell) == null || 
-                MapManager.Instance.GetMoveCosts(selectedUnit.BaseUnit, _grid.GetTile(cell)) > ControllerManager.Instance.SelectedUnit.Moves)
+            if (GameManager.Instance.TakenCells.Contains(cell) || _grid.GetTile(cell) == null ||
+                MapManager.Instance.GetMoveCosts(selectedUnit.BaseUnit, _grid.GetTile(cell)) > selectedUnit.Moves)
                 continue;
             _grid.SetTileFlags(cell, TileFlags.None);
             _grid.SetColor(cell, Color.gray);
@@ -93,5 +103,10 @@ public class GridInteractor : BaseInteractable
     public void UnhighlightCells()
     {
         foreach (var tile in _highlightedTiles) _grid.SetColor(tile, Color.white);
+    }
+
+    public Vector3Int UnitCell(Unit unit)
+    {
+        return _grid.LocalToCell(unit.transform.position);
     }
 }

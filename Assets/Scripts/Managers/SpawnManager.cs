@@ -1,8 +1,6 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-
 
 public class SpawnManager : MonoBehaviour
 {
@@ -17,11 +15,9 @@ public class SpawnManager : MonoBehaviour
 
     public void SpawnUnit(BaseUnit unit, CityOwner owner, Vector3Int cellPos)
     {
-        Type type = owner == CityOwner.Player ? typeof(BaseInteractable) : typeof(EnemyUnitBase);
-        var newUnit = Instantiate(units.First(u => (u.Key.BaseUnit == unit && u.Key.GetType().BaseType == type)).Value,
+        var type = owner == CityOwner.Player ? typeof(BaseInteractable) : typeof(EnemyUnitBase);
+        var newUnit = Instantiate(units.First(u => u.Key.BaseUnit == unit && u.Key.GetType().BaseType == type).Value,
             GameManager.Instance.Grid.CellToWorld(cellPos), Quaternion.identity);
         GameManager.Instance.AddUnitToList(newUnit);
-        
     }
-    
 }

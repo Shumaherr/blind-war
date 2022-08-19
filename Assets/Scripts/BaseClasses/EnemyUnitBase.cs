@@ -7,7 +7,7 @@ public abstract class EnemyUnitBase : Unit
 {
     protected List<Vector3Int> _currentPath;
     private SpriteRenderer _renderer;
-    
+
     protected override int Health
     {
         get => _health;
@@ -24,6 +24,11 @@ public abstract class EnemyUnitBase : Unit
         _renderer = GetComponentInChildren<SpriteRenderer>();
         _renderer.sprite = BaseUnit.GeneralizedSprite;
         InitUnit();
+    }
+
+    private void Update()
+    {
+        ChangeVisibility();
     }
 
     public void HideUnit()
@@ -44,7 +49,7 @@ public abstract class EnemyUnitBase : Unit
     public void TakeDamage(int amount)
     {
         Health = _health > amount ? Health -= amount : 0;
-        Debug.Log("Taken "+ amount + " damage. Health: " + Health);
+        Debug.Log("Taken " + amount + " damage. Health: " + Health);
     }
 
     public void ChangeMoves(int moves = 1)
@@ -54,13 +59,11 @@ public abstract class EnemyUnitBase : Unit
 
     public virtual void DoMove()
     {
-        
     }
 
     public virtual void DoTurn()
     {
         InitMoves();
-
     }
 
     public void ChangeVisibility()
@@ -71,25 +74,18 @@ public abstract class EnemyUnitBase : Unit
             HideUnit();
     }
 
-    private void Update()
-    {
-        ChangeVisibility();
-    }
-
     protected void DoFight()
     {
         if (!CanMove())
             return;
         var unitCell = GetUnitCell();
         foreach (var cell in Utils.Neighbors(unitCell))
-        {
             if (GameManager.Instance.HasPlayerUnit(cell))
             {
                 ControllerManager.Instance.StartBattle(this,
                     GameManager.Instance.PlayerUnits[cell]);
                 ChangeMoves();
             }
-        }
     }
 
     private bool CanMove()

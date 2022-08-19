@@ -4,34 +4,34 @@ using UnityEngine;
 public static class Utils
 {
     private static readonly Vector3Int
-        LEFT = new Vector3Int(-1, 0, 0);
+        LEFT = new(-1, 0, 0);
 
     private static readonly Vector3Int
-        RIGHT = new Vector3Int(1, 0, 0);
+        RIGHT = new(1, 0, 0);
 
     private static readonly Vector3Int
-        DOWN = new Vector3Int(0, -1, 0);
+        DOWN = new(0, -1, 0);
 
     private static readonly Vector3Int
-        DOWNLEFT = new Vector3Int(-1, -1, 0);
+        DOWNLEFT = new(-1, -1, 0);
 
     private static readonly Vector3Int
-        DOWNRIGHT = new Vector3Int(1, -1, 0);
+        DOWNRIGHT = new(1, -1, 0);
 
     private static readonly Vector3Int
-        UP = new Vector3Int(0, 1, 0);
+        UP = new(0, 1, 0);
 
     private static readonly Vector3Int
-        UPLEFT = new Vector3Int(-1, 1, 0);
+        UPLEFT = new(-1, 1, 0);
 
     private static readonly Vector3Int
-        UPRIGHT = new Vector3Int(1, 1, 0);
+        UPRIGHT = new(1, 1, 0);
 
     private static readonly Vector3Int[] directions_when_y_is_even =
-        {LEFT, RIGHT, DOWN, DOWNLEFT, UP, UPLEFT};
+        { LEFT, RIGHT, DOWN, DOWNLEFT, UP, UPLEFT };
 
     private static readonly Vector3Int[] directions_when_y_is_odd =
-        {LEFT, RIGHT, DOWN, DOWNRIGHT, UP, UPRIGHT};
+        { LEFT, RIGHT, DOWN, DOWNRIGHT, UP, UPRIGHT };
 
     public static IEnumerable<Vector3Int> Neighbors(Vector3Int node)
     {
@@ -42,17 +42,17 @@ public static class Utils
             yield return neighborPos;
         }
     }
-    
-    public static void Shuffle<T>(this IList<T> list)  
-    {  
-        int n = list.Count;  
-        while (n > 1) {  
-            n--;  
-            int k = Random.Range(0, n + 1);  
-            T value = list[k];  
-            list[k] = list[n];  
-            list[n] = value;  
-        }  
+
+    public static void Shuffle<T>(this IList<T> list)
+    {
+        var n = list.Count;
+        while (n > 1)
+        {
+            n--;
+            var k = Random.Range(0, n + 1);
+            var value = list[k];
+            list[k] = list[n];
+            list[n] = value;
+        }
     }
 }
-

@@ -1,13 +1,12 @@
-using System;
 using System.Linq;
 using TMPro;
 using UnityEngine;
 
 public class DetectClassOfNearestEnemy : Perk
 {
-    public string DialogText { get; private set; }
     private Transform _dialogBox;
     private TextMeshProUGUI _dialogTextUI;
+    public string DialogText { get; private set; }
 
     private void Awake()
     {
@@ -29,7 +28,7 @@ public class DetectClassOfNearestEnemy : Perk
         DialogText = tempString;
         ActivateDialog();
     }
-    
+
     public void ActivateDialog()
     {
         //_dialogBox.localScale = new Vector3(1, 1, 1);
@@ -40,5 +39,4 @@ public class DetectClassOfNearestEnemy : Perk
     {
         //_dialogBox.localScale = new Vector3(0, 0, 0);
     }
-    
 }

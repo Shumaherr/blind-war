@@ -14,12 +14,12 @@ public class TurnManager : Singleton<TurnManager>
 
     public TurnStates Turn { get; private set; }
 
-    public event OnTurnChangedDelegate OnTurnChanged;
-
     private void Start()
     {
         Turn = firstTurn;
     }
+
+    public event OnTurnChangedDelegate OnTurnChanged;
 
     public void ChangeTurn()
     {

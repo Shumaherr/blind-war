@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class EnemyHorseman : EnemyUnitBase
@@ -19,14 +17,14 @@ public class EnemyHorseman : EnemyUnitBase
 
         GameManager.Instance.ChangeEnemyCell(_currentPath[0], _currentPath[lastStep]);
     }
-    
+
     public override void DoTurn()
     {
         base.DoTurn();
-            var pathes = new List<List<Vector3Int>>();
+        var pathes = new List<List<Vector3Int>>();
         foreach (var unit in GameManager.Instance.PlayerUnits)
             pathes.Add(GameManager.Instance.GetPath(transform.position, unit.Key));
-        
+
         if (pathes.Count == 0) //TODO what to do if no targets was found
             return;
         var min = 0;

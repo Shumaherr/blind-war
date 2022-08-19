@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using FMOD.Studio;
@@ -10,34 +9,21 @@ using STOP_MODE = FMOD.Studio.STOP_MODE;
 
 public class ControllerManager : Singleton<ControllerManager>
 {
+    [SerializeField] private Tilemap walkableTilemap;
     private GridInteractor _gridInteractor;
     private Unit _selectedUnit;
 
     private EventInstance instance;
-    [SerializeField] private Tilemap walkableTilemap;
 
     public Unit SelectedUnit
     {
         get => _selectedUnit;
         set
         {
-            GameManager.Instance.UnselectUnit();
             _selectedUnit = value;
+            if (_selectedUnit != null)
+                _gridInteractor.HighlightNeighbourCells(_selectedUnit);
         }
-    }
-    
-    void OnEnable() {
-        EventManager.StartListening("unitSelected", OnUnitSelected);
-    }
-
-    private void OnUnitSelected(Dictionary<string, object> obj)
-    {
-        SelectedUnit = (Unit) obj["unit"];
-        Debug.Log("Selected unit: " + SelectedUnit.name);
-    }
-
-    void OnDisable() {
-        EventManager.StopListening("unitSelected", OnUnitSelected);
     }
 
     public void Start()
@@ -45,13 +31,29 @@ public class ControllerManager : Singleton<ControllerManager>
         _gridInteractor = GameObject.FindGameObjectWithTag("Grid").GetComponent<GridInteractor>();
         instance = new EventInstance();
         _gridInteractor.OnTileSelected += TileSelected;
-        
+
         //Subscribe to event click on tile
     }
-    
+
+    private void OnEnable()
+    {
+        EventManager.StartListening("unitSelected", OnUnitSelected);
+    }
+
+    private void OnDisable()
+    {
+        EventManager.StopListening("unitSelected", OnUnitSelected);
+    }
+
+    private void OnUnitSelected(Dictionary<string, object> obj)
+    {
+        SelectedUnit = (Unit)obj["unit"];
+        Debug.Log("Selected unit: " + SelectedUnit.name);
+    }
+
     private void TileSelected(Vector3Int tilePos)
     {
-         if (_selectedUnit)
+        if (_selectedUnit)
         {
             //For tests
             /*Pathfinding pathfinding = new Pathfinding();
@@ -63,9 +65,11 @@ public class ControllerManager : Singleton<ControllerManager>
             //_selectedUnit.DeactivateDialog();
             if (!TurnManager.Instance.isPlayerTurn() || !_selectedUnit.CanMove())
                 return;
-            if (MapManager.Instance.GetMoveCosts(_selectedUnit.BaseUnit, walkableTilemap.GetTile(tilePos)) > _selectedUnit.Moves)
+            if (MapManager.Instance.GetMoveCosts(_selectedUnit.BaseUnit, walkableTilemap.GetTile(tilePos)) >
+                _selectedUnit.Moves)
                 return;
-            _selectedUnit.ChangeMoves(MapManager.Instance.GetMoveCosts(_selectedUnit.BaseUnit, walkableTilemap.GetTile(tilePos)));
+            _selectedUnit.ChangeMoves(MapManager.Instance.GetMoveCosts(_selectedUnit.BaseUnit,
+                walkableTilemap.GetTile(tilePos)));
             if (GameManager.Instance.HasEnemyUnit(tilePos))
                 if (!StartBattle(_selectedUnit, GameManager.Instance.GetEnemyUnitInCell(tilePos)))
                     return;
@@ -82,13 +86,14 @@ public class ControllerManager : Singleton<ControllerManager>
     {
         var position = unitToMove.position;
         var unitCell = walkableTilemap.WorldToCell(position);
-        var countCells = (int) Mathf.Round(Vector3.Distance(tilePos, unitCell));
+        var countCells = (int)Mathf.Round(Vector3.Distance(tilePos, unitCell));
         if (countCells == 0)
             return;
         var cellCenterWorld = walkableTilemap.GetCellCenterWorld(tilePos);
         Debug.Log("Move for " + countCells + " cells");
         StartCoroutine(MoveFromTo(unitToMove, position, cellCenterWorld, 3));
         GameManager.Instance.ChangeTakenCell(unitCell, tilePos);
+        EventManager.TriggerEvent("unitMoved", null);
         Debug.Log("End");
     }
 
@@ -115,7 +120,6 @@ public class ControllerManager : Singleton<ControllerManager>
         return false;
     }
 
-    
 
     public void ClearSelected()
     {
@@ -126,7 +130,8 @@ public class ControllerManager : Singleton<ControllerManager>
     {
         if (TurnManager.Instance.isPlayerTurn())
         {
-            instance = RuntimeManager.CreateInstance(SoundManager.GetMovementSfxEventToPlay(_selectedUnit.BaseUnit.UnitType));
+            instance = RuntimeManager.CreateInstance(
+                SoundManager.GetMovementSfxEventToPlay(_selectedUnit.BaseUnit.UnitType));
             RuntimeManager.AttachInstanceToGameObject(instance, _selectedUnit.transform);
         }
 
@@ -143,10 +148,5 @@ public class ControllerManager : Singleton<ControllerManager>
         instance.stop(STOP_MODE.ALLOWFADEOUT);
         instance.release();
         objectToMove.position = pos2;
-    }
-
-    public Vector3Int SelectedUnitCell()
-    {
-        return walkableTilemap.LocalToCell(_selectedUnit.transform.position);
     }
 }

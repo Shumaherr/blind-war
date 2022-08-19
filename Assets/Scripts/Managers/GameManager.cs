@@ -11,27 +11,29 @@ public enum GameState
     PlayerWin,
     PlayerLose
 }
+
 public class GameManager : Singleton<GameManager>
 {
-    private GameState _gameState;
-    private SoundManager _soundManager;
+    public delegate void OnGameStateChangedDelegate(GameState newState);
+
+    [SerializeField] private Tilemap grid;
+    [SerializeField] private Camera mainCamera;
     private List<CityController> _AICities;
     private ControllerManager _controller;
     private List<EnemyUnitBase> _enemyUnits;
 
     private List<EnemyUnitBase> _enemyUnitsToDelete;
+    private GameState _gameState;
     private GridInteractor _gridInteractor;
 
     private Pathfinding _pathfinding;
 
     private List<CityController> _playerCities;
+    private SoundManager _soundManager;
 
     private TurnManager _turnManager;
     private UIManager _uiManager;
 
-    [SerializeField] private Tilemap grid;
-    [SerializeField] private Camera mainCamera;
-    
     public Camera MainCamera => mainCamera;
     public Tilemap Grid => grid;
 
@@ -42,23 +44,24 @@ public class GameManager : Singleton<GameManager>
     public Dictionary<Vector3Int, Unit> PlayerUnits { get; private set; }
 
     public Dictionary<Vector3Int, CityController> AllCities { get; private set; }
-    
-    public delegate void OnGameStateChangedDelegate(GameState newState);
-    public event OnGameStateChangedDelegate OnGameStateChanged;
-    private SpawnManager _spawnManager;
 
-    public SpawnManager SpawnManager
+    public SpawnManager SpawnManager { get; set; }
+
+    protected GameState GameState
     {
-        get => _spawnManager;
-        set => _spawnManager = value;
+        get => _gameState;
+        set
+        {
+            _gameState = value;
+            OnGameStateChanged?.Invoke(_gameState);
+        }
     }
 
     private void Awake()
     {
-        
         _soundManager = new SoundManager();
         _uiManager = GetComponent<UIManager>();
-        _spawnManager = GetComponent<SpawnManager>();
+        SpawnManager = GetComponent<SpawnManager>();
         GameState = GameState.GameInit;
         PlayerUnits = new Dictionary<Vector3Int, Unit>();
         EnemyUnitsPos = new Dictionary<Vector3Int, EnemyUnitBase>();
@@ -81,8 +84,8 @@ public class GameManager : Singleton<GameManager>
 
         _gridInteractor = GameObject.FindGameObjectWithTag("Grid").GetComponent<GridInteractor>();
         foreach (var unit in PlayerUnits) unit.Value.OnUnitSelected += UnitOnOnUnitSelected;
-		foreach (var unit in PlayerUnits) unit.Value.OnUnitDie += OnUnitDie;
-		foreach (var unit in EnemyUnitsPos) unit.Value.OnUnitDie += OnUnitDie;
+        foreach (var unit in PlayerUnits) unit.Value.OnUnitDie += OnUnitDie;
+        foreach (var unit in EnemyUnitsPos) unit.Value.OnUnitDie += OnUnitDie;
 
         foreach (var city in GameObject.FindGameObjectsWithTag("PlayerCity"))
         {
@@ -102,42 +105,28 @@ public class GameManager : Singleton<GameManager>
         GameState = GameState.GameStart;
     }
 
-    protected GameState GameState
-    {
-        get => _gameState;
-        set
-        {
-            _gameState = value;
-            OnGameStateChanged?.Invoke(_gameState);
-        } 
-    }
+    public event OnGameStateChangedDelegate OnGameStateChanged;
 
     private void OnTurnChanged(TurnStates newturn)
     {
         if (newturn == TurnStates.AITurn)
         {
-            foreach (var unit in _enemyUnitsToDelete)
-            {
-                _enemyUnits.Remove(unit);
-            }
+            foreach (var unit in _enemyUnitsToDelete) _enemyUnits.Remove(unit);
 
             _enemyUnitsToDelete = new List<EnemyUnitBase>();
             foreach (var unit in _enemyUnits) unit.DoTurn();
-            
         }
     }
 
-	private void OnUnitDie(Unit unit)
-	{
-		KillUnit(unit);
-	}
+    private void OnUnitDie(Unit unit)
+    {
+        KillUnit(unit);
+    }
 
     private void UnitOnOnUnitSelected(Unit unit)
     {
-
-        if(unit.Inventory.Count > 0)
+        if (unit.Inventory.Count > 0)
             _uiManager.ShowInventory();
-            
     }
 
     public EnemyUnitBase GetEnemyUnitInCell(Vector3Int cell)
@@ -263,20 +252,11 @@ public class GameManager : Singleton<GameManager>
         SceneManager.LoadScene("Scene_Defeat");
     }
 
-    public bool HighlightCellWithoutEnemy()
-    {
-        var tempList = Utils.Neighbors(ControllerManager.Instance.SelectedUnitCell())
-            .Where(cell => EnemyUnitsPos.ContainsKey(cell)).ToList();
-        if (tempList.Count == 0)
-            return false;
-        _gridInteractor.HighlightCell(tempList[Random.Range(0, tempList.Count)], Color.red);
-        return true;
-    }
 
     public HashSet<UnitType> GetNeighbourUnitTypes()
     {
         var neighbourUnits = new HashSet<UnitType>();
-        foreach (var neighborCell in Utils.Neighbors(ControllerManager.Instance.SelectedUnitCell()))
+        foreach (var neighborCell in Utils.Neighbors(_gridInteractor.UnitCell(ControllerManager.Instance.SelectedUnit)))
             if (EnemyUnitsPos.ContainsKey(neighborCell))
                 neighbourUnits.Add(EnemyUnitsPos[neighborCell].BaseUnit.UnitType);
 
@@ -293,6 +273,7 @@ public class GameManager : Singleton<GameManager>
         _gridInteractor.UnhighlightCells();
         _uiManager.HideInventory();
     }
+
     public Vector3Int GetFreeNeighbourCell(Vector3Int cell)
     {
         var neighbours = Utils.Neighbors(cell);
@@ -312,7 +293,7 @@ public class GameManager : Singleton<GameManager>
                 return neighbour;
         return Vector3Int.zero; //TODO change Vector3Int.zero to error
     }
-    
+
     public void AddUnitToList(Transform unit) //With Unit it doesnt work because of event
     {
         if (unit.gameObject.CompareTag("AIUnit"))
@@ -324,10 +305,6 @@ public class GameManager : Singleton<GameManager>
             PlayerUnits.Add(unit.GetComponent<UnitInteractable>().GetUnitCell(), unit.GetComponent<UnitInteractable>());
             TakenCells.Add(unit.GetComponent<UnitInteractable>().GetUnitCell());
             unit.GetComponent<UnitInteractable>().OnUnitSelected += UnitOnOnUnitSelected;
-            
         }
-        
     }
-    
-
 }

@@ -1,14 +1,10 @@
-using System;
-using UnityEngine;
-
-
 public class Fortificate : Perk
 {
-    private bool _isActive = false;
-    private int _maxDuration = 1;
-    private int _currentDuration;
-    private int _maxAttacksAmount = 1;
     private int _currentAttacksAmount;
+    private int _currentDuration;
+    private bool _isActive;
+    private int _maxAttacksAmount = 1;
+    private int _maxDuration = 1;
 
     private void Start()
     {
@@ -48,7 +44,7 @@ public class Fortificate : Perk
     {
         return _isActive;
     }
-    
+
     public void DecreaseAttacksAmount()
     {
         _currentAttacksAmount--;

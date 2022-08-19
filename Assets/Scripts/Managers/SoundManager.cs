@@ -1,20 +1,18 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using FMOD.Studio;
 using FMODUnity;
-using UnityEngine;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
 
 public class SoundManager
 {
-    private FMOD.Studio.EventInstance _mainMusicInstance;
-    private FMOD.Studio.EventInstance _ambienceInstance;
+    private EventInstance _ambienceInstance;
+    private EventInstance _mainMusicInstance;
 
     public SoundManager()
     {
         GameManager.Instance.OnGameStateChanged += OnGameStateChanged;
-        _mainMusicInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Music/music_main");
-        _ambienceInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Ambience/ambience");
+        _mainMusicInstance = RuntimeManager.CreateInstance("event:/Music/music_main");
+        _ambienceInstance = RuntimeManager.CreateInstance("event:/Ambience/ambience");
     }
 
     private void OnGameStateChanged(GameState newstate)
@@ -41,7 +39,7 @@ public class SoundManager
                 throw new ArgumentOutOfRangeException(nameof(newstate), newstate, null);
         }
     }
-    
+
     public static string GetWinnerSfxEventToPlay(UnitType winner)
     {
         return "event:/SFX/characters/death_infantry";

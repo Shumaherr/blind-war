@@ -18,7 +18,7 @@ public abstract class BaseUnit : ScriptableObject
     [SerializeField] protected byte moves;
     [SerializeField] protected UnitType unitType;
     [SerializeField] protected byte maxHealth;
-    
+
     public UnitType UnitType => unitType;
 
     public UnitType KillUnit => killUnit;

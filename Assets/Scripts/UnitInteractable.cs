@@ -1,19 +1,15 @@
 using System;
-using System.Linq;
-using FMODUnity;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class UnitInteractable : Unit
 {
-
     protected Transform _dialogBox;
-    protected Healthbar _healthbar;
-    protected TurnBar _turnBar;
     protected string _dialogText;
+    protected Healthbar _healthbar;
 
     protected TextMeshPro _textMeshPro;
+    protected TurnBar _turnBar;
 
     protected override int Health
     {
@@ -21,13 +17,13 @@ public class UnitInteractable : Unit
         set
         {
             _health = value;
-            _healthbar.SetHealthLevel((float) _health / baseUnit.MaxHealth);
+            _healthbar.SetHealthLevel((float)_health / baseUnit.MaxHealth);
             if (value <= 0)
                 UnitDie();
         }
     }
 
-    public override int Moves
+    public int Moves
     {
         get => _moves;
         set
@@ -46,7 +42,6 @@ public class UnitInteractable : Unit
             _textMeshPro.text = _dialogText;
         }
     }
-
 
 
     protected virtual void Awake()
@@ -77,13 +72,4 @@ public class UnitInteractable : Unit
                 throw new ArgumentOutOfRangeException(nameof(newturn), newturn, null);
         }
     }
-
-
-
-
-
-    
-
-
-
 }

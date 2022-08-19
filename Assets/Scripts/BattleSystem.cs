@@ -9,5 +9,4 @@ public class BattleSystem
         firstFighter.TakeDamage(secondFighter.Damage);
         return null;
     }
-    
 }

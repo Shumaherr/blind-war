@@ -11,18 +11,18 @@ public enum CityOwner
 
 public class CityController : MonoBehaviour
 {
-    private int _health;
-
-    private Sprite _sprite;
-    private SpriteRenderer _spriteRenderer;
-    private Healthbar _healthbar;
     [SerializeField] private int maxHealth = 10;
     [SerializeField] private CityOwner owner;
     [SerializeField] private List<Sprite> sprites;
     [SerializeField] private int _turnsToProduce = 3;
-    private BaseUnit _producingUnit;
-    private int _turnsToProduceLeft = 0;
     [SerializeField] private List<BaseUnit> _unitsToProduce;
+    private int _health;
+    private Healthbar _healthbar;
+    private BaseUnit _producingUnit;
+
+    private Sprite _sprite;
+    private SpriteRenderer _spriteRenderer;
+    private int _turnsToProduceLeft;
 
     public CityOwner Owner
     {
@@ -41,18 +41,28 @@ public class CityController : MonoBehaviour
                 ChangeOwner();
         }
     }
-    
+
     private int TurnsToProduceLeft
     {
         get => _turnsToProduceLeft;
         set
         {
-            if(value<=0)
+            if (value <= 0)
                 _turnsToProduceLeft = 0;
             else
                 _turnsToProduceLeft = value;
-            
         }
+    }
+
+    // Start is called before the first frame update
+    private void Start()
+    {
+        _sprite = owner == CityOwner.Player ? sprites[0] : sprites[1];
+        _healthbar = GetComponentInChildren<Healthbar>();
+        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        _spriteRenderer.sprite = _sprite;
+        Health = maxHealth;
+        TurnManager.Instance.OnTurnChanged += OnTurnChanged;
     }
 
     private void ChangeSprite()
@@ -80,20 +90,9 @@ public class CityController : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    private void Start()
-    {
-        _sprite = owner == CityOwner.Player ? sprites[0] : sprites[1];
-        _healthbar = GetComponentInChildren<Healthbar>();
-        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        _spriteRenderer.sprite = _sprite;
-        Health = maxHealth;
-        TurnManager.Instance.OnTurnChanged += OnTurnChanged;
-    }
-
     private void OnTurnChanged(TurnStates newturn)
     {
-        if(_producingUnit == null)
+        if (_producingUnit == null)
             ChooseRandomUnitToProduce();
         if (newturn == TurnStates.PlayerTurn && Owner == CityOwner.Player ||
             newturn == TurnStates.AITurn && Owner == CityOwner.AI)
@@ -105,10 +104,7 @@ public class CityController : MonoBehaviour
 
     private void CheckProductionIsReady()
     {
-        if (TurnsToProduceLeft == 0)
-        {
-            ProduceUnit();
-        }
+        if (TurnsToProduceLeft == 0) ProduceUnit();
     }
 
     private void ProduceUnit()
@@ -120,7 +116,6 @@ public class CityController : MonoBehaviour
             GameManager.Instance.SpawnManager.SpawnUnit(_producingUnit, owner, randPos);
             ChooseRandomUnitToProduce();
         }
-
     }
 
     private void ChooseRandomUnitToProduce()
@@ -131,7 +126,7 @@ public class CityController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if(_health - damage > 0) //for avoid castle_siege & castle_capture sounds at one time
+        if (_health - damage > 0) //for avoid castle_siege & castle_capture sounds at one time
             RuntimeManager.PlayOneShot("event:/SFX/environment/castle_siege");
         Health -= damage;
     }

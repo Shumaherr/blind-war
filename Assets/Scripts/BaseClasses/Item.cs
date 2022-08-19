@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class Item: MonoBehaviour
+public abstract class Item : MonoBehaviour
 {
     [SerializeField] private Sprite icon;
     [SerializeField] private string name;
