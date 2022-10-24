@@ -13,10 +13,10 @@ public class SpawnManager : MonoBehaviour
         unitsPrefabs.ForEach(p => units.Add(p.GetComponent<Unit>(), p));
     }
 
-    public void SpawnUnit(BaseUnit unit, CityOwner owner, Vector3Int cellPos)
+    public void SpawnUnit(BaseUnit unit, Player owner, Vector3Int cellPos)
     {
-        var type = owner == CityOwner.Player ? typeof(BaseInteractable) : typeof(EnemyUnitBase);
-        var newUnit = Instantiate(units.First(u => u.Key.BaseUnit == unit && u.Key.GetType().BaseType == type).Value,
+        var controllerType = owner.Type == PlayerType.AI ? typeof(AIController) : typeof(PlayerController);
+        var newUnit = Instantiate(units.First(u => u.Key.BaseUnit == unit && u.Key.GetType().BaseType == unit.GetType()).Value,
             GameManager.Instance.Grid.CellToWorld(cellPos), Quaternion.identity);
         GameManager.Instance.AddUnitToList(newUnit);
     }

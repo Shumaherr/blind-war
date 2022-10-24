@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -13,9 +14,18 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        TurnManager.Instance.OnTurnChanged += OnTurnChanged;
         iconsSlots.ForEach(item => item.GetComponent<ItemSelector>().OnItemSelected += OnOnItemSelected);
         HideInventory();
+    }
+
+    private void OnEnable()
+    {
+        EventManager.StartListening("turnChanged", OnTurnChanged);
+    }
+    
+    private void OnDisable()
+    {
+        EventManager.StopListening("turnChanged", OnTurnChanged);
     }
 
     private void OnOnItemSelected(int itemnum)
@@ -38,9 +48,10 @@ public class UIManager : MonoBehaviour
         inventoryCanvas.gameObject.SetActive(true);
     }
 
-    private void OnTurnChanged(TurnStates newturn)
+    private void OnTurnChanged(Dictionary<string, object> obj)
     {
-        turnText.text = newturn == TurnStates.PlayerTurn ? "Player turn" : "Enemy turn";
+        var newturn = (Player)obj["whoseTurn"];
+        turnText.text = newturn.Name + " turn";
         HideInventory();
     }
 

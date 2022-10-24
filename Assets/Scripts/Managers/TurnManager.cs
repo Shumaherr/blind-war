@@ -1,35 +1,58 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
-public enum TurnStates
+
+public class TurnManager
 {
-    PlayerTurn,
-    AITurn
-}
 
-public class TurnManager : Singleton<TurnManager>
-{
-    public delegate void OnTurnChangedDelegate(TurnStates newTurn);
+    private int _playerIndex;
 
-    [SerializeField] public TurnStates firstTurn = TurnStates.PlayerTurn;
-
-    public TurnStates Turn { get; private set; }
-
-    private void Start()
+    public TurnManager()
     {
-        Turn = firstTurn;
+        _playerIndex = 0;
     }
 
-    public event OnTurnChangedDelegate OnTurnChanged;
+    private int PlayerIndex
+    {
+        get => _playerIndex;
+        set
+        {
+            _playerIndex = value;
+            if (value == 0)
+            {
+                TurnsCounter++;
+            }
+        }
+    }
+
+    private int _turnsCounter;
+
+    public int TurnsCounter
+    {
+        get => _turnsCounter;
+        set
+        {
+            _turnsCounter = value;
+            EventManager.TriggerEvent("newTurn", new Dictionary<string, object>());
+        }
+    }
+
+    public Player Turn => GameManager.Instance.Players[_playerIndex];
 
     public void ChangeTurn()
     {
-        ControllerManager.Instance.ClearSelected();
-        Turn = Turn is TurnStates.PlayerTurn ? TurnStates.AITurn : TurnStates.PlayerTurn;
-        OnTurnChanged?.Invoke(Turn);
+        PlayerIndex = PlayerIndex == GameManager.Instance.Players.Count - 1 ? 0 : PlayerIndex++; //TODO Check that player active is
+        EventManager.TriggerEvent("turnChanged", new Dictionary<string, object> { { "whoseTurn", Turn } });
     }
 
-    public bool isPlayerTurn()
+    public bool IsPlayerTurn(Player player)
     {
-        return Turn == TurnStates.PlayerTurn;
+        return Turn == player;
+    }
+
+    public bool IsLocalPlayerTurn()
+    {
+        return Turn.Type == PlayerType.LocalPlayer;
     }
 }

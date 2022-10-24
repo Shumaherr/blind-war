@@ -25,7 +25,7 @@ public class SoundManager
                 _mainMusicInstance.start();
                 _ambienceInstance.start();
                 break;
-            case GameState.PlayerWin:
+            /*case GameState.PlayerWin:
                 _mainMusicInstance.stop(STOP_MODE.IMMEDIATE);
                 _ambienceInstance.stop(STOP_MODE.ALLOWFADEOUT);
                 RuntimeManager.PlayOneShot("event:/Music/music_win");
@@ -34,7 +34,7 @@ public class SoundManager
                 _mainMusicInstance.stop(STOP_MODE.IMMEDIATE);
                 _ambienceInstance.stop(STOP_MODE.ALLOWFADEOUT);
                 RuntimeManager.PlayOneShot("event:/Music/music_lose");
-                break;
+                break;*/
             default:
                 throw new ArgumentOutOfRangeException(nameof(newstate), newstate, null);
         }

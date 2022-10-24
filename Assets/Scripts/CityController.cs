@@ -3,19 +3,15 @@ using System.Linq;
 using FMODUnity;
 using UnityEngine;
 
-public enum CityOwner
-{
-    Player = 0,
-    AI = 1
-}
 
-public class CityController : MonoBehaviour
+public class CityController : MonoBehaviour, IDamageable
 {
-    [SerializeField] private int maxHealth = 10;
-    [SerializeField] private CityOwner owner;
+    [SerializeField] private int maxHealth = 1;
     [SerializeField] private List<Sprite> sprites;
     [SerializeField] private int _turnsToProduce = 3;
     [SerializeField] private List<BaseUnit> _unitsToProduce;
+    
+    public Player Owner { get; set; }
     private int _health;
     private Healthbar _healthbar;
     private BaseUnit _producingUnit;
@@ -24,21 +20,13 @@ public class CityController : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
     private int _turnsToProduceLeft;
 
-    public CityOwner Owner
-    {
-        get => owner;
-        set => owner = value;
-    }
-
     private int Health
     {
         get => _health;
         set
         {
-            _health = value;
-            _healthbar.SetHealthLevel((float)_health / maxHealth);
-            if (value <= 0)
-                ChangeOwner();
+            _health = value > 0 ? value : 0;
+            _healthbar.SetHealthLevel((float) _health / maxHealth);
         }
     }
 
@@ -53,32 +41,43 @@ public class CityController : MonoBehaviour
                 _turnsToProduceLeft = value;
         }
     }
+    
+    private void OnEnable()
+    {
+        EventManager.StartListening("turnChanged", OnTurnChanged);
+            
+    }
+    
+    private void OnDisable()
+    {
+        EventManager.StopListening("turnChanged", OnTurnChanged);
+            
+    }
 
     // Start is called before the first frame update
     private void Start()
     {
-        _sprite = owner == CityOwner.Player ? sprites[0] : sprites[1];
+        _sprite =  sprites[0];
         _healthbar = GetComponentInChildren<Healthbar>();
         _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         _spriteRenderer.sprite = _sprite;
         Health = maxHealth;
-        TurnManager.Instance.OnTurnChanged += OnTurnChanged;
     }
 
     private void ChangeSprite()
     {
-        _sprite = owner == CityOwner.Player ? sprites[0] : sprites[1];
-        _spriteRenderer.sprite = _sprite;
+        //_sprite = owner == CityOwner.Player ? sprites[0] : sprites[1];
+        //_spriteRenderer.sprite = _sprite;
     }
 
-    private void ChangeOwner()
+    private void ChangeOwner(Player newOwner)
     {
-        Owner = Owner == CityOwner.Player ? CityOwner.AI : CityOwner.Player;
+        Owner = newOwner;
         ChangeSprite();
         Health = maxHealth;
         _producingUnit = null;
         ChooseRandomUnitToProduce();
-        if (Owner == CityOwner.Player)
+        /*if (Owner == CityOwner.Player)
         {
             GameManager.Instance.AddCityToList(transform.position);
             RuntimeManager.PlayOneShot("event:/SFX/environment/castle_capture");
@@ -87,15 +86,15 @@ public class CityController : MonoBehaviour
         {
             GameManager.Instance.RemoveCityToList(transform.position);
             RuntimeManager.PlayOneShot("event:/SFX/environment/castle_lose");
-        }
+        }*/
     }
 
-    private void OnTurnChanged(TurnStates newturn)
+    private void OnTurnChanged(Dictionary<string, object> dictionary)
     {
+        var newturn = (Player) dictionary["newTurn"];
         if (_producingUnit == null)
             ChooseRandomUnitToProduce();
-        if (newturn == TurnStates.PlayerTurn && Owner == CityOwner.Player ||
-            newturn == TurnStates.AITurn && Owner == CityOwner.AI)
+        if (newturn == Owner)
         {
             TurnsToProduceLeft--;
             CheckProductionIsReady();
@@ -113,7 +112,7 @@ public class CityController : MonoBehaviour
         var randPos = GameManager.Instance.GetFreeRandomNeighbourCell(ciyPos);
         if (randPos != Vector3Int.zero)
         {
-            GameManager.Instance.SpawnManager.SpawnUnit(_producingUnit, owner, randPos);
+            GameManager.Instance.SpawnManager.SpawnUnit(_producingUnit, Owner, randPos);
             ChooseRandomUnitToProduce();
         }
     }
@@ -129,5 +128,12 @@ public class CityController : MonoBehaviour
         if (_health - damage > 0) //for avoid castle_siege & castle_capture sounds at one time
             RuntimeManager.PlayOneShot("event:/SFX/environment/castle_siege");
         Health -= damage;
+    }
+
+    public void TakeDamage(Unit damageDealer)
+    {
+        if (_health - damageDealer.Damage > 0) //for avoid castle_siege & castle_capture sounds at one time
+            RuntimeManager.PlayOneShot("event:/SFX/environment/castle_siege");
+        Health -= damageDealer.Damage;
     }
 }

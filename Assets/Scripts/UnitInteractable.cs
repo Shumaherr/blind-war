@@ -52,24 +52,10 @@ public class UnitInteractable : Unit
         _turnBar = GetComponentInChildren<TurnBar>();
         //DeactivateDialog();
         _textMeshPro = GetComponentInChildren<TextMeshPro>();
-        TurnManager.Instance.OnTurnChanged += ChangeTurn;
+        //TurnManager.Instance.OnTurnChanged += ChangeTurn;
         InitUnit();
         _healthbar.SetHealthLevel(Health / BaseUnit.MaxHealth);
     }
 
-    protected void ChangeTurn(TurnStates newturn)
-    {
-        switch (newturn)
-        {
-            case TurnStates.PlayerTurn:
-                InitMoves();
-                break;
-            case TurnStates.AITurn:
-                if (GetComponent<Fortificate>())
-                    Debug.Log(name + " is fortified");
-                break;
-            default:
-                throw new ArgumentOutOfRangeException(nameof(newturn), newturn, null);
-        }
-    }
+    
 }

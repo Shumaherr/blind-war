@@ -53,6 +53,7 @@ public class GridInteractor : BaseInteractable
     private void OnDisable()
     {
         EventManager.StopListening("unitSelected", OnUnitSelected);
+        EventManager.StopListening("unitMoved", OnUnitMoved);
     }
 
     public event OnTileSelectedDelegate OnTileSelected;

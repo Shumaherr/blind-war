@@ -63,7 +63,7 @@ public class ControllerManager : Singleton<ControllerManager>
                 walkableTilemap.SetColor(vector3Int, Color.magenta);
             }*/
             //_selectedUnit.DeactivateDialog();
-            if (!TurnManager.Instance.isPlayerTurn() || !_selectedUnit.CanMove())
+            if (!GameManager.Instance.TurnManager.IsLocalPlayerTurn() || !_selectedUnit.CanMove())
                 return;
             if (MapManager.Instance.GetMoveCosts(_selectedUnit.BaseUnit, walkableTilemap.GetTile(tilePos)) >
                 _selectedUnit.Moves)
@@ -128,7 +128,7 @@ public class ControllerManager : Singleton<ControllerManager>
 
     private IEnumerator MoveFromTo(Transform objectToMove, Vector3 pos1, Vector3 pos2, float speed)
     {
-        if (TurnManager.Instance.isPlayerTurn())
+        if (GameManager.Instance.TurnManager.IsLocalPlayerTurn())
         {
             instance = RuntimeManager.CreateInstance(
                 SoundManager.GetMovementSfxEventToPlay(_selectedUnit.BaseUnit.UnitType));

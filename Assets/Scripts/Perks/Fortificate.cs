@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+
 public class Fortificate : Perk
 {
     private int _currentAttacksAmount;
@@ -6,23 +9,21 @@ public class Fortificate : Perk
     private int _maxAttacksAmount = 1;
     private int _maxDuration = 1;
 
-    private void Start()
+
+    private void OnEnable()
     {
-        TurnManager.Instance.OnTurnChanged += DecreaseDuration;
+        EventManager.StartListening("newTurn", DecreaseDuration);
     }
 
-    private void DecreaseDuration(TurnStates newturn)
+    private void DecreaseDuration(Dictionary<string, object> obj)
     {
         if (!_isActive)
             return;
-        if (newturn == TurnStates.PlayerTurn)
+        _currentDuration--;
+        if (_currentDuration <= 0)
         {
-            _currentDuration--;
-            if (_currentDuration <= 0)
-            {
-                _isActive = false;
-                _currentDuration = 0;
-            }
+            _isActive = false;
+            _currentDuration = 0;
         }
     }
 

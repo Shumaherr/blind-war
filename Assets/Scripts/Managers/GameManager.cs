@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,9 +9,11 @@ public enum GameState
 {
     GameInit,
     GameStart,
-    PlayerWin,
-    PlayerLose
+    TurnChanged,
+    DoTurn
 }
+
+
 
 public class GameManager : Singleton<GameManager>
 {
@@ -30,9 +33,12 @@ public class GameManager : Singleton<GameManager>
 
     private List<CityController> _playerCities;
     private SoundManager _soundManager;
-
     private TurnManager _turnManager;
+
+    public TurnManager TurnManager => _turnManager;
     private UIManager _uiManager;
+    public List<Player> Players => _players;
+    private List<Player> _players;
 
     public Camera MainCamera => mainCamera;
     public Tilemap Grid => grid;
@@ -59,17 +65,21 @@ public class GameManager : Singleton<GameManager>
 
     private void Awake()
     {
+        GameState = GameState.GameInit;
         _soundManager = new SoundManager();
+        _pathfinding = new Pathfinding();
+        _turnManager = new TurnManager();
+        
         _uiManager = GetComponent<UIManager>();
         SpawnManager = GetComponent<SpawnManager>();
-        GameState = GameState.GameInit;
+        
         PlayerUnits = new Dictionary<Vector3Int, Unit>();
         EnemyUnitsPos = new Dictionary<Vector3Int, EnemyUnitBase>();
         _enemyUnits = new List<EnemyUnitBase>();
         _enemyUnitsToDelete = new List<EnemyUnitBase>();
         TakenCells = new List<Vector3Int>();
         AllCities = new Dictionary<Vector3Int, CityController>();
-        _pathfinding = new Pathfinding();
+        _gridInteractor = grid.GetComponent<GridInteractor>();
         foreach (var o in GameObject.FindGameObjectsWithTag("PlayerUnit"))
         {
             PlayerUnits.Add(grid.WorldToCell(o.transform.position), o.GetComponent<UnitInteractable>());
@@ -81,9 +91,7 @@ public class GameManager : Singleton<GameManager>
             _enemyUnits.Add(o.GetComponent<EnemyUnitBase>());
             EnemyUnitsPos.Add(grid.WorldToCell(o.transform.position), o.GetComponent<EnemyUnitBase>());
         }
-
-        _gridInteractor = GameObject.FindGameObjectWithTag("Grid").GetComponent<GridInteractor>();
-        foreach (var unit in PlayerUnits) unit.Value.OnUnitSelected += UnitOnOnUnitSelected;
+        
         foreach (var unit in PlayerUnits) unit.Value.OnUnitDie += OnUnitDie;
         foreach (var unit in EnemyUnitsPos) unit.Value.OnUnitDie += OnUnitDie;
 
@@ -99,17 +107,48 @@ public class GameManager : Singleton<GameManager>
             var position = city.gameObject.transform.position;
             AllCities.Add(grid.WorldToCell(position), city.GetComponent<CityController>());
         }
-
-        TurnManager.Instance.OnTurnChanged += OnTurnChanged;
-        OnTurnChanged(TurnStates.PlayerTurn);
         GameState = GameState.GameStart;
+    }
+
+    private void Update()
+    {
+        switch (GameState)
+        {
+            case GameState.GameInit:
+                break;
+            case GameState.GameStart:
+                break;
+            case GameState.TurnChanged:
+                break;
+            case GameState.DoTurn:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+    }
+
+    private void OnEnable()
+    {
+        EventManager.StartListening("turnChanged", OnTurnChanged);
+    }
+    
+    private void OnDisable()
+    {
+        EventManager.StopListening("turnChanged", OnTurnChanged);
+    }
+
+    private void SetPlayers()//TODO This method have to be called from Menu during game init
+    {
+        _players.Add(new Player("Player1", PlayerType.LocalPlayer));
+        _players.Add(new Player("Bad boys", PlayerType.AI));
     }
 
     public event OnGameStateChangedDelegate OnGameStateChanged;
 
-    private void OnTurnChanged(TurnStates newturn)
+    private void OnTurnChanged(Dictionary<string, object> dictionary)
     {
-        if (newturn == TurnStates.AITurn)
+        var newturn = ((Player) dictionary["newTurn"]).Type;
+        if (newturn == PlayerType.AI)
         {
             foreach (var unit in _enemyUnitsToDelete) _enemyUnits.Remove(unit);
 
@@ -144,7 +183,7 @@ public class GameManager : Singleton<GameManager>
         return PlayerUnits.ContainsKey(cell);
     }
 
-    public bool HasEnemyCity(Vector3Int cell)
+    /*public bool HasEnemyCity(Vector3Int cell)
     {
         return AllCities.ContainsKey(cell) && AllCities[cell].Owner == CityOwner.AI;
     }
@@ -152,7 +191,7 @@ public class GameManager : Singleton<GameManager>
     public bool HasPlayerCity(Vector3Int cell)
     {
         return AllCities.ContainsKey(cell) && AllCities[cell].Owner == CityOwner.Player;
-    }
+    }*/
 
     public CityController GetCityInCell(Vector3Int cell)
     {
@@ -165,14 +204,12 @@ public class GameManager : Singleton<GameManager>
         {
             EnemyUnitsPos.Remove(unitToKill.GetUnitCell());
             _enemyUnitsToDelete.Add((EnemyUnitBase)unitToKill);
-            CheckPlayerWin();
         }
         else
         {
             ControllerManager.Instance.SelectedUnit = null;
             _gridInteractor.UnhighlightCells();
             PlayerUnits.Remove(unitToKill.GetUnitCell());
-            CheckPlayerLose();
         }
 
         TakenCells.Remove(unitToKill.GetUnitCell());
@@ -226,32 +263,13 @@ public class GameManager : Singleton<GameManager>
         EnemyUnitsPos.Add(finishCell, unit);
     }
 
-    private void PlayerWin()
+    public void CheckPlayerLose(Player player)
     {
-        GameState = GameState.PlayerWin;
-        SceneManager.LoadScene("Scene_Win");
-    }
-
-    public void CheckPlayerWin()
-    {
-        if (EnemyUnitsPos.Count <= 0 && AllCities.Count(pair => pair.Value.Owner == CityOwner.AI) <= 0)
+        if (PlayerUnits.Count(u => u.Value.Owner == player) <= 0 &&
+            AllCities.Count(pair => pair.Value.Owner == player) <= 0)
             //TODO change to event
-            PlayerWin();
+            _players.Find(p => p == player).Active = false;
     }
-
-    public void CheckPlayerLose()
-    {
-        if (PlayerUnits.Count <= 0 && AllCities.Count(pair => pair.Value.Owner == CityOwner.Player) <= 0)
-            //TODO change to event
-            PlayerLose();
-    }
-
-    private void PlayerLose()
-    {
-        GameState = GameState.PlayerLose;
-        SceneManager.LoadScene("Scene_Defeat");
-    }
-
 
     public HashSet<UnitType> GetNeighbourUnitTypes()
     {

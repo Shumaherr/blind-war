@@ -21,6 +21,8 @@ public class Unit : MonoBehaviour
 
     protected bool isDead;
 
+    public Player Owner { get; private set; }
+
     public List<Item> Inventory
     {
         get => inventory;
@@ -76,6 +78,16 @@ public class Unit : MonoBehaviour
         Moves = baseUnit.Moves;
     }
 
+    private void OnEnable()
+    {
+        EventManager.StartListening("turnChanged", OnTurnChanged);
+    }
+
+    private void OnDisable()
+    {
+        EventManager.StopListening("turnChanged", OnTurnChanged);
+    }
+
     public void TakeDamage(int amount)
     {
         Health = _health > amount ? Health -= amount : 0;
@@ -112,10 +124,18 @@ public class Unit : MonoBehaviour
     protected void UnitDie()
     {
         IsDead = true;
+        OnUnitDie?.Invoke(this);
     }
 
     public Vector3Int GetUnitCell()
     {
         return GameManager.Instance.Grid.WorldToCell(transform.position);
+    }
+
+    private void OnTurnChanged(Dictionary<string, object> dictionary)
+    {
+        var newTurn = (Player) dictionary["newTurn"];
+        if (newTurn == Owner)
+            InitMoves();
     }
 }
