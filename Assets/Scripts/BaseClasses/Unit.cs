@@ -134,7 +134,7 @@ public class Unit : MonoBehaviour
 
     private void OnTurnChanged(Dictionary<string, object> dictionary)
     {
-        var newTurn = (Player) dictionary["newTurn"];
+        var newTurn = (Player) dictionary["whoseTurn"];
         if (newTurn == Owner)
             InitMoves();
     }

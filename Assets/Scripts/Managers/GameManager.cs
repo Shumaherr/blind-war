@@ -82,7 +82,7 @@ public class GameManager : Singleton<GameManager>
         _gridInteractor = grid.GetComponent<GridInteractor>();
         foreach (var o in GameObject.FindGameObjectsWithTag("PlayerUnit"))
         {
-            PlayerUnits.Add(grid.WorldToCell(o.transform.position), o.GetComponent<UnitInteractable>());
+            PlayerUnits.Add(grid.WorldToCell(o.transform.position), o.GetComponent<Unit>());
             TakenCells.Add(grid.WorldToCell(o.transform.position));
         }
 
@@ -107,6 +107,7 @@ public class GameManager : Singleton<GameManager>
             var position = city.gameObject.transform.position;
             AllCities.Add(grid.WorldToCell(position), city.GetComponent<CityController>());
         }
+        SetPlayers();
         GameState = GameState.GameStart;
     }
 
@@ -139,15 +140,18 @@ public class GameManager : Singleton<GameManager>
 
     private void SetPlayers()//TODO This method have to be called from Menu during game init
     {
-        _players.Add(new Player("Player1", PlayerType.LocalPlayer));
-        _players.Add(new Player("Bad boys", PlayerType.AI));
+        _players = new List<Player>
+        {
+            new("Player1", PlayerType.LocalPlayer),
+            new("Bad boys", PlayerType.AI)
+        };
     }
 
     public event OnGameStateChangedDelegate OnGameStateChanged;
 
     private void OnTurnChanged(Dictionary<string, object> dictionary)
     {
-        var newturn = ((Player) dictionary["newTurn"]).Type;
+        var newturn = ((Player) dictionary["whoseTurn"]).Type;
         if (newturn == PlayerType.AI)
         {
             foreach (var unit in _enemyUnitsToDelete) _enemyUnits.Remove(unit);
@@ -324,5 +328,10 @@ public class GameManager : Singleton<GameManager>
             TakenCells.Add(unit.GetComponent<UnitInteractable>().GetUnitCell());
             unit.GetComponent<UnitInteractable>().OnUnitSelected += UnitOnOnUnitSelected;
         }
+    }
+
+    public void NextTurn()
+    {
+        TurnManager.ChangeTurn();
     }
 }

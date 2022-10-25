@@ -91,7 +91,7 @@ public class CityController : MonoBehaviour, IDamageable
 
     private void OnTurnChanged(Dictionary<string, object> dictionary)
     {
-        var newturn = (Player) dictionary["newTurn"];
+        var newturn = (Player) dictionary["whoseTurn"];
         if (_producingUnit == null)
             ChooseRandomUnitToProduce();
         if (newturn == Owner)

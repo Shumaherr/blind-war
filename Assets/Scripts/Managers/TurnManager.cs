@@ -44,6 +44,7 @@ public class TurnManager
     {
         PlayerIndex = PlayerIndex == GameManager.Instance.Players.Count - 1 ? 0 : PlayerIndex++; //TODO Check that player active is
         EventManager.TriggerEvent("turnChanged", new Dictionary<string, object> { { "whoseTurn", Turn } });
+        Debug.Log("Turn:" + Turn.Name);
     }
 
     public bool IsPlayerTurn(Player player)

@@ -2,130 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="359edaa5-222c-41c8-8062-0c5d0084d1e6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Blind war/.idea/contentModel.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Blind war/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Blind war/.idea/indexLayout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Blind war/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Blind war/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Blind war/.idea/projectSettingsUpdater.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Blind war/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Blind war/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Blind war/riderModule.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/GenericDictionaryPropertyDrawer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/GenericDictionaryPropertyDrawer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/FMODUnity.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/FMODUnity.asmdef" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/addons/ResonanceAudio/Editor/FMODUnityResonanceEditor.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/addons/ResonanceAudio/Editor/FMODUnityResonanceEditor.asmdef" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/addons/ResonanceAudio/Editor/FmodResonanceAudioRoomEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/addons/ResonanceAudio/Editor/FmodResonanceAudioRoomEditor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/addons/ResonanceAudio/Scripts/FMODUnityResonance.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/addons/ResonanceAudio/Scripts/FMODUnityResonance.asmdef" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/addons/ResonanceAudio/Scripts/FmodResonanceAudio.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/addons/ResonanceAudio/Scripts/FmodResonanceAudio.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/addons/ResonanceAudio/Scripts/FmodResonanceAudioRoom.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/addons/ResonanceAudio/Scripts/FmodResonanceAudioRoom.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/android/src/PlatformAndroid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/android/src/PlatformAndroid.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/html5/src/PlatformWebGL.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/html5/src/PlatformWebGL.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/ios/src/PlatformIOS.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/ios/src/PlatformIOS.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/linux/src/PlatformLinux.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/linux/src/PlatformLinux.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/mac/src/PlatformMac.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/mac/src/PlatformMac.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/tvos/src/PlatformAppleTV.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/tvos/src/PlatformAppleTV.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/win/src/PlatformWindows.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/win/src/PlatformWindows.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/BankRefDrawer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/BankRefDrawer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/BankRefreshWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/BankRefreshWindow.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/BankRefresher.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/BankRefresher.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/BoltIntegration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/BoltIntegration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/CreateEventPopup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/CreateEventPopup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/EditorBankRef.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/EditorBankRef.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/EditorEventRef.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/EditorEventRef.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/EditorParamRef.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/EditorParamRef.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/EditorUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/EditorUtils.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/EventBrowser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/EventBrowser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/EventCache.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/EventCache.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/EventManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/EventManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/EventRefDrawer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/EventRefDrawer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/FMODUnityEditor.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/FMODUnityEditor.asmdef" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/FindAndReplace.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/FindAndReplace.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/ListView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/ListView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/LogViewer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/LogViewer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/ParamRefDrawer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/ParamRefDrawer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/SettingsEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/SettingsEditor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/SetupWizard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/SetupWizard.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/StudioBankLoaderEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/StudioBankLoaderEditor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/StudioEventEmitterEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/StudioEventEmitterEditor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/StudioEventEmitterGizmoDrawer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/StudioEventEmitterGizmoDrawer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/StudioGlobalParameterTriggerEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/StudioGlobalParameterTriggerEditor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/StudioListenerEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/StudioListenerEditor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/StudioParameterTriggerEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/StudioParameterTriggerEditor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/Timeline/FMODEventPlayableEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/Timeline/FMODEventPlayableEditor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/Timeline/FMODEventTrackEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/Timeline/FMODEventTrackEditor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/AutomatableSlots.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/AutomatableSlots.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/BankRefAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/BankRefAttribute.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/CodeGeneration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/CodeGeneration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/EventHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/EventHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/EventRefAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/EventRefAttribute.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/FMODRuntimeManagerOnGUIHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/FMODRuntimeManagerOnGUIHelper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/ParamRef.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/ParamRef.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/ParamRefAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/ParamRefAttribute.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/Platform.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/Platform.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/PlatformDefault.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/PlatformDefault.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/PlatformGroup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/PlatformGroup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/PlatformMobileHigh.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/PlatformMobileHigh.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/PlatformMobileLow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/PlatformMobileLow.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/PlatformPlayInEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/PlatformPlayInEditor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/RuntimeManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/RuntimeManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/RuntimeUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/RuntimeUtils.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/Settings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/Settings.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/StudioBankLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/StudioBankLoader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/StudioEventEmitter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/StudioEventEmitter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/StudioGlobalParameterTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/StudioGlobalParameterTrigger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/StudioListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/StudioListener.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/StudioParameterTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/StudioParameterTrigger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/Timeline/FMODEventPlayable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/Timeline/FMODEventPlayable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/Timeline/FMODEventTrack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/Timeline/FMODEventTrack.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/wrapper/fmod.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/wrapper/fmod.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/wrapper/fmod_dsp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/wrapper/fmod_dsp.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/wrapper/fmod_errors.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/wrapper/fmod_errors.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/wrapper/fmod_studio.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/wrapper/fmod_studio.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Map1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Map1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BaseClasses/BaseUnit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BaseClasses/BaseUnit.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BaseClasses/EnemyUnitBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BaseClasses/EnemyUnitBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BaseClasses/GenericDictionary.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BaseClasses/GenericDictionary.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BaseClasses/IController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BaseClasses/IController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BaseClasses/Item.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BaseClasses/Item.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BaseClasses/Perk.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BaseClasses/Perk.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BaseClasses/SerializedDictionary.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BaseClasses/SerializedDictionary.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BaseClasses/TileData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BaseClasses/TileData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BaseClasses/Unit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BaseClasses/Unit.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BattleSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BattleSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CameraController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CameraController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/City.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/City.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/CityController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CityController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GridInteractor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GridInteractor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Healthbar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Healthbar.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/InventoryController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/InventoryController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemSelector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemSelector.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items/Grenade.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Items/Grenade.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/ControllerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/ControllerManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/EventManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/EventManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/MapManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/MapManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/SoundManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/SoundManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/SpawnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/SpawnManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/TurnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/TurnManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/UIManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MinimapController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MinimapController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Perks/DetectClassOfNearestEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Perks/DetectClassOfNearestEnemy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Perks/Fortificate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Perks/Fortificate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TurnBar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TurnBar.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UnitInteractable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UnitInteractable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/EnemyHorseman.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/EnemyHorseman.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/EnemySpearman.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/EnemySpearman.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/EnemySwordman.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/EnemySwordman.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/Spearman.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/Spearman.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utils.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/VampireUnit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/VampireUnit.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro.cginc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro.cginc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Mobile.cginc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Mobile.cginc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Properties.cginc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Properties.cginc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Surface.cginc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Surface.cginc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Sprites/EmojiOne.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Sprites/EmojiOne.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/SceneTemplateSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/SceneTemplateSettings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -146,51 +28,52 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/BaseClasses/PathTile.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/CityController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/BaseClasses/GenericDictionary.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/BaseClasses/SerializedDictionary.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/BaseClasses/BaseUnit.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/04258D1C-DC10-4424-8C2A-17A6A31A3CF7/87/617ff017/UnitySynchronizationContext.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Healthbar.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UnitInteractable.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AF218701-FE32-4032-B521-DDD91F13662B/68/32b9bb40/Vector3Int.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/BaseClasses/Pathfinding.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/BaseClasses/BaseInteractable.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/BattleSystem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/351E49E2-A5BF-4FD6-BEAB-B458CE2255F3/b2/cbfbcdca/Enumerable.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GridInteractor.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Prefabs/Units/EnemyHorseman.prefab" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utils.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5D1D5A0A-7C19-404A-97CE-EFD28864629E/6e/4e795e38/Input.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/695D1CC9-3CCA-4506-9C52-8C15C9FDD749/2b/49962c45/KeyValuePair`2.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/695D1CC9-3CCA-4506-9C52-8C15C9FDD749/75/b52d95d8/List`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/695D1CC9-3CCA-4506-9C52-8C15C9FDD749/96/0f37ea5d/Dictionary`2.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/93A8FC8B-060F-43F2-9F29-52A90C55FDD1/18/474b2056/Tile.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AF218701-FE32-4032-B521-DDD91F13662B/43/42906cc7/UnitySynchronizationContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AF218701-FE32-4032-B521-DDD91F13662B/68/32b9bb40/Vector3Int.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AF218701-FE32-4032-B521-DDD91F13662B/90/3f8bd6e8/Transform.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AF218701-FE32-4032-B521-DDD91F13662B/d2/fbf77098/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AF218701-FE32-4032-B521-DDD91F13662B/de/217cfdb2/Mathf.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/BB425196-9FB4-4E5D-80D8-C754D05E61F7/62/f9cd7fad/GridLayout.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/F8918D0C-C5FC-41A1-BABA-01B207A4C016/04/e832e38c/RaycastHit.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e40e5a8f982c4b618a930d29f9bd091c46a800/eb/bcc62366/Dictionary`2.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Editor/GenericDictionaryPropertyDrawer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Fonts/Arvo-Regular SDF.asset" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/BankRefreshWindow.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/EditorUtils.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/RuntimeManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/wrapper/fmod_studio.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Prefabs/Units/EnemyHorseman.prefab" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/BaseClasses/BaseInteractable.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/BaseClasses/BaseUnit.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/BaseClasses/GenericDictionary.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/BaseClasses/PathTile.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/BaseClasses/Pathfinding.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/BaseClasses/SerializedDictionary.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/BaseClasses/Singletone.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BaseClasses/TileData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BaseClasses/Unit.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/BaseClasses/Singletone.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AF218701-FE32-4032-B521-DDD91F13662B/43/42906cc7/UnitySynchronizationContext.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/BB425196-9FB4-4E5D-80D8-C754D05E61F7/62/f9cd7fad/GridLayout.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Fonts/Arvo-Regular SDF.asset" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/695D1CC9-3CCA-4506-9C52-8C15C9FDD749/2b/49962c45/KeyValuePair`2.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/93A8FC8B-060F-43F2-9F29-52A90C55FDD1/18/474b2056/Tile.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UnitsSO/HorsemanSO.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AF218701-FE32-4032-B521-DDD91F13662B/90/3f8bd6e8/Transform.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AF218701-FE32-4032-B521-DDD91F13662B/de/217cfdb2/Mathf.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/F8918D0C-C5FC-41A1-BABA-01B207A4C016/04/e832e38c/RaycastHit.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Editor/GenericDictionaryPropertyDrawer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/695D1CC9-3CCA-4506-9C52-8C15C9FDD749/75/b52d95d8/List`1.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/RuntimeManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/EditorUtils.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/TilesSO/ForestTile.asset" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.tilemap@1.0.0/Editor/GridPaintPaletteClipboard.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Plugins/FMOD/src/Runtime/wrapper/fmod_studio.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5D1D5A0A-7C19-404A-97CE-EFD28864629E/6e/4e795e38/Input.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/ExecuteEvents.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Plugins/FMOD/src/Editor/BankRefreshWindow.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AF218701-FE32-4032-B521-DDD91F13662B/d2/fbf77098/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/TilemapDebug.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/BattleSystem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/CityController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GridInteractor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Healthbar.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Managers/EventManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/TilemapDebug.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/TilesSO/ForestTile.asset" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UnitInteractable.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UnitsSO/HorsemanSO.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utils.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.tilemap@1.0.0/Editor/GridPaintPaletteClipboard.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/ExecuteEvents.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -223,6 +106,9 @@
       </list>
     </option>
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="1xKdR6TZCDGH7v5Zp1CarCB0isz" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -231,22 +117,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34994584" />
-    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
-    <property name="Discover.Launch.Via.Unity" value="true" />
-    <property name="Rider.SolutionExplorerActivator" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="TWShift.3" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;rider.run.widget.enabled.cache&quot;: &quot;false&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$PROJECT_DIR$/../GameJams/BatyaJam2021/Builds/0.3\Blind war.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="E:\Work\GameDev\GameJams\BatyaJam2021\Builds\0.3" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="UnitTests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="E:\Programs\2021.3.6f1\Editor\Unity.exe" />
+      <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath &quot;E:\Work\GameDev\Blind war&quot; -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="E:\Work\GameDev\Blind war" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <method v="2" />
@@ -261,10 +152,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="33432">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="21416">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="33432" />
+      <option name="pid" value="21416" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -301,7 +192,9 @@
       <workItem from="1633307466712" duration="333000" />
       <workItem from="1639702719646" duration="16130000" />
       <workItem from="1642119732806" duration="4404000" />
-      <workItem from="1660432213107" duration="12218000" />
+      <workItem from="1660432213107" duration="12469000" />
+      <workItem from="1666448091165" duration="1551000" />
+      <workItem from="1666654316142" duration="2018000" />
     </task>
     <task id="LOCAL-00001" summary="Movement, prefabs">
       <created>1630454201521</created>
@@ -506,7 +399,14 @@
       <option name="project" value="LOCAL" />
       <updated>1632784191542</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Refactoring">
+      <created>1660948978155</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1660948978155</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -525,12 +425,10 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Battles TODO who wins, if units have same type" />
     <MESSAGE value="Battle (draw)" />
     <MESSAGE value="Cities: siege, change owner" />
     <MESSAGE value="UI: turn label" />
@@ -555,7 +453,8 @@
     <MESSAGE value="Add sound to city" />
     <MESSAGE value="Win and lose sounds" />
     <MESSAGE value="Fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixes" />
+    <MESSAGE value="Refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactoring" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -641,45 +540,6 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="82" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/PlayerController.cs</url>
-          <line>33</line>
-          <properties documentPath="E:\Work\GameDev\Blind war\Assets\Scripts\PlayerController.cs" initialLine="25" containingFunctionPresentation="method 'DoInteract'">
-            <startOffsets>
-              <option value="562" />
-            </startOffsets>
-            <endOffsets>
-              <option value="655" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="91" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Managers/EventManager.cs</url>
-          <line>64</line>
-          <properties documentPath="E:\Work\GameDev\Blind war\Assets\Scripts\Managers\EventManager.cs" initialLine="55" containingFunctionPresentation="method 'TriggerEvent'">
-            <startOffsets>
-              <option value="1980" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2032" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="93" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/GridInteractor.cs</url>
-          <line>84</line>
-          <properties documentPath="E:\Work\GameDev\Blind war\Assets\Scripts\GridInteractor.cs" initialLine="74" containingFunctionPresentation="method 'HighlightNeighbourCells'">
-            <startOffsets>
-              <option value="2275" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2330" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="95" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
