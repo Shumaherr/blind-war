@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public static class Utils
 {
@@ -50,9 +51,15 @@ public static class Utils
         {
             n--;
             var k = Random.Range(0, n + 1);
-            var value = list[k];
-            list[k] = list[n];
-            list[n] = value;
+            (list[k], list[n]) = (list[n], list[k]);
         }
+    }
+
+    public static Vector3Int GetRandomCell(Tilemap tilemap)
+    {
+        var cellBounds = tilemap.cellBounds;
+        return new Vector3Int(Random.Range(cellBounds.xMin, cellBounds.xMax),
+            Random.Range(tilemap.cellBounds.yMin, cellBounds.yMax),
+            Random.Range(tilemap.cellBounds.zMin, cellBounds.zMax));
     }
 }

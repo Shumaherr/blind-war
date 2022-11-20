@@ -20,7 +20,7 @@ public class MapManager : Singleton<MapManager>
             return 1;
         return TilesData[tile].moveCost[unit.UnitType];
     }
-
+    
     public string GetTileName(TileBase tile)
     {
         return TilesData[tile].tileName;

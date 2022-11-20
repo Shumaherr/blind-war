@@ -53,7 +53,7 @@ public class UnitInteractable : Unit
         //DeactivateDialog();
         _textMeshPro = GetComponentInChildren<TextMeshPro>();
         //TurnManager.Instance.OnTurnChanged += ChangeTurn;
-        InitUnit();
+        //InitUnit();
         _healthbar.SetHealthLevel(Health / BaseUnit.MaxHealth);
     }
 

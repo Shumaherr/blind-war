@@ -14,10 +14,10 @@ public class TilemapDebug : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        foreach (var cell in GameManager.Instance.TakenCells)
+        /*foreach (var cell in GameManager.Instance.TakenCells)
         {
             _tilemap.SetTileFlags(cell, TileFlags.None);
             _tilemap.SetColor(cell, Color.red);
-        }
+        }*/
     }
 }

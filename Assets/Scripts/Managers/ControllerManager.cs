@@ -14,6 +14,8 @@ public class ControllerManager : Singleton<ControllerManager>
     private Unit _selectedUnit;
 
     private EventInstance instance;
+    public Dictionary<Vector3Int, Unit> AllUnits { get; set; }
+    public Dictionary<Vector3Int, CityController> AllCitites { get; set; }
 
     public Unit SelectedUnit
     {
@@ -26,11 +28,13 @@ public class ControllerManager : Singleton<ControllerManager>
         }
     }
 
-    public void Start()
+    public void Awake()
     {
         _gridInteractor = GameObject.FindGameObjectWithTag("Grid").GetComponent<GridInteractor>();
         instance = new EventInstance();
         _gridInteractor.OnTileSelected += TileSelected;
+        AllUnits = new Dictionary<Vector3Int, Unit>();
+        AllCitites = new Dictionary<Vector3Int, CityController>();
 
         //Subscribe to event click on tile
     }
@@ -68,16 +72,21 @@ public class ControllerManager : Singleton<ControllerManager>
             if (MapManager.Instance.GetMoveCosts(_selectedUnit.BaseUnit, walkableTilemap.GetTile(tilePos)) >
                 _selectedUnit.Moves)
                 return;
+            Unit unitInCell = null;
+            foreach (var player in GameManager.Instance.Players.Where(player => player != GameManager.Instance.TurnManager.Turn).Where(player => player.GetUnitInCell(tilePos)))
+            {
+                unitInCell = player.GetUnitInCell(tilePos);
+            }
             _selectedUnit.ChangeMoves(MapManager.Instance.GetMoveCosts(_selectedUnit.BaseUnit,
                 walkableTilemap.GetTile(tilePos)));
-            if (GameManager.Instance.HasEnemyUnit(tilePos))
-                if (!StartBattle(_selectedUnit, GameManager.Instance.GetEnemyUnitInCell(tilePos)))
+            if (unitInCell != null)
+                if (!StartBattle(_selectedUnit, unitInCell))
                     return;
 
             MoveUnitToTile(_selectedUnit.transform, tilePos);
-            var tempUnit = GameManager.Instance.PlayerUnits[_selectedUnit.GetUnitCell()];
-            GameManager.Instance.PlayerUnits.Remove(_selectedUnit.GetUnitCell());
-            GameManager.Instance.PlayerUnits.Add(tilePos, tempUnit);
+            var tempUnit = _gridInteractor.UnitCell(_selectedUnit);
+            GameManager.Instance.TurnManager.Turn.Units.Remove(tempUnit);
+            GameManager.Instance.TurnManager.Turn.Units.Add(tilePos, _selectedUnit);
             ClearSelected();
         }
     }
@@ -92,8 +101,11 @@ public class ControllerManager : Singleton<ControllerManager>
         var cellCenterWorld = walkableTilemap.GetCellCenterWorld(tilePos);
         Debug.Log("Move for " + countCells + " cells");
         StartCoroutine(MoveFromTo(unitToMove, position, cellCenterWorld, 3));
-        GameManager.Instance.ChangeTakenCell(unitCell, tilePos);
+        //GameManager.Instance.ChangeTakenCell(unitCell, tilePos);
         EventManager.TriggerEvent("unitMoved", null);
+        var tempUnit = AllUnits[unitCell];
+        AllUnits.Remove(walkableTilemap.WorldToCell(position));
+        AllUnits.Add(tilePos, tempUnit);
         Debug.Log("End");
     }
 
@@ -148,5 +160,10 @@ public class ControllerManager : Singleton<ControllerManager>
         instance.stop(STOP_MODE.ALLOWFADEOUT);
         instance.release();
         objectToMove.position = pos2;
+    }
+    
+    public bool IsNearPlayerUnit(Vector3 pos)
+    {
+        return Utils.Neighbors(walkableTilemap.WorldToCell(pos)).Any(i => AllUnits.ContainsKey(i) || AllCitites.ContainsKey(i));
     }
 }

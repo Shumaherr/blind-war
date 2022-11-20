@@ -10,7 +10,7 @@ public class TurnManager
 
     public TurnManager()
     {
-        _playerIndex = 0;
+        PlayerIndex = -1;
     }
 
     private int PlayerIndex
@@ -38,11 +38,11 @@ public class TurnManager
         }
     }
 
-    public Player Turn => GameManager.Instance.Players[_playerIndex];
+    public Player Turn => GameManager.Instance.Players[PlayerIndex];
 
     public void ChangeTurn()
     {
-        PlayerIndex = PlayerIndex == GameManager.Instance.Players.Count - 1 ? 0 : PlayerIndex++; //TODO Check that player active is
+        PlayerIndex = PlayerIndex == GameManager.Instance.Players.Count - 1 ? 0 : ++PlayerIndex; //TODO Check that player active is
         EventManager.TriggerEvent("turnChanged", new Dictionary<string, object> { { "whoseTurn", Turn } });
         Debug.Log("Turn:" + Turn.Name);
     }

@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using FMODUnity;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 
 public class CityController : MonoBehaviour, IDamageable
@@ -19,6 +21,7 @@ public class CityController : MonoBehaviour, IDamageable
     private Sprite _sprite;
     private SpriteRenderer _spriteRenderer;
     private int _turnsToProduceLeft;
+    private Transform _cityTransform;
 
     private int Health
     {
@@ -41,7 +44,12 @@ public class CityController : MonoBehaviour, IDamageable
                 _turnsToProduceLeft = value;
         }
     }
-    
+
+    private void Awake()
+    {
+        _cityTransform = gameObject.transform;
+    }
+
     private void OnEnable()
     {
         EventManager.StartListening("turnChanged", OnTurnChanged);
@@ -108,7 +116,7 @@ public class CityController : MonoBehaviour, IDamageable
 
     private void ProduceUnit()
     {
-        var ciyPos = GameManager.Instance.AllCities.First(c => c.Value == this).Key;
+        var ciyPos = GameManager.Instance.Grid.WorldToCell(_cityTransform.position);
         var randPos = GameManager.Instance.GetFreeRandomNeighbourCell(ciyPos);
         if (randPos != Vector3Int.zero)
         {

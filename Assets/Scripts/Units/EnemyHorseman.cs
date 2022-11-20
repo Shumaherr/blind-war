@@ -15,12 +15,12 @@ public class EnemyHorseman : EnemyUnitBase
             ChangeMoves();
         }
 
-        GameManager.Instance.ChangeEnemyCell(_currentPath[0], _currentPath[lastStep]);
+        //GameManager.Instance.ChangeEnemyCell(_currentPath[0], _currentPath[lastStep]);
     }
 
     public override void DoTurn()
     {
-        base.DoTurn();
+        /*base.DoTurn();
         var pathes = new List<List<Vector3Int>>();
         foreach (var unit in GameManager.Instance.PlayerUnits)
             pathes.Add(GameManager.Instance.GetPath(transform.position, unit.Key));
@@ -41,6 +41,6 @@ public class EnemyHorseman : EnemyUnitBase
         }
 
         DoFight();
-        ChangeMoves();
+        ChangeMoves();*/
     }
 }

@@ -14,20 +14,47 @@ public class Player
         Name = name;
         Type = type;
         Active = true;
-        _startUnits = new Dictionary<Vector2Int, BaseUnit>();
+        units = new Dictionary<Vector3Int, Unit>();
         //For tests
-        _startUnits.Add(new Vector2Int(0,0), new SpearmanSO());
+        var pos = Utils.GetRandomCell(GameManager.Instance.Grid);
+        while (!GameManager.Instance.Grid.HasTile(pos))
+        { 
+            pos = Utils.GetRandomCell(GameManager.Instance.Grid);
+        }
+        units.Add(pos, GameManager.Instance.SpawnManager.SpawnUnit(new SpearmanSO(), this, pos).GetComponent<Unit>());
     }
 
     public string Name { get; private set; }
     public PlayerType Type { get; private set; }
     public bool Active { get; set; }
 
-    private Dictionary<Vector2Int, BaseUnit> _startUnits;
-
-    public Dictionary<Vector2Int, BaseUnit> StartUnits
+    private Dictionary<Vector3Int, Unit> units;
+    public Dictionary<Vector3Int, Unit> Units
     {
-        get => _startUnits;
-        private set => _startUnits = value;
+        get => units;
+        private set => units = value;
     }
+
+    private Dictionary<Vector3Int, CityController> cities;
+    public Dictionary<Vector3Int, CityController> Cities
+    {
+        get => cities;
+        private set => cities = value;
+    }
+
+    public void InitPlayer()
+    {
+        
+    }
+
+    public Unit GetUnitInCell(Vector3Int cell)
+    {
+        return Units.ContainsKey(cell) ? Units[cell] : null;
+    }
+    
+    public CityController GetCityInCell(Vector3Int cell)
+    {
+        return Cities.ContainsKey(cell) ? Cities[cell] : null;
+    }
+    
 }

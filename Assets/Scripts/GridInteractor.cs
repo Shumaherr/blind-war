@@ -37,8 +37,9 @@ public class GridInteractor : BaseInteractable
             Vector2 clickWorldPos = mainCamera.ScreenToWorldPoint(mousePos);
             var clickCellPos = _grid.WorldToCell(clickWorldPos);
             if (!_grid.HasTile(clickCellPos) ||
+                !ControllerManager.Instance.SelectedUnit||
                 !IsNeighbor(UnitCell(ControllerManager.Instance.SelectedUnit), clickCellPos) ||
-                GameManager.Instance.TakenCells.Contains(clickCellPos))
+                ControllerManager.Instance.AllUnits.ContainsKey(clickCellPos))
                 return;
             OnTileSelected?.Invoke(clickCellPos);
         }
@@ -85,7 +86,9 @@ public class GridInteractor : BaseInteractable
             UnhighlightCells();
         foreach (var cell in Neighbors(UnitCell(selectedUnit)))
         {
-            if (GameManager.Instance.TakenCells.Contains(cell) || _grid.GetTile(cell) == null ||
+            if (ControllerManager.Instance.AllUnits.ContainsKey(cell) ||
+                ControllerManager.Instance.AllCitites.ContainsKey(cell) ||
+                _grid.GetTile(cell) == null ||
                 MapManager.Instance.GetMoveCosts(selectedUnit.BaseUnit, _grid.GetTile(cell)) > selectedUnit.Moves)
                 continue;
             _grid.SetTileFlags(cell, TileFlags.None);
@@ -109,5 +112,10 @@ public class GridInteractor : BaseInteractable
     public Vector3Int UnitCell(Unit unit)
     {
         return _grid.LocalToCell(unit.transform.position);
+    }
+    
+    public TileBase GetTileBase(Vector3Int cell)
+    {
+        return _grid.GetTile(_grid.LocalToCell(cell));
     }
 }

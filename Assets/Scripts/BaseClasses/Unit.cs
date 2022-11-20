@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-[RequireComponent(typeof(IController))]
 public class Unit : MonoBehaviour
 {
     public delegate void OnUnitDieDelegate(Unit unit);
@@ -20,6 +20,8 @@ public class Unit : MonoBehaviour
     protected int _moves;
 
     protected bool isDead;
+    
+    private Renderer[] _renderer;
 
     public Player Owner { get; private set; }
 
@@ -66,14 +68,18 @@ public class Unit : MonoBehaviour
     protected void Start()
     {
         _controller = GetComponent<IController>();
-        InitUnit();
+        
     }
 
-    public event Action<Unit> OnUnitSelected;
+    private void Awake()
+    {
+        _renderer = GetComponentsInChildren<Renderer>();
+    }
+
     public event Action<int, int> OnMovesChanged;
     public event OnUnitDieDelegate OnUnitDie;
 
-    protected void InitMoves()
+    public void InitMoves()
     {
         Moves = baseUnit.Moves;
     }
@@ -113,11 +119,12 @@ public class Unit : MonoBehaviour
         _damage = BaseUnit.BaseDamage;
     }
 
-    public void InitUnit()
+    public void InitUnit(Player owner)
     {
         InitHealth();
         InitMoves();
         InitDamage();
+        Owner = owner;
         IsDead = false;
     }
 
@@ -136,6 +143,32 @@ public class Unit : MonoBehaviour
     {
         var newTurn = (Player) dictionary["whoseTurn"];
         if (newTurn == Owner)
+        {
+            ShowUnit();
             InitMoves();
+        }
+        else
+        {
+            HideUnit();
+        }
     }
+    
+    public void ChangeVisibility()
+    {
+        if (ControllerManager.Instance.IsNearPlayerUnit(transform.position))
+            ShowUnit();
+        else
+            HideUnit();
+    }
+    
+    public void HideUnit()
+    {
+        _renderer.ToList().ForEach(spriteRenderer => spriteRenderer.enabled = false);
+    }
+
+    public void ShowUnit()
+    {
+        _renderer.ToList().ForEach(spriteRenderer => spriteRenderer.enabled = true);
+    }
+    
 }

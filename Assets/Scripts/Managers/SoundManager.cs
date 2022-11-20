@@ -22,8 +22,8 @@ public class SoundManager
             case GameState.GameInit:
                 break;
             case GameState.GameStart:
-                _mainMusicInstance.start();
-                _ambienceInstance.start();
+                //_mainMusicInstance.start();
+                //_ambienceInstance.start();
                 break;
             /*case GameState.PlayerWin:
                 _mainMusicInstance.stop(STOP_MODE.IMMEDIATE);

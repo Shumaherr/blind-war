@@ -23,7 +23,7 @@ public abstract class EnemyUnitBase : Unit
     {
         _renderer = GetComponentInChildren<SpriteRenderer>();
         _renderer.sprite = BaseUnit.GeneralizedSprite;
-        InitUnit();
+        //InitUnit();
     }
 
     private void Update()
@@ -76,7 +76,8 @@ public abstract class EnemyUnitBase : Unit
 
     protected void DoFight()
     {
-        if (!CanMove())
+        //TODO
+        /*if (!CanMove())
             return;
         var unitCell = GetUnitCell();
         foreach (var cell in Utils.Neighbors(unitCell))
@@ -85,7 +86,7 @@ public abstract class EnemyUnitBase : Unit
                 ControllerManager.Instance.StartBattle(this,
                     GameManager.Instance.PlayerUnits[cell]);
                 ChangeMoves();
-            }
+            }*/
     }
 
     private bool CanMove()
@@ -100,6 +101,8 @@ public abstract class EnemyUnitBase : Unit
 
     private bool IsNearPlayerUnit()
     {
-        return Utils.Neighbors(GetUnitCell()).Any(i => GameManager.Instance.HasPlayerUnit(i));
+        //TODO
+        //return Utils.Neighbors(GetUnitCell()).Any(i => GameManager.Instance.HasPlayerUnit(i));
+        return true;
     }
 }

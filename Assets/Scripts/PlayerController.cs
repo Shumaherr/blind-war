@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour, IController
 
     private void DoInteract()
     {
-        if (!GameManager.Instance.TurnManager.IsLocalPlayerTurn() || ControllerManager.Instance.SelectedUnit == _unit)
+        if (!GameManager.Instance.TurnManager.IsLocalPlayerTurn() || ControllerManager.Instance.SelectedUnit == _unit || GameManager.Instance.TurnManager.Turn != _unit.Owner)
             return;
         RuntimeManager.PlayOneShot("event:/SFX/ui/select", transform.position);
         //ControllerManager.Instance.SelectedUnit?.DeactivateDialog();
