@@ -36,6 +36,7 @@ public class GridInteractor : BaseInteractable
             mousePos.z = 4;
             Vector2 clickWorldPos = mainCamera.ScreenToWorldPoint(mousePos);
             var clickCellPos = _grid.WorldToCell(clickWorldPos);
+            Debug.Log($"Clicked {clickCellPos}");
             if (!_grid.HasTile(clickCellPos) ||
                 !ControllerManager.Instance.SelectedUnit||
                 !IsNeighbor(UnitCell(ControllerManager.Instance.SelectedUnit), clickCellPos) ||

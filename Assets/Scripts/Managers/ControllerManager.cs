@@ -106,6 +106,14 @@ public class ControllerManager : Singleton<ControllerManager>
         var tempUnit = AllUnits[unitCell];
         AllUnits.Remove(walkableTilemap.WorldToCell(position));
         AllUnits.Add(tilePos, tempUnit);
+        var neighbors = Utils.Neighbors(tilePos);
+        foreach (var neighbor in neighbors)
+        {
+            if (AllUnits.ContainsKey(neighbor) && AllUnits[neighbor].Owner != GameManager.Instance.TurnManager.Turn)
+            {
+                AllUnits[neighbor].ShowGeneralizedSprite();
+            }
+        }
         Debug.Log("End");
     }
 

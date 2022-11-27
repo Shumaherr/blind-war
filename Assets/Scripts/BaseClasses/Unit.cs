@@ -22,6 +22,7 @@ public class Unit : MonoBehaviour
     protected bool isDead;
     
     private Renderer[] _renderer;
+    private SpriteRenderer _spriteRenderer;
 
     public Player Owner { get; private set; }
 
@@ -74,6 +75,7 @@ public class Unit : MonoBehaviour
     private void Awake()
     {
         _renderer = GetComponentsInChildren<Renderer>();
+        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     public event Action<int, int> OnMovesChanged;
@@ -82,6 +84,7 @@ public class Unit : MonoBehaviour
     public void InitMoves()
     {
         Moves = baseUnit.Moves;
+        _spriteRenderer.sprite = BaseUnit.BaseSprite;
     }
 
     private void OnEnable()
@@ -169,6 +172,12 @@ public class Unit : MonoBehaviour
     public void ShowUnit()
     {
         _renderer.ToList().ForEach(spriteRenderer => spriteRenderer.enabled = true);
+    }
+
+    public void ShowGeneralizedSprite()
+    {
+        _spriteRenderer.sprite = BaseUnit.GeneralizedSprite;
+        _spriteRenderer.enabled = true;
     }
     
 }

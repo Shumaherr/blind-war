@@ -55,11 +55,18 @@ public static class Utils
         }
     }
 
-    public static Vector3Int GetRandomCell(Tilemap tilemap)
+    /*public static Vector3Int GetRandomCell(Tilemap tilemap)
     {
         var cellBounds = tilemap.cellBounds;
         return new Vector3Int(Random.Range(cellBounds.xMin, cellBounds.xMax),
             Random.Range(tilemap.cellBounds.yMin, cellBounds.yMax),
+            Random.Range(tilemap.cellBounds.zMin, cellBounds.zMax));
+    }*/
+    public static Vector3Int GetRandomCell(Tilemap tilemap)
+    {
+        var cellBounds = tilemap.cellBounds;
+        return new Vector3Int(Random.Range(-3, 10),
+            Random.Range(-3, 10),
             Random.Range(tilemap.cellBounds.zMin, cellBounds.zMax));
     }
 }
