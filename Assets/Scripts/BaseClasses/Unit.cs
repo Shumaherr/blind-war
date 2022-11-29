@@ -147,21 +147,22 @@ public class Unit : MonoBehaviour
         var newTurn = (Player) dictionary["whoseTurn"];
         if (newTurn == Owner)
         {
+            ShowBaseSprite();
             ShowUnit();
             InitMoves();
         }
         else
         {
-            HideUnit();
+            ShowGeneralizedSprite();
+            ChangeVisibility();
         }
     }
     
     public void ChangeVisibility()
     {
-        if (ControllerManager.Instance.IsNearPlayerUnit(transform.position))
-            ShowUnit();
-        else
-            HideUnit();
+        HideUnit();
+        if (ControllerManager.Instance.IsNearAlienUnit(transform.position))
+            ShowGeneralizedSprite();
     }
     
     public void HideUnit()
@@ -177,6 +178,12 @@ public class Unit : MonoBehaviour
     public void ShowGeneralizedSprite()
     {
         _spriteRenderer.sprite = BaseUnit.GeneralizedSprite;
+        _spriteRenderer.enabled = true;
+    }
+    
+    public void ShowBaseSprite()
+    {
+        _spriteRenderer.sprite = BaseUnit.BaseSprite;
         _spriteRenderer.enabled = true;
     }
     

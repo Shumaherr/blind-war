@@ -94,26 +94,22 @@ public class ControllerManager : Singleton<ControllerManager>
     public void MoveUnitToTile(Transform unitToMove, Vector3Int tilePos)
     {
         var position = unitToMove.position;
-        var unitCell = walkableTilemap.WorldToCell(position);
-        var countCells = (int)Mathf.Round(Vector3.Distance(tilePos, unitCell));
+        var oldCellPos = walkableTilemap.WorldToCell(position);
+        var countCells = (int)Mathf.Round(Vector3.Distance(tilePos, oldCellPos));
         if (countCells == 0)
             return;
         var cellCenterWorld = walkableTilemap.GetCellCenterWorld(tilePos);
+        var oldNeighbors = Utils.Neighbors(oldCellPos).Where((i => AllUnits.ContainsKey(i)));
+        AllUnits.Where((pair => oldNeighbors.Contains(pair.Key) )).ToList().ForEach((pair => pair.Value.HideUnit()));
         Debug.Log("Move for " + countCells + " cells");
         StartCoroutine(MoveFromTo(unitToMove, position, cellCenterWorld, 3));
         //GameManager.Instance.ChangeTakenCell(unitCell, tilePos);
         EventManager.TriggerEvent("unitMoved", null);
-        var tempUnit = AllUnits[unitCell];
-        AllUnits.Remove(walkableTilemap.WorldToCell(position));
+        var tempUnit = AllUnits[oldCellPos];
+        AllUnits.Remove(oldCellPos);
         AllUnits.Add(tilePos, tempUnit);
-        var neighbors = Utils.Neighbors(tilePos);
-        foreach (var neighbor in neighbors)
-        {
-            if (AllUnits.ContainsKey(neighbor) && AllUnits[neighbor].Owner != GameManager.Instance.TurnManager.Turn)
-            {
-                AllUnits[neighbor].ShowGeneralizedSprite();
-            }
-        }
+        AllUnits.Where((pair => Utils.Neighbors(tilePos).Contains(pair.Key) && pair.Value.Owner != GameManager.Instance.TurnManager.Turn)).
+            ToList().ForEach(pair => pair.Value.ShowGeneralizedSprite());
         Debug.Log("End");
     }
 
@@ -168,10 +164,14 @@ public class ControllerManager : Singleton<ControllerManager>
         instance.stop(STOP_MODE.ALLOWFADEOUT);
         instance.release();
         objectToMove.position = pos2;
+        var worldToCell = walkableTilemap.WorldToCell(pos2);
+        var neighbors = Utils.Neighbors(worldToCell);
+        
     }
     
-    public bool IsNearPlayerUnit(Vector3 pos)
+    public bool IsNearAlienUnit(Vector3 pos)
     {
-        return Utils.Neighbors(walkableTilemap.WorldToCell(pos)).Any(i => AllUnits.ContainsKey(i) || AllCitites.ContainsKey(i));
+        return Utils.Neighbors(walkableTilemap.WorldToCell(pos)).
+            Any(i => (AllUnits.ContainsKey(i) || AllCitites.ContainsKey(i)) && AllUnits[i].Owner == GameManager.Instance.TurnManager.Turn);
     }
 }
