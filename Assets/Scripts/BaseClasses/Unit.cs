@@ -38,7 +38,15 @@ public class Unit : MonoBehaviour
     protected virtual int Health
     {
         get => _health;
-        set => _health = value;
+        set
+        {
+            _health = value >= 0 ? value : 0;
+            if (_health == 0)
+            {
+                IsDead = true;
+            }
+        
+        }
     }
 
     public int Damage => _damage;

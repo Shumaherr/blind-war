@@ -17,13 +17,14 @@ public class Player
         units = new Dictionary<Vector3Int, Unit>();
         //For tests
         var pos = Utils.GetRandomCell(GameManager.Instance.Grid);
+        Allies = new List<Player>();
         while (!GameManager.Instance.Grid.HasTile(pos))
         { 
             pos = Utils.GetRandomCell(GameManager.Instance.Grid);
         }
         units.Add(pos, GameManager.Instance.SpawnManager.SpawnUnit(new SpearmanSO(), this, pos).GetComponent<Unit>());
     }
-
+    public List<Player> Allies { get; private set; }
     public string Name { get; private set; }
     public PlayerType Type { get; private set; }
     public bool Active { get; set; }

@@ -72,11 +72,7 @@ public class ControllerManager : Singleton<ControllerManager>
             if (MapManager.Instance.GetMoveCosts(_selectedUnit.BaseUnit, walkableTilemap.GetTile(tilePos)) >
                 _selectedUnit.Moves)
                 return;
-            Unit unitInCell = null;
-            foreach (var player in GameManager.Instance.Players.Where(player => player != GameManager.Instance.TurnManager.Turn).Where(player => player.GetUnitInCell(tilePos)))
-            {
-                unitInCell = player.GetUnitInCell(tilePos);
-            }
+            Unit unitInCell = AllUnits.ContainsKey(tilePos) && AllUnits[tilePos].Owner != _selectedUnit.Owner?AllUnits[tilePos]:null;
             _selectedUnit.ChangeMoves(MapManager.Instance.GetMoveCosts(_selectedUnit.BaseUnit,
                 walkableTilemap.GetTile(tilePos)));
             if (unitInCell != null)

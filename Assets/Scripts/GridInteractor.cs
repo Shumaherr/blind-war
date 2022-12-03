@@ -39,8 +39,7 @@ public class GridInteractor : BaseInteractable
             Debug.Log($"Clicked {clickCellPos}");
             if (!_grid.HasTile(clickCellPos) ||
                 !ControllerManager.Instance.SelectedUnit||
-                !IsNeighbor(UnitCell(ControllerManager.Instance.SelectedUnit), clickCellPos) ||
-                ControllerManager.Instance.AllUnits.ContainsKey(clickCellPos))
+                !IsNeighbor(UnitCell(ControllerManager.Instance.SelectedUnit), clickCellPos))
                 return;
             OnTileSelected?.Invoke(clickCellPos);
         }
