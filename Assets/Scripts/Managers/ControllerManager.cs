@@ -81,6 +81,7 @@ public class ControllerManager : Singleton<ControllerManager>
 
             MoveUnitToTile(_selectedUnit.transform, tilePos);
             var tempUnit = _gridInteractor.UnitCell(_selectedUnit);
+            AllUnits.Where((unit => unit.Value.))
             GameManager.Instance.TurnManager.Turn.Units.Remove(tempUnit);
             GameManager.Instance.TurnManager.Turn.Units.Add(tilePos, _selectedUnit);
             ClearSelected();
@@ -124,11 +125,13 @@ public class ControllerManager : Singleton<ControllerManager>
 
         if (playerUnit == winner)
         {
-            GameManager.Instance.KillUnit(enemyUnit);
+            AllUnits.Remove(walkableTilemap.WorldToCell(enemyUnit.transform.position));
+            enemyUnit.Owner.CheckUnits();
+            enemyUnit.KillUnit();
             return true;
         }
-
-        GameManager.Instance.KillUnit(playerUnit);
+        AllUnits.Remove(walkableTilemap.WorldToCell(playerUnit.transform.position));
+        playerUnit.KillUnit();
         return false;
     }
 

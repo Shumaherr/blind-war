@@ -110,6 +110,11 @@ public class Unit : MonoBehaviour
         Health = _health > amount ? Health -= amount : 0;
     }
 
+    public void KillUnit()
+    {
+        Destroy(gameObject);
+    }
+
     public void ChangeMoves(int moves = 1)
     {
         Moves = Math.Max(0, _moves - moves);

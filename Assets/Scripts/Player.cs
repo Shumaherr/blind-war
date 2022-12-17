@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public enum PlayerType
@@ -14,7 +15,6 @@ public class Player
         Name = name;
         Type = type;
         Active = true;
-        units = new Dictionary<Vector3Int, Unit>();
         //For tests
         var pos = Utils.GetRandomCell(GameManager.Instance.Grid);
         Allies = new List<Player>();
@@ -22,26 +22,11 @@ public class Player
         { 
             pos = Utils.GetRandomCell(GameManager.Instance.Grid);
         }
-        units.Add(pos, GameManager.Instance.SpawnManager.SpawnUnit(new SpearmanSO(), this, pos).GetComponent<Unit>());
     }
     public List<Player> Allies { get; private set; }
     public string Name { get; private set; }
     public PlayerType Type { get; private set; }
     public bool Active { get; set; }
-
-    private Dictionary<Vector3Int, Unit> units;
-    public Dictionary<Vector3Int, Unit> Units
-    {
-        get => units;
-        private set => units = value;
-    }
-
-    private Dictionary<Vector3Int, CityController> cities;
-    public Dictionary<Vector3Int, CityController> Cities
-    {
-        get => cities;
-        private set => cities = value;
-    }
 
     public void InitPlayer()
     {
@@ -50,12 +35,22 @@ public class Player
 
     public Unit GetUnitInCell(Vector3Int cell)
     {
-        return Units.ContainsKey(cell) ? Units[cell] : null;
+        return ControllerManager.Instance.AllUnits.ContainsKey(cell) ? ControllerManager.Instance.AllUnits[cell] : null;
     }
     
     public CityController GetCityInCell(Vector3Int cell)
     {
-        return Cities.ContainsKey(cell) ? Cities[cell] : null;
+        return ControllerManager.Instance.AllCitites.ContainsKey(cell) ? ControllerManager.Instance.AllCitites[cell] : null;
+    }
+
+    public bool CheckUnits()
+    {
+        if (ControllerManager.Instance.AllUnits.ToList().Count((unit => unit.Value.Owner == this)) == 0)
+        {
+            Active = false;
+        }
+
+        return Active;
     }
     
 }
