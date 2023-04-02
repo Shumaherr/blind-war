@@ -71,7 +71,7 @@ public class GameManager : Singleton<GameManager>
 
         SetPlayers();
         Players.ForEach(player => player.InitPlayer());
-        Players.ForEach(player => player.Units.ToList().ForEach(unit => unit.Value.OnUnitDie += OnUnitDie));
+        ControllerManager.Instance.AllUnits.ToList().ForEach(unit => unit.Value.OnUnitDie += OnUnitDie);
         _turnManager.ChangeTurn();
         Debug.Log("Turn:" + _turnManager.Turn.Name);
         GameState = GameState.GameStart;
@@ -120,7 +120,8 @@ public class GameManager : Singleton<GameManager>
     private void OnTurnChanged(Dictionary<string, object> dictionary)
     {
         var newTurn = (Player)dictionary["whoseTurn"];
-        newTurn.Units.ToList().ForEach(unit => unit.Value.InitMoves() );
+        ControllerManager.Instance.AllUnits.Values.Where(u => u.Owner == newTurn).ToList().ForEach(u => u.InitMoves());
+
         if (newTurn.Type == PlayerType.AI)
         {
             foreach (var unit in _enemyUnitsToDelete) _enemyUnits.Remove(unit);
@@ -167,16 +168,7 @@ public class GameManager : Singleton<GameManager>
         return _pathfinding.FindPath(grid, grid.WorldToCell(start), finish);
     }
 
-    public HashSet<UnitType> GetNeighbourUnitTypes()
-    {
-        var neighbourUnits = new HashSet<UnitType>();
-        foreach (var neighborCell in Utils.Neighbors(_gridInteractor.UnitCell(ControllerManager.Instance.SelectedUnit)))
-            foreach (var player in _players.Where(player => player != _turnManager.Turn).Where(player => player.GetUnitInCell(neighborCell) != null))
-            {
-                neighbourUnits.Add(player.Units[neighborCell].BaseUnit.UnitType);
-            }
-        return neighbourUnits.Count == 0 ? null : neighbourUnits;
-    }
+
 
     public void UpdateInventoryUI()
     {

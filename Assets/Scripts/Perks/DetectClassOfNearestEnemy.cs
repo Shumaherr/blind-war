@@ -16,7 +16,7 @@ public class DetectClassOfNearestEnemy : Perk
 
     public override void Use()
     {
-        var neighbourTypes = GameManager.Instance.GetNeighbourUnitTypes();
+        var neighbourTypes = ControllerManager.Instance.GetNeighbourUnitTypes();
         if (neighbourTypes == null)
         {
             DialogText = "There is no enemy units";

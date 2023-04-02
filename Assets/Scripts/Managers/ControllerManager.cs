@@ -81,9 +81,8 @@ public class ControllerManager : Singleton<ControllerManager>
 
             MoveUnitToTile(_selectedUnit.transform, tilePos);
             var tempUnit = _gridInteractor.UnitCell(_selectedUnit);
-            AllUnits.Where((unit => unit.Value.))
-            GameManager.Instance.TurnManager.Turn.Units.Remove(tempUnit);
-            GameManager.Instance.TurnManager.Turn.Units.Add(tilePos, _selectedUnit);
+            AllUnits.Remove(tempUnit);
+            AllUnits.Add(tilePos, _selectedUnit);
             ClearSelected();
         }
     }
@@ -173,4 +172,21 @@ public class ControllerManager : Singleton<ControllerManager>
         return Utils.Neighbors(walkableTilemap.WorldToCell(pos)).
             Any(i => (AllUnits.ContainsKey(i) || AllCitites.ContainsKey(i)) && AllUnits[i].Owner == GameManager.Instance.TurnManager.Turn);
     }
+    
+    public HashSet<UnitType> GetNeighbourUnitTypes()
+    {
+        var neighbourUnits = new HashSet<UnitType>();
+        foreach (Vector3Int neighborCell in Utils.Neighbors(_gridInteractor.UnitCell(SelectedUnit)))
+        {
+            if (AllUnits.TryGetValue(neighborCell, out Unit unit))
+            {
+                if (unit.Owner != GameManager.Instance.TurnManager.Turn)
+                {
+                    neighbourUnits.Add(unit.BaseUnit.UnitType);
+                }
+            }
+        }
+        return neighbourUnits.Count == 0 ? null : neighbourUnits;
+    }
+
 }
