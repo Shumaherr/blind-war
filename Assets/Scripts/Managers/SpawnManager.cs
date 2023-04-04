@@ -5,12 +5,19 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     [SerializeField] private List<Transform> unitsPrefabs;
+    [SerializeField] private List<BaseUnit> _unitsToProduce;
     private Dictionary<Unit, Transform> units;
 
     private void Awake()
     {
         units = new Dictionary<Unit, Transform>();
         unitsPrefabs.ForEach(p => units.Add(p.GetComponent<Unit>(), p));
+    }
+
+    public GameObject SpawnRandomUnit(Player owner, Vector3Int cellPos)
+    {
+       var _producingUnit = _unitsToProduce[Random.Range(0, _unitsToProduce.Count)];
+       return SpawnUnit(_producingUnit, owner, cellPos);
     }
 
     public GameObject SpawnUnit(BaseUnit unit, Player owner, Vector3Int cellPos)

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 
 public enum GameState
@@ -12,8 +11,6 @@ public enum GameState
     TurnChanged,
     DoTurn
 }
-
-
 
 public class GameManager : Singleton<GameManager>
 {
@@ -75,6 +72,9 @@ public class GameManager : Singleton<GameManager>
         _turnManager.ChangeTurn();
         Debug.Log("Turn:" + _turnManager.Turn.Name);
         GameState = GameState.GameStart;
+        var unitPos = ControllerManager.Instance.AllUnits.Values.First(u => u.Owner == _turnManager.Turn).gameObject
+            .transform.position;
+        SetCamera(unitPos);
     }
 
     private void Update()
@@ -128,7 +128,20 @@ public class GameManager : Singleton<GameManager>
 
             _enemyUnitsToDelete = new List<EnemyUnitBase>();
             foreach (var unit in _enemyUnits) unit.DoTurn();
+            return;
         }
+
+        var unitPos = ControllerManager.Instance.AllUnits.Values.First(u => u.Owner == newTurn).gameObject
+            .transform.position;
+        SetCamera(unitPos);
+    }
+
+    private void SetCamera(Vector3 unitPos)
+    {
+        var cameraPosition = mainCamera.transform.position;
+        cameraPosition.x = unitPos.x;
+        cameraPosition.y = unitPos.y;
+        mainCamera.transform.position = cameraPosition;
     }
 
     private void OnUnitDie(Unit unit)

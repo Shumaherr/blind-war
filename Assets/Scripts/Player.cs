@@ -30,7 +30,8 @@ public class Player
 
     public void InitPlayer()
     {
-        
+        GameManager.Instance.SpawnManager.SpawnRandomUnit(this,
+            Utils.GetRandomCell(GameManager.Instance.Grid));
     }
 
     public Unit GetUnitInCell(Vector3Int cell)

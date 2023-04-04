@@ -81,8 +81,6 @@ public class ControllerManager : Singleton<ControllerManager>
 
             MoveUnitToTile(_selectedUnit.transform, tilePos);
             var tempUnit = _gridInteractor.UnitCell(_selectedUnit);
-            AllUnits.Remove(tempUnit);
-            AllUnits.Add(tilePos, _selectedUnit);
             ClearSelected();
         }
     }
