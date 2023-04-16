@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 
@@ -42,11 +43,18 @@ public class TurnManager
 
     public void ChangeTurn()
     {
-        PlayerIndex = PlayerIndex == GameManager.Instance.Players.Count - 1 ? 0 : ++PlayerIndex; //TODO Check that player active is
+        int nextIndex = PlayerIndex;
+        do
+        {
+            nextIndex = nextIndex == GameManager.Instance.Players.Count - 1 ? 0 : ++nextIndex;
+        } while (!GameManager.Instance.Players[nextIndex].Active);
+
+        PlayerIndex = nextIndex;
         EventManager.TriggerEvent("turnChanged", new Dictionary<string, object> { { "whoseTurn", Turn } });
         Debug.Log("Turn:" + Turn.Name);
     }
 
+    
     public bool IsPlayerTurn(Player player)
     {
         return Turn == player;
