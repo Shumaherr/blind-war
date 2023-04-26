@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class Unit : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class Unit : MonoBehaviour
     
     private Renderer[] _renderer;
     private SpriteRenderer _spriteRenderer;
+    
+    private Light2D[] _lights;
 
     public Player Owner { get; private set; }
 
@@ -84,6 +87,7 @@ public class Unit : MonoBehaviour
     {
         _renderer = GetComponentsInChildren<Renderer>();
         _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        _lights = GetComponentsInChildren<Light2D>();
     }
 
     public event Action<int, int> OnMovesChanged;
@@ -181,11 +185,13 @@ public class Unit : MonoBehaviour
     public void HideUnit()
     {
         _renderer.ToList().ForEach(spriteRenderer => spriteRenderer.enabled = false);
+        _lights.ToList().ForEach(light => light.enabled = false);
     }
 
     public void ShowUnit()
     {
         _renderer.ToList().ForEach(spriteRenderer => spriteRenderer.enabled = true);
+        _lights.ToList().ForEach(light => light.enabled = true);
     }
 
     public void ShowGeneralizedSprite()
