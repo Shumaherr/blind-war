@@ -29,6 +29,10 @@ public class DetectClassOfNearestEnemy : Perk
         ActivateDialog();
     }
 
+    protected override void SubscribeToEvents() {
+        
+    }
+
     public void ActivateDialog()
     {
         //_dialogBox.localScale = new Vector3(1, 1, 1);

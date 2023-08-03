@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using BaseClasses;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -172,9 +173,27 @@ public class Unit : MonoBehaviour
         {
             ShowGeneralizedSprite();
             ChangeVisibility();
+            ActivateTilePerls();
         }
     }
-    
+
+    private void ActivateTilePerls() {
+        var cell = GetUnitCell();
+        var tile = GameManager.Instance.Grid.GetTile(cell);
+        var tilePerks = MapManager.Instance.TilesData[tile].PerkName;
+        if (tilePerks.Length > 0)
+        {
+            var perk = new PerkFactory().GetPerk(tilePerks);
+            Type type = perk.GetType();
+            //If unit has perk of this type, then we don't need to add it
+            if (Perks.Any(p => p.GetType() == type))
+                return;
+            Perks.Add(perk);
+            perk?.Use();
+        }
+
+    }
+
     public void ChangeVisibility()
     {
         HideUnit();

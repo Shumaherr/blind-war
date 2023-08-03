@@ -78,9 +78,8 @@ public class ControllerManager : Singleton<ControllerManager>
             _selectedUnit.ChangeMoves(MapManager.Instance.GetMoveCosts(_selectedUnit.BaseUnit,
                 walkableTilemap.GetTile(tilePos)));
             if (unitInCell != null)
-                if (!StartBattle(_selectedUnit, unitInCell) != null)
+                if (StartBattle(_selectedUnit, unitInCell) == null)
                     return;
-
             MoveUnitToTile(_selectedUnit.transform, tilePos);
             var tempUnit = _gridInteractor.UnitCell(_selectedUnit);
             ClearSelected();
@@ -111,39 +110,41 @@ public class ControllerManager : Singleton<ControllerManager>
         Debug.Log("End");
     }
 
-    public bool? StartBattle(Unit enemyUnit, Unit playerUnit)
+    public bool? StartBattle(Unit attacker, Unit victim)
     {
-        if (!enemyUnit.enabled || !playerUnit.enabled)
+        if (!attacker.enabled || !victim.enabled)
             return false;
-        var winner = BattleSystem.Fight(playerUnit, enemyUnit);
-        var loser = winner == playerUnit ? enemyUnit : playerUnit;
-        if (winner == null)
-        {
-            AllUnits.Remove(walkableTilemap.WorldToCell(enemyUnit.transform.position));
-            AllUnits.Remove(walkableTilemap.WorldToCell(playerUnit.transform.position));
-            enemyUnit.Owner.CheckUnits();
-            playerUnit.Owner.CheckUnits();
-            enemyUnit.KillUnit();
-            playerUnit.KillUnit();
+        if (victim.Perks.OfType<Fortificate>().Any(p => p.IsActive)) {
+            victim.Perks.OfType<Fortificate>().First(p => p.IsActive).DecreaseAttacksAmount();
             return null;
         }
-
-        loser.Perks.OfType<Fortificate>().First(p => p.IsActive()).DecreaseAttacksAmount();
+        var winner = BattleSystem.Fight(victim, attacker);
+        var loser = winner == victim ? attacker : victim;
+        if (winner == null)
+        {
+            AllUnits.Remove(walkableTilemap.WorldToCell(attacker.transform.position));
+            AllUnits.Remove(walkableTilemap.WorldToCell(victim.transform.position));
+            attacker.Owner.CheckUnits();
+            victim.Owner.CheckUnits();
+            attacker.KillUnit();
+            victim.KillUnit();
+            return null;
+        }
 
         var winnerType = winner.BaseUnit.UnitType;
         RuntimeManager.PlayOneShot(SoundManager.GetWinnerSfxEventToPlay(winnerType), transform.position);
 
-        if (playerUnit == winner)
+        if (victim == winner)
         {
-            AllUnits.Remove(walkableTilemap.WorldToCell(enemyUnit.transform.position));
-            enemyUnit.Owner.CheckUnits();
-            enemyUnit.KillUnit();
+            AllUnits.Remove(walkableTilemap.WorldToCell(attacker.transform.position));
+            attacker.Owner.CheckUnits();
+            attacker.KillUnit();
             return true;
         }
 
-        AllUnits.Remove(walkableTilemap.WorldToCell(playerUnit.transform.position));
-        playerUnit.KillUnit();
-        playerUnit.Owner.CheckUnits();
+        AllUnits.Remove(walkableTilemap.WorldToCell(victim.transform.position));
+        victim.KillUnit();
+        victim.Owner.CheckUnits();
         return false;
     }
 
