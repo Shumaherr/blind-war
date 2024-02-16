@@ -86,7 +86,7 @@ public class ControllerManager : Singleton<ControllerManager>
         }
     }
 
-    public void MoveUnitToTile(Transform unitToMove, Vector3Int tilePos)
+    public void MoveUnitToTile(Transform unitToMove, Vector3Int tilePos, bool isAI = false)
     {
         var position = unitToMove.position;
         var oldCellPos = walkableTilemap.WorldToCell(position);
@@ -97,7 +97,14 @@ public class ControllerManager : Singleton<ControllerManager>
         var oldNeighbors = Utils.Neighbors(oldCellPos).Where((i => AllUnits.ContainsKey(i)));
         AllUnits.Where((pair => oldNeighbors.Contains(pair.Key))).ToList().ForEach((pair => pair.Value.HideUnit()));
         Debug.Log("Move for " + countCells + " cells");
-        StartCoroutine(MoveFromTo(unitToMove, position, cellCenterWorld, 3));
+        if(!isAI)
+        {
+            StartCoroutine(MoveFromTo(unitToMove, position, cellCenterWorld, 3));
+        }
+        else
+        {
+            unitToMove.position = cellCenterWorld;
+        }
         //GameManager.Instance.ChangeTakenCell(unitCell, tilePos);
         EventManager.TriggerEvent("unitMoved", null);
         var tempUnit = AllUnits[oldCellPos];
@@ -202,5 +209,10 @@ public class ControllerManager : Singleton<ControllerManager>
         }
 
         return neighbourUnits.Count == 0 ? null : neighbourUnits;
+    }
+
+    public Unit GetUnitAtPosition(Vector3Int neighbor)
+    {
+        return AllUnits.ContainsKey(neighbor) ? AllUnits[neighbor] : null;
     }
 }

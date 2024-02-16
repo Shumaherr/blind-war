@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 
 public enum GameState
@@ -110,7 +111,7 @@ public class GameManager : Singleton<GameManager>
         _players = new List<Player>
         {
             new("Player1", PlayerType.LocalPlayer),
-            new("Player2", PlayerType.LocalPlayer),
+            //new("Player2", PlayerType.LocalPlayer),
             new("Bad boys", PlayerType.AI)
         };
     }
@@ -120,14 +121,21 @@ public class GameManager : Singleton<GameManager>
     private void OnTurnChanged(Dictionary<string, object> dictionary)
     {
         var newTurn = (Player)dictionary["whoseTurn"];
-        ControllerManager.Instance.AllUnits.Values.Where(u => u.Owner == newTurn).ToList().ForEach(u => u.InitMoves());
+        var units = ControllerManager.Instance.AllUnits.Values.Where(u => u.Owner == newTurn).ToList();
+        foreach (var unit in units)
+        {
+            unit.InitMoves();
+        }
 
         if (newTurn.Type == PlayerType.AI)
         {
             foreach (var unit in _enemyUnitsToDelete) _enemyUnits.Remove(unit);
 
             _enemyUnitsToDelete = new List<EnemyUnitBase>();
-            foreach (var unit in _enemyUnits) unit.DoTurn();
+            foreach (var unit in units)
+            {
+                unit.Controller.DoTurn();
+            }
             return;
         }
 
@@ -202,5 +210,15 @@ public class GameManager : Singleton<GameManager>
     public void NextTurn()
     {
         TurnManager.ChangeTurn();
+    }
+    
+    public List<Player> GetActivePlayers()
+    {
+        return Players.Where(player => player.Active).ToList();
+    }
+
+    public void GameOver()
+    {
+        SceneManager.LoadScene("Scene_Defeat");
     }
 }

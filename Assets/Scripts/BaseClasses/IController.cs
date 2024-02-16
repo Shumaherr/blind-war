@@ -9,4 +9,5 @@ public interface IController
     protected ControllerType ControllerType { get; }
     public void DoMove();
     public void DoAttack();
+    public void DoTurn();
 }

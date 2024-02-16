@@ -12,7 +12,7 @@ public class Unit : MonoBehaviour
     [SerializeField] protected List<Item> inventory = new();
     [SerializeField] protected BaseUnit baseUnit;
 
-    protected IController _controller;
+    public IController Controller { get; set; }
 
     protected int _damage;
 
@@ -80,7 +80,7 @@ public class Unit : MonoBehaviour
 
     protected void Start()
     {
-        _controller = GetComponent<IController>();
+        Controller = GetComponent<IController>();
         
     }
 
@@ -204,13 +204,15 @@ public class Unit : MonoBehaviour
     public void HideUnit()
     {
         _renderer.ToList().ForEach(spriteRenderer => spriteRenderer.enabled = false);
-        _lights.ToList().ForEach(light => light.enabled = false);
+        _lights.ToList().ForEach(light2D => light2D.enabled = false);
     }
 
     public void ShowUnit()
     {
+        if(Owner.Type == PlayerType.AI)
+            return;
         _renderer.ToList().ForEach(spriteRenderer => spriteRenderer.enabled = true);
-        _lights.ToList().ForEach(light => light.enabled = true);
+        _lights.ToList().ForEach(light2D => light2D.enabled = true);
     }
 
     public void ShowGeneralizedSprite()

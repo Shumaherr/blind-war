@@ -34,7 +34,7 @@ public static class Utils
     private static readonly Vector3Int[] directions_when_y_is_odd =
         { LEFT, RIGHT, DOWN, DOWNRIGHT, UP, UPRIGHT };
 
-    public static IEnumerable<Vector3Int> Neighbors(Vector3Int node)
+    public static IEnumerable<Vector3Int> Neighbors(Vector3Int node, int radius = 1)
     {
         var directions = node.y % 2 == 0 ? directions_when_y_is_even : directions_when_y_is_odd;
         foreach (var direction in directions)

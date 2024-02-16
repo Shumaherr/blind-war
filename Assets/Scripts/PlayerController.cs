@@ -3,15 +3,8 @@ using System.Collections.Generic;
 using FMODUnity;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour, IController
+public class PlayerController : BaseController, IController
 {
-    private Unit _unit;
-
-    private void Start()
-    {
-        _unit = GetComponent<Unit>();
-    }
-
     private void OnMouseDown()
     {
         DoInteract();
@@ -29,13 +22,18 @@ public class PlayerController : MonoBehaviour, IController
         throw new NotImplementedException();
     }
 
+    public void DoTurn()
+    {
+        throw new NotImplementedException();
+    }
+
     private void DoInteract()
     {
-        if (!GameManager.Instance.TurnManager.IsLocalPlayerTurn() || ControllerManager.Instance.SelectedUnit == _unit || GameManager.Instance.TurnManager.Turn != _unit.Owner)
+        if (!GameManager.Instance.TurnManager.IsLocalPlayerTurn() || ControllerManager.Instance.SelectedUnit == Unit || GameManager.Instance.TurnManager.Turn != Unit.Owner)
             return;
         RuntimeManager.PlayOneShot("event:/SFX/ui/select", transform.position);
         //ControllerManager.Instance.SelectedUnit?.DeactivateDialog();
-        EventManager.TriggerEvent("unitSelected", new Dictionary<string, object> { { "unit", _unit } });
+        EventManager.TriggerEvent("unitSelected", new Dictionary<string, object> { { "unit", Unit } });
         //Perks.ForEach(perk => perk.Use());
     }
 }

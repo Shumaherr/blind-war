@@ -5,13 +5,11 @@ public class EnemyHorseman : EnemyUnitBase
 {
     public override void DoMove()
     {
-        var lastStep = 0;
         for (var i = 1; i < _currentPath.Count; i++)
         {
             if (Moves == 0)
                 break;
             ControllerManager.Instance.MoveUnitToTile(transform, _currentPath[i]);
-            lastStep = i;
             ChangeMoves();
         }
 

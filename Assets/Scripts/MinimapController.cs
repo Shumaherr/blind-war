@@ -64,7 +64,6 @@ public class MinimapController : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("Minimap clicked at: " + eventData.position);
         var miniMapRect = GetComponent<RectTransform>().rect;
         var screenRect = new Rect(
             transform.position.x,

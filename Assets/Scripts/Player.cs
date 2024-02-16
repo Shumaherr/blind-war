@@ -49,6 +49,10 @@ public class Player
         if (ControllerManager.Instance.AllUnits.ToList().Count((unit => unit.Value.Owner == this)) == 0)
         {
             Active = false;
+            if (GameManager.Instance.GetActivePlayers().Count(player => player.Type != PlayerType.AI) == 0) //If all players are dead, then game over
+            {
+                GameManager.Instance.GameOver();
+            }
         }
 
         return Active;
