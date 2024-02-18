@@ -34,7 +34,8 @@ public class AIController : BaseController, IController
     {
         //visibleUnits.RemoveAll(unit => !IsVisible(unit));
         visibleUnits.Clear();
-        foreach (var cell in Utils.Neighbors(Unit.GetUnitCell(), 2))
+        var neighbors = Utils.Neighbors(Unit.GetUnitCell(), 2);
+        foreach (var cell in neighbors)
         {
             if (ControllerManager.Instance.GetUnitAtPosition(cell) is { } unit)
             {

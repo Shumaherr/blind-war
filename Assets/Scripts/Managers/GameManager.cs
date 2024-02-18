@@ -59,10 +59,10 @@ public class GameManager : Singleton<GameManager>
         _soundManager = new SoundManager();
         _pathfinding = new Pathfinding();
         _turnManager = new TurnManager();
-        
+
         _uiManager = GetComponent<UIManager>();
         SpawnManager = GetComponent<SpawnManager>();
-        
+
         _enemyUnits = new List<EnemyUnitBase>();
         _enemyUnitsToDelete = new List<EnemyUnitBase>();
         _gridInteractor = grid.GetComponent<GridInteractor>();
@@ -85,7 +85,7 @@ public class GameManager : Singleton<GameManager>
             case GameState.GameInit:
                 break;
             case GameState.GameStart:
-                
+
                 break;
             case GameState.TurnChanged:
                 break;
@@ -100,13 +100,13 @@ public class GameManager : Singleton<GameManager>
     {
         EventManager.StartListening("turnChanged", OnTurnChanged);
     }
-    
+
     private void OnDisable()
     {
         EventManager.StopListening("turnChanged", OnTurnChanged);
     }
 
-    private void SetPlayers()//TODO This method have to be called from Menu during game init
+    private void SetPlayers() //TODO This method have to be called from Menu during game init
     {
         _players = new List<Player>
         {
@@ -136,6 +136,7 @@ public class GameManager : Singleton<GameManager>
             {
                 unit.Controller.DoTurn();
             }
+
             return;
         }
 
@@ -162,7 +163,7 @@ public class GameManager : Singleton<GameManager>
         if (unit.Inventory.Count > 0)
             _uiManager.ShowInventory();
     }
-    
+
 
     public void KillUnit(Unit unitToKill)
     {
@@ -190,12 +191,11 @@ public class GameManager : Singleton<GameManager>
     }
 
 
-
     public void UpdateInventoryUI()
     {
         _uiManager.UpdateInventory();
     }
-    
+
     public Vector3Int GetFreeRandomNeighbourCell(Vector3Int cell)
     {
         var neighbours = Utils.Neighbors(cell);
@@ -206,12 +206,12 @@ public class GameManager : Singleton<GameManager>
                 return neighbour;
         return Vector3Int.zero; //TODO change Vector3Int.zero to error
     }
-    
+
     public void NextTurn()
     {
         TurnManager.ChangeTurn();
     }
-    
+
     public List<Player> GetActivePlayers()
     {
         return Players.Where(player => player.Active).ToList();
@@ -220,5 +220,24 @@ public class GameManager : Singleton<GameManager>
     public void GameOver()
     {
         SceneManager.LoadScene("Scene_Defeat");
+    }
+
+    void OnDrawGizmos()
+    {
+        Tilemap tilemap = Grid;
+        BoundsInt bounds = tilemap.cellBounds;
+        UnityEditor.Handles.color = Color.black;
+        for (int x = bounds.xMin; x < bounds.xMax; x++)
+        {
+            for (int y = bounds.yMin; y < bounds.yMax; y++)
+            {
+                Vector3Int cellPos = new Vector3Int(x, y, 0);
+                if (tilemap.HasTile(cellPos))
+                {
+                    Vector3 cellCenterWorldPos = tilemap.GetCellCenterWorld(cellPos);
+                    UnityEditor.Handles.Label(cellCenterWorldPos, cellPos.ToString());
+                }
+            }
+        }
     }
 }
