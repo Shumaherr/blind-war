@@ -52,7 +52,6 @@ public class ControllerManager : Singleton<ControllerManager>
     private void OnUnitSelected(Dictionary<string, object> obj)
     {
         SelectedUnit = (Unit)obj["unit"];
-        Debug.Log("Selected unit: " + SelectedUnit.name);
     }
 
     private void TileSelected(Vector3Int tilePos)
@@ -96,7 +95,6 @@ public class ControllerManager : Singleton<ControllerManager>
         var cellCenterWorld = walkableTilemap.GetCellCenterWorld(tilePos);
         var oldNeighbors = Utils.Neighbors(oldCellPos).Where((i => AllUnits.ContainsKey(i)));
         AllUnits.Where((pair => oldNeighbors.Contains(pair.Key))).ToList().ForEach((pair => pair.Value.HideUnit()));
-        Debug.Log("Move for " + countCells + " cells");
         if(!isAI)
         {
             StartCoroutine(MoveFromTo(unitToMove, position, cellCenterWorld, 3));
@@ -114,7 +112,6 @@ public class ControllerManager : Singleton<ControllerManager>
                 Utils.Neighbors(tilePos).Contains(pair.Key) &&
                 pair.Value.Owner != GameManager.Instance.TurnManager.Turn))
             .ToList().ForEach(pair => pair.Value.ShowGeneralizedSprite());
-        Debug.Log("End");
     }
 
     public bool? StartBattle(Unit attacker, Unit victim)

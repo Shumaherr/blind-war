@@ -67,13 +67,18 @@ public class AIController : BaseController, IController
 
     private bool CanAttack(Unit unit)
     {
-        return false; // Implement this method
+        if(unit == null)
+            return false;
+        return true;
     }
 
     private void Attack(Unit unit)
     {
-        // Implement this method
-        throw new System.NotImplementedException();
+        if (unit == null)
+        {
+            return;
+        }
+        ControllerManager.Instance.StartBattle(Unit, unit);
     }
 
     private void MoveToUnit()
@@ -154,14 +159,14 @@ public class AIController : BaseController, IController
             {
                 if (Unit.Moves == 0)
                     break;
+                if (CanAttack(ControllerManager.Instance.GetUnitAtPosition(path[i])))
+                {
+                    Attack(ControllerManager.Instance.GetUnitAtPosition(path[i]));
+                    return;
+                }
                 ControllerManager.Instance.MoveUnitToTile(transform, path[i], true);
                 Unit.ChangeMoves(MapManager.Instance.GetMoveCosts(Unit.BaseUnit,
                     GameManager.Instance.Grid.GetTile(path[i])));
-                if (CanAttack(ControllerManager.Instance.GetUnitAtPosition(celPos)))
-                {
-                    Attack(ControllerManager.Instance.GetUnitAtPosition(celPos));
-                    break;
-                }
             }
         }
     }

@@ -22018,7 +22018,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0
+  m_Intensity: 0.1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -22208,8 +22208,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitsPrefabs:
   - {fileID: 7485839878214109499, guid: acbe87b10342642fba6772fe13433e08, type: 3}
+  - {fileID: 7485839878214109499, guid: cba5664350a63104aa97ad7d3bb2c6a6, type: 3}
+  - {fileID: 7485839878214109499, guid: 8514ee13bab5fb74b8676c95c35fcbe4, type: 3}
   _unitsToProduce:
   - {fileID: 11400000, guid: 662fa213bacc0014997202515ea4e2bf, type: 2}
+  - {fileID: 11400000, guid: b802d145b5c28404eb0451258398e90b, type: 2}
+  - {fileID: 11400000, guid: abec1f209d1e04b41b4e4dcde4f0ecd3, type: 2}
 --- !u!114 &1427290369
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,7 +6,8 @@ public enum UnitType
     Cutting,
     Crushing,
     Distant,
-    Magic
+    Magic,
+    Riding
 }
 
 public abstract class BaseUnit : ScriptableObject

@@ -28,10 +28,13 @@ public class Player
     public PlayerType Type { get; private set; }
     public bool Active { get; set; }
 
-    public void InitPlayer()
+    public void InitPlayer(int numberOfUnits = 1)
     {
-        GameManager.Instance.SpawnManager.SpawnRandomUnit(this,
-            Utils.GetRandomCell(GameManager.Instance.Grid));
+        for (int i = 0; i < numberOfUnits; i++)
+        {
+            GameManager.Instance.SpawnManager.SpawnRandomUnit(this,
+                Utils.GetRandomCell(GameManager.Instance.Grid));
+        }
     }
 
     public Unit GetUnitInCell(Vector3Int cell)

@@ -68,7 +68,7 @@ public class GameManager : Singleton<GameManager>
         _gridInteractor = grid.GetComponent<GridInteractor>();
 
         SetPlayers();
-        Players.ForEach(player => player.InitPlayer());
+        Players.ForEach(player => player.InitPlayer(4));
         ControllerManager.Instance.AllUnits.ToList().ForEach(unit => unit.Value.OnUnitDie += OnUnitDie);
         _turnManager.ChangeTurn();
         Debug.Log("Turn:" + _turnManager.Turn.Name);

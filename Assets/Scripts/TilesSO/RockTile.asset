@@ -18,4 +18,9 @@ MonoBehaviour:
     list:
     - Key: 0
       Value: 2
+    - Key: 1
+      Value: 2
+    - Key: 5
+      Value: 10
     keyCollision: 0
+  PerkName: 
