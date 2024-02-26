@@ -1,33 +1,23 @@
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using Debug = UnityEngine.Debug;
 
 public class AIController : BaseController, IController
 {
     private ControllerType controllerType;
     private List<Unit> visibleUnits = new List<Unit>();
+    private Dictionary<Vector3Int, List<Vector3Int>> cachedPaths = new Dictionary<Vector3Int, List<Vector3Int>>();
+    
+    private static Pathfinding pathfinding = new Pathfinding();
 
     ControllerType IController.ControllerType => controllerType;
 
     public void DoMove()
     {
-        CheckVisibility();
-        if (AttackVisibleUnit())
-        {
-            EndTurn();
-            return;
-        }
-
-        if (visibleUnits.Count == 0)
-        {
-            HangAround();
-        }
-        else
-        {
-            MoveToUnit();
-        }
-
-        EndTurn();
+        var randomCell = GameManager.Instance.GetFreeRandomNeighbourCell(Unit.GetUnitCell());
+        MoveTo(randomCell);
     }
 
     private void CheckVisibility()
@@ -67,9 +57,7 @@ public class AIController : BaseController, IController
 
     private bool CanAttack(Unit unit)
     {
-        if(unit == null)
-            return false;
-        return true;
+        return unit != null;
     }
 
     private void Attack(Unit unit)
@@ -79,53 +67,7 @@ public class AIController : BaseController, IController
             return;
         }
         ControllerManager.Instance.StartBattle(Unit, unit);
-    }
-
-    private void MoveToUnit()
-    {
-        if (visibleUnits.Count > 0)
-        {
-            var unit = GetClosestUnit();
-            MoveTo(unit.GetUnitCell());
-        }
-    }
-
-    private void HangAround()
-    {
-        while (Unit.Moves > 0)
-        {
-            Vector3Int randomCell = GetRandomWalkableCell();
-            MoveTo(randomCell);
-        }
-    }
-
-    private Vector3Int GetRandomWalkableCell()
-    {
-        List<Vector3Int> walkableCells = new List<Vector3Int>();
-        Tilemap tilemap = GameManager.Instance.Grid;
-        BoundsInt bounds = tilemap.cellBounds;
-
-        for (int x = bounds.xMin; x < bounds.xMax; x++)
-        {
-            for (int y = bounds.yMin; y < bounds.yMax; y++)
-            {
-                Vector3Int cellPos = new Vector3Int(x, y, 0);
-                if (tilemap.HasTile(cellPos) && !GameManager.Instance.IsCellTaken(cellPos))
-                {
-                    walkableCells.Add(cellPos);
-                }
-            }
-        }
-
-        if (walkableCells.Count > 0)
-        {
-            int randomIndex = Random.Range(0, walkableCells.Count);
-            return walkableCells[randomIndex];
-        }
-        else
-        {
-            return Unit.GetUnitCell(); // Return current cell if no walkable cell is found
-        }
+        Unit.ChangeMoves();
     }
 
 
@@ -148,27 +90,12 @@ public class AIController : BaseController, IController
         return closestUnit;
     }
 
-    private void MoveTo(Vector3Int celPos)
+    private void MoveTo(Vector3Int cellPos)
     {
-        Pathfinding pathfinding = new Pathfinding();
-        List<Vector3Int> path = pathfinding.FindPath(GameManager.Instance.Grid, Unit.GetUnitCell(), celPos);
-        Debug.Log("Moving to " + celPos + " with path " + path);
-        if (path is { Count: > 1 })
-        {
-            for (var i = 1; i < path.Count; i++)
-            {
-                if (Unit.Moves == 0)
-                    break;
-                if (CanAttack(ControllerManager.Instance.GetUnitAtPosition(path[i])))
-                {
-                    Attack(ControllerManager.Instance.GetUnitAtPosition(path[i]));
-                    return;
-                }
-                ControllerManager.Instance.MoveUnitToTile(transform, path[i], true);
-                Unit.ChangeMoves(MapManager.Instance.GetMoveCosts(Unit.BaseUnit,
-                    GameManager.Instance.Grid.GetTile(path[i])));
-            }
-        }
+        Debug.Log("Moving to " + cellPos);
+        ControllerManager.Instance.MoveUnitToTile(transform, cellPos, true);
+        Unit.ChangeMoves(MapManager.Instance.GetMoveCosts(Unit.BaseUnit,
+            GameManager.Instance.Grid.GetTile(cellPos)));
     }
 
     private void EndTurn()
@@ -184,6 +111,16 @@ public class AIController : BaseController, IController
 
     public void DoTurn()
     {
-        DoMove();
+        while (Unit.Moves > 0)
+        {
+            CheckVisibility();
+            if (visibleUnits.Count > 0)
+            {
+                AttackVisibleUnit();
+                continue;
+            }
+            DoMove();
+        }
+        EndTurn();
     }
 }
