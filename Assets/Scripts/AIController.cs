@@ -16,6 +16,16 @@ public class AIController : BaseController, IController
 
     public void DoMove()
     {
+        if (visibleUnits.Count > 0)
+        {
+            var closestUnit = GetClosestUnit();
+            var path = pathfinding.FindPath(GameManager.Instance.Grid,Unit.GetUnitCell(), closestUnit.GetUnitCell());
+            if (path.Count > 0)
+            {
+                MoveTo(path[0]);
+                return;
+            }
+        }
         var randomCell = GameManager.Instance.GetFreeRandomNeighbourCell(Unit.GetUnitCell());
         MoveTo(randomCell);
     }
@@ -105,20 +115,18 @@ public class AIController : BaseController, IController
 
     public void DoAttack()
     {
-        // Implement this method
-        throw new System.NotImplementedException();
+        CheckVisibility();
+        if (visibleUnits.Count > 0)
+        {
+            AttackVisibleUnit();
+        }
     }
 
     public void DoTurn()
     {
         while (Unit.Moves > 0)
         {
-            CheckVisibility();
-            if (visibleUnits.Count > 0)
-            {
-                AttackVisibleUnit();
-                continue;
-            }
+            DoAttack();
             DoMove();
         }
         EndTurn();

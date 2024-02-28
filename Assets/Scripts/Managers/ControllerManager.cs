@@ -77,7 +77,7 @@ public class ControllerManager : Singleton<ControllerManager>
             _selectedUnit.ChangeMoves(MapManager.Instance.GetMoveCosts(_selectedUnit.BaseUnit,
                 walkableTilemap.GetTile(tilePos)));
             if (unitInCell != null)
-                if (StartBattle(_selectedUnit, unitInCell) == null)
+                if (StartBattle(_selectedUnit, unitInCell) != false)
                     return;
             MoveUnitToTile(_selectedUnit.transform, tilePos);
             var tempUnit = _gridInteractor.UnitCell(_selectedUnit);
